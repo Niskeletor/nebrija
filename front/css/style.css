@@ -4,3 +4,55 @@
     margin: 0;
     box-sizing: border-box;
 }
+html, body {
+    height: 100%;
+
+}
+
+body {
+
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+
+}
+
+.cabecera{
+    position: relative;
+    background-color: darkcyan;
+    height: 10vw;
+
+
+}
+
+
+
+
+.main {
+    position: relative;
+    background-color:gray;
+    flex: 1;
+    
+}
+
+.box-login {
+    position: relative;
+    bottom: -10vw;
+    left: 30vw;
+    border: 2px blanchedalmond dotted;
+    max-width: max-content;
+    
+
+    
+    
+
+}
+
+.pie{
+position: relative;
+background-color: black;
+color: azure;
+height: 9vw;
+bottom:0vmin;
+
+}

@@ -8,16 +8,33 @@
 </head>
 <body>
 
-    <header></header>
-    <body>
-        <div class="box-login">
-            <div class="user">Usuario</div>
-            <div class="pass">Contraseña</div>
-            <div class="boton">Boton</div>
-        </div>
+    <header class="cabecera">
         
-    </body>
-    <footer></footer>
+        <div>Inicio de Sesion</div>
+    </header>
+    <main class="main">
+        <div class="box-login">
+            <form action="URL_DESTINO" method="POST">
+            <div class="user"> 
+                <label for="usuario">Usuario</label>
+                <input type="text" id="usuario" name="usuario" required>
+            </div>
+            <div class="pass">
+                <label for="pass">Contraseña </label>
+                <input type="password" id="pas" name="pass" required>
+            </div>
+            <div class="boton">Enviar 
+                <button type="submit"></button>
+            </div>
+        </form>
+        </div>
+
+    </main>
+
+
+    <footer class="pie">Pie de pagina</footer>    
+    </main>
+    
     
 </body>
 </html>
