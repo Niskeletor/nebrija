@@ -1,0 +1,54 @@
+Pagina Servlets
+
+Iniciar Sesion
+
+Panel de Control | USUARIOS | GRUPOS | PERMISOS  
+
+USUARIOS 
+
+Crear Usuario:
+ * Campos a rellenar 
+	nombre:
+	apellidos:
+	empresa:
+	departamento:
+	email:
+	password:
+	username: (sugerido)
+
+Bloqueo
+	Comprobar Bloqueo
+	Desbloquear Usuario
+	Bloquear Usuario
+
+Consultar
+	Filtros
+		departamento
+		empresa
+		nombre
+		apellidp
+
+GRUPOS 
+	Crear Grupo
+	Añadir Integrantes
+	Eliminar Integrantes
+Cosultar
+
+
+PERMISOS
+	Filtrar
+	usuario
+	departamento
+	recurso
+
+INVENTARIO
+	Moviles
+	Ipads
+	Laptops
+	CPU
+	Monitor
+	
+
+
+	
+	
