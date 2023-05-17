@@ -9,47 +9,47 @@ public abstract class UserWeb {
     protected String passw;
     protected String email;
     protected String foto;
-    protected String departamentoEmpresa;
+    protected String departamento; 
+    protected String Empresa;
     protected int id;
+	
+    //Constructor vacio
+    public UserWeb() {
+		super();
+	}
+    
+  //Constructor sin id ni foto
 
-    
-    //constructor sin id y con foto
-    
-    public UserWeb(String nombre, String apellidos, String nombreUsuario, String passw, String email, String foto, String departamentoEmpresa) {
-        this.nombre = nombre;
-        this.apellidos = apellidos;
-        this.nombreUsuario = nombreUsuario;
-        this.passw = passw;
-        this.email = email;
-        this.foto = foto;
-        this.departamentoEmpresa = departamentoEmpresa;
-    }
-    
-    //Constructor sin id ni foto
-    public UserWeb(String nombre, String apellidos, String nombreUsuario, String passw, String email, String departamentoEmpresa) {
-        this.nombre = nombre;
-        this.apellidos = apellidos;
-        this.nombreUsuario = nombreUsuario;
-        this.passw = passw;
-        this.email = email;        
-        this.departamentoEmpresa = departamentoEmpresa;
-    }
-    
-    //constructor completo
-    public UserWeb( int id, String nombre, String apellidos, String nombreUsuario, String passw, String email, String foto, String departamentoEmpresa) {
-        this.nombre = nombre;
-        this.apellidos = apellidos;
-        this.nombreUsuario = nombreUsuario;
-        this.passw = passw;
-        this.email = email;
-        this.foto = foto;
-        this.departamentoEmpresa = departamentoEmpresa;
-        this.id = id;
-    }
+	public UserWeb(String nombre, String apellidos, String nombreUsuario, String passw, String email,
+			String departamento, String empresa) {
+		super();
+		this.nombre = nombre;
+		this.apellidos = apellidos;
+		this.nombreUsuario = nombreUsuario;
+		this.passw = passw;
+		this.email = email;
+		this.departamento = departamento;
+		this.Empresa = empresa;
+	}
+	
+	 //constructor completo
 
-    
+	public UserWeb(String nombre, String apellidos, String nombreUsuario, String passw, String email, String foto,
+		String departamento, String empresa, int id) {
+	super();
+	this.nombre = nombre;
+	this.apellidos = apellidos;
+	this.nombreUsuario = nombreUsuario;
+	this.passw = passw;
+	this.email = email;
+	this.foto = foto;
+	this.departamento = departamento;
+	Empresa = empresa;
+	this.id = id;
+	}
+	
     // getter y setters
-    
+
 	public String getNombre() {
 		return nombre;
 	}
@@ -74,11 +74,11 @@ public abstract class UserWeb {
 		this.nombreUsuario = nombreUsuario;
 	}
 
-	public String getpassw() {
+	public String getPassw() {
 		return passw;
 	}
 
-	public void setpassw(String passw) {
+	public void setPassw(String passw) {
 		this.passw = passw;
 	}
 
@@ -98,12 +98,20 @@ public abstract class UserWeb {
 		this.foto = foto;
 	}
 
-	public String getDepartamentoEmpresa() {
-		return departamentoEmpresa;
+	public String getDepartamento() {
+		return departamento;
 	}
 
-	public void setDepartamentoEmpresa(String departamentoEmpresa) {
-		this.departamentoEmpresa = departamentoEmpresa;
+	public void setDepartamento(String departamento) {
+		this.departamento = departamento;
+	}
+
+	public String getEmpresa() {
+		return Empresa;
+	}
+
+	public void setEmpresa(String empresa) {
+		Empresa = empresa;
 	}
 
 	public int getId() {
@@ -113,8 +121,12 @@ public abstract class UserWeb {
 	public void setId(int id) {
 		this.id = id;
 	}
+
+	
     
     
     //metodos
+	
+	
 
 }
