@@ -1,5 +1,9 @@
 package modeloUserWeb;
 
+import java.sql.SQLException;
+
+import dao.DaoLogin;
+
 public class AdminWeb extends UserWeb{
 
 	
@@ -30,7 +34,18 @@ public class AdminWeb extends UserWeb{
 	
 	//Constructor solo con nombreUsuario y contraseña
 	
+	//metodo insertar 
 	
+	/*
+	 * public void insertar() throws SQLException {
+			
+			DaoUserWeb daol1 = new DaoUserWeb();
+			daol1.insertar(this);
+			
+		}
+	 * 
+	 * 
+	 */
 
 	
 	

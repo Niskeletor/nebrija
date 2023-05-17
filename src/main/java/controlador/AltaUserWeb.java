@@ -37,7 +37,41 @@ public class AltaUserWeb extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		
+		//variable creada para recibir desde la web 0 Admin 1 Consultor
+		//parseamos y convertimos a tipo numerico
+		int tipoUsuario=Integer.parseInt(request.getParameter("rol"));
+		
+		
+		/**
+		 * Capturamos todas las variables posibles que nos puedan lanzar desde
+		 * el post
+		 */
+		String nombreUsuario = request.getParameter("nombreUsuario");
+		String passw = request.getParameter("passw");
+		String nombre= request.getParameter("nombre");
+		String apellidos= request.getParameter("apellidos");
+		String email= request.getParameter("email");
+		String foto= request.getParameter("foto");
+		String departamento= request.getParameter("departamento");
+		String empresa= request.getParameter("passw");
+		
+		
+		System.out.println(tipoUsuario);
+		
+		if (tipoUsuario==0) {
+			
+			AdminWeb a1 = new AdminWeb(nombreUsuario,passw);
+			
+			try {
+				a1.insertar();
+				System.out.println("Intentando Introducir datos");
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
 	}
 
 }
