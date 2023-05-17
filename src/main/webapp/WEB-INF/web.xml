@@ -39,4 +39,34 @@
     <servlet-name>ModificarLogin</servlet-name>
     <url-pattern>/ModificarLogin</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AltaUserWeb</display-name>
+    <servlet-name>AltaUserWeb</servlet-name>
+    <servlet-class>controlador.AltaUserWeb</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AltaUserWeb</servlet-name>
+    <url-pattern>/AltaUserWeb</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ConsultaUserWeb</display-name>
+    <servlet-name>ConsultaUserWeb</servlet-name>
+    <servlet-class>controlador.ConsultaUserWeb</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ConsultaUserWeb</servlet-name>
+    <url-pattern>/ConsultaUserWeb</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ModificarUserWeb</display-name>
+    <servlet-name>ModificarUserWeb</servlet-name>
+    <servlet-class>controlador.ModificarUserWeb</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ModificarUserWeb</servlet-name>
+    <url-pattern>/ModificarUserWeb</url-pattern>
+  </servlet-mapping>
 </web-app>

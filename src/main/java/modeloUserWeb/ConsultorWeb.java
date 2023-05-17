@@ -24,5 +24,15 @@ public class ConsultorWeb extends UserWeb{
 	}
 
 	
+	//COnstructor Solo con usuario y contraseña 
+	public ConsultorWeb(String nombreUsuario, String passw) {
+		super(nombreUsuario, passw);
+		// TODO Auto-generated constructor stub
+	}
+
+
+	
+			
+	
 
 }

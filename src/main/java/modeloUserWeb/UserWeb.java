@@ -18,7 +18,17 @@ public abstract class UserWeb {
 		super();
 	}
     
-  //Constructor sin id ni foto
+    //Constructor solo con nombre usuario y password
+    
+  public UserWeb(String nombreUsuario, String passw) {
+		super();
+		this.nombreUsuario = nombreUsuario;
+		this.passw = passw;
+	}
+
+
+
+//Constructor sin id ni foto
 
 	public UserWeb(String nombre, String apellidos, String nombreUsuario, String passw, String email,
 			String departamento, String empresa) {

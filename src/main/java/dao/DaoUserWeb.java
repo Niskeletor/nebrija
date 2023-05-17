@@ -44,6 +44,30 @@ private Connection con = null;
 	ps.close();
 	
 	}
+		/**
+		 * Metodo para crear consultor Web
+		 * @param c
+		 * @throws SQLException
+		 */
+	
+	public void insertarConsultor (ConsultorWeb c) throws SQLException {
+		
+		// Codigo para poder insertar un permiso
+		//Antes de hacer un Insert tengo que conectarme
+		
+		//Paso 1 preparar la query - para insertar
+		
+		//PreparedStatement ps = con.prepareStatement("INSERT INTO acceso VALUES (ruta,usuario,tipopermiso)");
+		PreparedStatement ps = con.prepareStatement("INSERT INTO web (name,passw) VALUES (?,?)");
+		
+		ps.setString(1, c.getNombre());
+		ps.setString(2, c.getPassw());
+		
+		ps.executeUpdate();
+		ps.close();
+		
+		}
+
 
 		/**
 		 * Metodo para cambiar contraseña
@@ -60,21 +84,7 @@ private Connection con = null;
 	
 	}
 	
-	public void eliminar (Login l) throws SQLException {
-		
-		PreparedStatement ps = con.prepareStatement("ALTER TABLE useradmin (name) VALUES (?)");
-		ps.setString(0, l.getName());
-		ps.close();
-		
-	}
 	
-	public void listar (Login l) throws SQLException {
-		
-		PreparedStatement ps = con.prepareStatement("SELECT name FROM useradmin ");
-		ps.setString(0,l.getName());
-		ps.close();
-		
-	}
 	
 	public ArrayList<Login> obtener() throws SQLException{
 		
