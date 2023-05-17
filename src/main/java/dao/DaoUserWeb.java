@@ -102,12 +102,13 @@ private Connection con = null;
 				
 			}
 			
-			result.add(new ConsultorWeb(  rs.getString("name"),rs.getString("contra"))  );
+			result.add(new ConsultorWeb(  rs.getString("nombreUsuario"),rs.getString("passw"))  );
+			System.out.println(result.toString());
 			//public Login(String name, String contra, int id)
 			
 			
 		}
-		
+		System.out.println(result.toString());
 		return result;
 	}
 	
@@ -121,7 +122,7 @@ private Connection con = null;
 		
 		Gson gsonFinal = new Gson();
 		jsonFinal = gsonFinal.toJson(this.obtener());
-		
+		System.out.println(jsonFinal); 
 		
 		return jsonFinal;
 	}

@@ -17,6 +17,9 @@ import dao.*;
 /**
  * Servlet implementation class ConsultaUserWeb
  */
+
+//IMPORTANTE AGREGAR  @WebServlet y la ruta para realizar peticiones desde JS
+//@WebServlet("/ConsultaUserWeb")
 public class ConsultaUserWeb extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -31,9 +34,12 @@ public class ConsultaUserWeb extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
+
+		/* 
 		//Se encarga de escuchar 
 		String nombre = request.getParameter("nombre");
 		PrintWriter respuesta = response.getWriter();
@@ -60,8 +66,18 @@ public class ConsultaUserWeb extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		//
-		
+		// */
+		try {
+			DaoUserWeb daoUserWeb = new DaoUserWeb();
+			String json = daoUserWeb.obtenerenJSON();
+	
+			response.setContentType("application/json");
+			response.setCharacterEncoding("UTF-8");
+			response.getWriter().write(json);
+			System.out.println(json); 
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		
 		
 	}

@@ -55,10 +55,6 @@
     <servlet-name>ConsultaUserWeb</servlet-name>
     <servlet-class>controlador.ConsultaUserWeb</servlet-class>
   </servlet>
-  <servlet-mapping>
-    <servlet-name>ConsultaUserWeb</servlet-name>
-    <url-pattern>/ConsultaUserWeb</url-pattern>
-  </servlet-mapping>
   <servlet>
     <description></description>
     <display-name>ModificarUserWeb</display-name>
@@ -78,5 +74,15 @@
   <servlet-mapping>
     <servlet-name>ListadoUserWeb</servlet-name>
     <url-pattern>/ListadoUserWeb</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ConsultarUserWeb</display-name>
+    <servlet-name>ConsultarUserWeb</servlet-name>
+    <servlet-class>controlador.ConsultaUserWeb</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ConsultarUserWeb</servlet-name>
+    <url-pattern>/ConsultarUserWeb</url-pattern>
   </servlet-mapping>
 </web-app>
