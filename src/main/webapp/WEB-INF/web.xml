@@ -69,4 +69,14 @@
     <servlet-name>ModificarUserWeb</servlet-name>
     <url-pattern>/ModificarUserWeb</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ListadoUserWeb</display-name>
+    <servlet-name>ListadoUserWeb</servlet-name>
+    <servlet-class>controlador.ListadoUserWeb</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ListadoUserWeb</servlet-name>
+    <url-pattern>/ListadoUserWeb</url-pattern>
+  </servlet-mapping>
 </web-app>

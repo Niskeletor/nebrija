@@ -86,14 +86,14 @@ private Connection con = null;
 	
 	
 	
-	public ArrayList<Login> obtener() throws SQLException{
+	public ArrayList<ConsultorWeb> obtener() throws SQLException{
 		
 		
-		PreparedStatement ps = con.prepareStatement("SELECT * FROM useradmin");
+		PreparedStatement ps = con.prepareStatement("SELECT * FROM user_web");
 		
 		ResultSet rs = ps.executeQuery();
 		
-		ArrayList<Login> result = null;
+		ArrayList<ConsultorWeb> result = null;
 		
 		while (rs.next()) {
 			
@@ -102,7 +102,7 @@ private Connection con = null;
 				
 			}
 			
-			result.add(new Login(  rs.getString("name"),rs.getString("contra"),rs.getInt("iduseradmin"))  );
+			result.add(new ConsultorWeb(  rs.getString("name"),rs.getString("contra"))  );
 			//public Login(String name, String contra, int id)
 			
 			
@@ -137,6 +137,14 @@ private Connection con = null;
 		
 		ArrayList<Login> result = null;
 		return result;
+	}
+	
+	public ArrayList<ConsultorWeb> listar() throws SQLException {
+		ArrayList <ConsultorWeb> movidas = null;
+		PreparedStatement ps = con.prepareStatement("SELECT * from user_admin");
+		Resultset rs = ps.executeQuery();
+		
+		return movidas;
 	}
 
 
