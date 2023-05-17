@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./style.css">
+    <script src="js/validacionlogin.js"></script>
 </head>
 <body>
     <div class="login-container">
@@ -47,7 +48,7 @@
     
     <div class="login-container">
         <h2>Alta UsuarioWEB</h2>
-        <form action="AltaUserWeb" method="POST">
+        <form action="AltaUserWeb" method="POST" onsubmit="return validateForm()" name="userForm">
             <input type="text" name="nombreUsuario" placeholder="Usuario" required>
             <input type="password" name="passw" placeholder="contraseña" required>            
               <select name="rol" required>
