@@ -138,11 +138,24 @@ private Connection con = null;
 		ArrayList<Login> result = null;
 		return result;
 	}
-	
+
+	//Ejemplobasico de listar
 	public ArrayList<ConsultorWeb> listar() throws SQLException {
+		
 		ArrayList <ConsultorWeb> movidas = null;
 		PreparedStatement ps = con.prepareStatement("SELECT * from user_admin");
-		Resultset rs = ps.executeQuery();
+		ResultSet rs = ps.executeQuery();
+		
+		while(rs.next()) {
+			if (movidas==null) {
+				
+				movidas= new ArrayList<>();
+			}
+			movidas.add(new ConsultorWeb(rs.getString("nombreUsuario"), rs.getString("passw")    ));
+		}
+		
+		
+		
 		
 		return movidas;
 	}
