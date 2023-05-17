@@ -22,7 +22,7 @@ public class DBConexion {
 		
 		switch (bbdd) {
 		case 0: {
-			basedeDatos="jdbc:mysql://localhost:3306/webadmin";
+			basedeDatos="jdbc:mysql://localhost:3306/web";
 			userBBDD="root";
 			passBBDD="123456";
 		break;

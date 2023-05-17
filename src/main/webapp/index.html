@@ -45,5 +45,22 @@
         </form>
     </div>
     
+    <div class="login-container">
+        <h2>Alta UsuarioWEB</h2>
+        <form action="AltaUserWeb" method="POST">
+            <input type="text" name="nombreUsuario" placeholder="Usuario" required>
+            <input type="password" name="passw" placeholder="contraseña" required>            
+              <select name="rol" required>
+            <option value="0">Administrador</option>
+            <option value="1">Consultor</option>
+            
+            </select>
+            
+            
+          
+            <input type="submit" value="Enviar">
+        </form>
+    </div>
+    
 </body>
 </html>

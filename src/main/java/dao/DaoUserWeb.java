@@ -35,9 +35,9 @@ private Connection con = null;
 	//Paso 1 preparar la query - para insertar
 	
 	//PreparedStatement ps = con.prepareStatement("INSERT INTO acceso VALUES (ruta,usuario,tipopermiso)");
-	PreparedStatement ps = con.prepareStatement("INSERT INTO web (name,passw) VALUES (?,?)");
+	PreparedStatement ps = con.prepareStatement("INSERT INTO user_web (nombreUsuario,passw) VALUES (?,?)");
 	
-	ps.setString(1, a.getNombre());
+	ps.setString(1, a.getNombreUsuario());
 	ps.setString(2, a.getPassw());
 	
 	ps.executeUpdate();
@@ -58,9 +58,9 @@ private Connection con = null;
 		//Paso 1 preparar la query - para insertar
 		
 		//PreparedStatement ps = con.prepareStatement("INSERT INTO acceso VALUES (ruta,usuario,tipopermiso)");
-		PreparedStatement ps = con.prepareStatement("INSERT INTO web (name,passw) VALUES (?,?)");
+		PreparedStatement ps = con.prepareStatement("INSERT INTO web (nombreUsuario,passw) VALUES (?,?)");
 		
-		ps.setString(1, c.getNombre());
+		ps.setString(1, c.getNombreUsuario());
 		ps.setString(2, c.getPassw());
 		
 		ps.executeUpdate();

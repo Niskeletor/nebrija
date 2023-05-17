@@ -2,7 +2,7 @@ package modeloUserWeb;
 
 import java.sql.SQLException;
 
-import dao.DaoLogin;
+import dao.DaoUserWeb;
 
 public class AdminWeb extends UserWeb{
 
@@ -36,16 +36,14 @@ public class AdminWeb extends UserWeb{
 	
 	//metodo insertar 
 	
-	/*
-	 * public void insertar() throws SQLException {
+	 public void insertar() throws SQLException {
 			
 			DaoUserWeb daol1 = new DaoUserWeb();
-			daol1.insertar(this);
+			//daol1.insertar(this);
+			daol1.insertarAdmin(this);
 			
 		}
-	 * 
-	 * 
-	 */
+	
 
 	
 	
