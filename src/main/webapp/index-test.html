@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="js/validacionlogin.js"></script>
+    <script type="text/javascript">
+		fetch('SvEjercicio')
+		.then(res => res.json())
+		.then(res => console.log(res))
+	</script>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form action="ServletDeLogin" method="POST">
+            <input type="text" name="usuario" placeholder="Usuario" required>
+            <input type="password" name="contrasena" placeholder="Contraseña" required>
+            <input type="submit" value="Enviar">
+        </form>
+    </div>
+    
+    <br>
+    
+    <div class="login-container">
+        <h2>Daedalus Login</h2>
+        <form action="AltaLogin" method="POST">
+            <input type="text" name="name" placeholder="Usuario" required>
+            <input type="password" name="contra" placeholder="contraseña" required>            
+            <!--   <select name="tipoPermiso" required>
+            <option value="0">Sin Acceso</option>
+            <option value="1">Lectura</option>
+            <option value="2">Control Total</option>
+            </select>
+            
+            -->
+          
+            <input type="submit" value="Enviar">
+        </form>
+    </div>
+    
+    
+    <div class="login-container">
+        <h2>Saludo</h2>
+        <form action="ConsultaLogin" method="GET">
+            
+           
+            <input type="submit" value="Gilipollas" name="nombre">
+        </form>
+    </div>
+    
+    <div class="login-container">
+        <h2>Alta UsuarioWEB</h2>
+        <form action="AltaUserWeb" method="POST" onsubmit="return validateForm()" name="userForm">
+            <input type="text" name="nombreUsuario" placeholder="Usuario" required>
+            <input type="password" name="passw" placeholder="contraseña" required>            
+              <select name="rol" required>
+            <option value="0">Administrador</option>
+            <option value="1">Consultor</option>
+            
+            </select>
+            
+            
+          
+            <input type="submit" value="Enviar">
+        </form>
+    </div>
+
+
+    <button id="getUsersButton">Obtener Usuarios</button>
+    <div id="userList"></div>
+
+    
+</body>
+</html>
