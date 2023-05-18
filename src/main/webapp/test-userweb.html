@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Formulario de registro</title>
+</head>
+<body>
+    <div id="altaUsuario">
+        <h2>Alta de usuario</h2>
+        <form action="AltaLogin" method="post" >
+            <label for="nombre">Nombre:</label><br>
+            <input type="text" id="nombre" name="nombre"><br>
+            <label for="apellidos">Apellidos:</label><br>
+            <input type="text" id="apellidos" name="apellidos"><br>
+            <label for="nombreUsuario">Nombre de usuario:</label><br>
+            <input type="text" id="nombreUsuario" name="nombreUsuario" placeholder="Solo letras"><br>
+            <label for="passw">Contraseña:</label><br>
+            <input type="password" id="passw" name="passw" placeholder="Mayus+Minus+num+Caracter-Especial"><br>
+            <label for="passwConfirm">Confirmar Contraseña:</label><br>
+            <input type="password" id="passwConfirm" name="passwConfirm"><br>
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email" placeholder="direccion@correo.com"><br>
+            
+            <label for="departamento">Departamento:</label><br>
+            <input type="text" id="departamento" name="departamento"><br>
+            <label for="empresa">Empresa:</label><br>
+            <input type="text" id="empresa" name="empresa"><br>
+            <label for="rol">Administrador:</label><br>
+            <input type="checkbox" id="rol" name="rol" value="true"><br>
+            <input type="submit" value="Enviar">
+            <!-- enctype="multipart/form-data" 
+            
+            <label for="foto">Foto:</label><br>
+            <input type="file" id="foto" name="foto"><br>
+            
+            -->
+        </form>
+    </div>
+</body>
+</html>

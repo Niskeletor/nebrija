@@ -51,7 +51,7 @@ public class AltaUserWeb extends HttpServlet {
 		String passw = request.getParameter("passw");
 		String nombre= request.getParameter("nombre");
 		String apellidos= request.getParameter("apellidos");
-		String email= request.getParameter("email");
+		//String email= request.getParameter("email");
 		String foto= request.getParameter("foto");
 		String departamento= request.getParameter("departamento");
 		String empresa= request.getParameter("passw");
