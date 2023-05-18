@@ -6,6 +6,9 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.SQLException;
+
+import modelo.Login;
 
 /**
  * Servlet implementation class SvLogin
@@ -34,7 +37,28 @@ public class SvLogin extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		//Aqui preparamos la esucha desde la web de index.html antes de pasar a la pagina de dashboard
+		// Verificaremos si el usuario existe en la base de datos, si es correcto, le redirigirá al inicio
+
+		Login login = new Login (request.getParameter("nombreUsuario"), request.getParameter("passw"));
+
+		try {
+			if (login.verificarUsuario()){
+				//Si el login es correcto , redirigimos a pagina principal
+				response.sendRedirect("inicio.html");
+
+			}else{
+				//si login no es correcto, redireccionamos de nuevo
+				response.sendRedirect("index.html");
+
+			}
+		} catch (SQLException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+
+
 	}
 
 }

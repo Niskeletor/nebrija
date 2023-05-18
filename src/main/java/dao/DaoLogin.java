@@ -48,10 +48,19 @@ public class DaoLogin {
 	
 	}
 
+	/**
+	 * Metodo para verificar si el usuario existe para entrar en Dashboard de la web
+	 * @param l
+	 * @return
+	 * @throws SQLException
+	 */
+
 	public boolean verificarUsuario (Login l) throws SQLException {
 
 		boolean existe = false;
 
+		try {
+			
 		PreparedStatement ps = con.prepareStatement("SELECT * FROM user_web WHERE nombreUsuario=? AND passw=?");
 		ps.setString(1, l.getName());
 		ps.setString(2, l.getContra());
@@ -66,11 +75,19 @@ public class DaoLogin {
 		//cerramos conexiones rs y ps
 		rs.close();
 		ps.close();
+
+	} catch (SQLException e) {
+		System.out.println("Error conectando base de datos");
+		throw new SQLException(e);
 		
+	}
+
 
 		return existe;
 	}
 
+
+		//SIN USO!!
 	public void modificar (Login l) throws SQLException {
 	
 	PreparedStatement ps = con.prepareStatement("ALTER TABLE useradmin (contra) VALUES (?)");
