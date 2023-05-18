@@ -48,6 +48,29 @@ public class DaoLogin {
 	
 	}
 
+	public boolean verificarUsuario (Login l) throws SQLException {
+
+		boolean existe = false;
+
+		PreparedStatement ps = con.prepareStatement("SELECT * FROM user_web WHERE nombreUsuario=? AND passw=?");
+		ps.setString(1, l.getName());
+		ps.setString(2, l.getContra());
+
+		// Ejecuta la consulta y recupera los resultados
+    	ResultSet rs = ps.executeQuery();
+
+		 // Si hay algún resultado, eso significa que el usuario existe
+		 if (rs.next()) {
+			existe = true;
+		}
+		//cerramos conexiones rs y ps
+		rs.close();
+		ps.close();
+		
+
+		return existe;
+	}
+
 	public void modificar (Login l) throws SQLException {
 	
 	PreparedStatement ps = con.prepareStatement("ALTER TABLE useradmin (contra) VALUES (?)");

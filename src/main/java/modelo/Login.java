@@ -89,6 +89,13 @@ public class Login {
 			
 		}
 
+		//Metodo para verificar usuario en la base de datos
+		public  void verificarUsuario (){
+			
+			
+
+		}
+
 		/**
 		 * Para verificar la entrada y salida de variables en la clase
 		 */
