@@ -2,6 +2,32 @@
 <html>
 <head>
     <title>Formulario de registro</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("form").on('submit', function(event) {
+                event.preventDefault(); // Previene la recarga de la página
+        
+                var formData = $(this).serialize(); // Toma los datos del formulario
+        
+                $.ajax({
+                    type: "POST",
+                    url: "http://localhost:8080/DaedalusManager/AltaLogin",
+                    data: formData,
+                    success: function(response) {
+                        // Aquí puedes mostrar un mensaje de éxito
+                        // por ejemplo, puedes usar un alert
+                        alert("Datos ingresados con éxito.");
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        // Aquí puedes mostrar un mensaje de error
+                        // también puedes usar un alert
+                        alert("Ha ocurrido un error: " + textStatus);
+                    }
+                });
+            });
+        });
+        </script>
 </head>
 <body>
     <div id="altaUsuario">
@@ -29,11 +55,14 @@
             <input type="submit" value="Enviar">
             <!-- enctype="multipart/form-data" 
             
+            
+            
             <label for="foto">Foto:</label><br>
             <input type="file" id="foto" name="foto"><br>
             
             -->
         </form>
+        <p>Hola  Me ves soy un update caraculo</p>
     </div>
 </body>
 </html>

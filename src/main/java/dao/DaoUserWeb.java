@@ -44,6 +44,32 @@ private Connection con = null;
 	ps.close();
 	
 	}
+
+	 public void insertarAdminCompleto (AdminWeb a) throws SQLException {
+	
+		// Codigo para poder insertar un permiso
+		//Antes de hacer un Insert tengo que conectarme
+		
+		//Paso 1 preparar la query - para insertar
+		
+		//PreparedStatement ps = con.prepareStatement("INSERT INTO acceso VALUES (ruta,usuario,tipopermiso)");
+		PreparedStatement ps = con.prepareStatement("INSERT INTO user_web (nombreUsuario,passw, nombre, apellidos, email, foto, departamento, empresa) VALUES (?,?,?,?,?,?,?,?)");
+		
+		ps.setString(1, a.getNombreUsuario());
+		ps.setString(2, a.getPassw());
+		ps.setString(3, a.getNombre());
+		ps.setString(4, a.getApellidos());
+		ps.setString(5, a.getEmail());
+		ps.setString(6, a.getFoto());
+		ps.setString(7, a.getDepartamento());
+		ps.setString(8, a.getEmpresa());
+		
+		
+		
+		ps.executeUpdate();
+		ps.close();
+		
+		}
 		/**
 		 * Metodo para crear consultor Web
 		 * @param c

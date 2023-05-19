@@ -40,7 +40,7 @@ public class AdminWeb extends UserWeb{
 			
 			DaoUserWeb daol1 = new DaoUserWeb();
 			//daol1.insertar(this);
-			daol1.insertarAdmin(this);
+			daol1.insertarAdminCompleto(this);
 			
 		}
 	
