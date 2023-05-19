@@ -9,6 +9,8 @@ import modelo.Login;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
+
 import modeloUserWeb.AdminWeb;
 import dao.*;
 
@@ -63,10 +65,20 @@ public class AltaLogin extends HttpServlet {
 		try {
 			ad.insertar();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			System.out.println("Error al conectar con el metodo insertar desde POST");
-			e.printStackTrace();
-		}
+	        if (e instanceof SQLIntegrityConstraintViolationException) {
+	            // Error por datos duplicados
+	            response.setStatus(HttpServletResponse.SC_CONFLICT); 
+	            response.getWriter().write("Datos ya existen");
+	        } else {
+	            // Otros errores SQL
+	            response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+	            response.getWriter().write("Error en la base de datos");
+	        }
+	    } catch (Exception e) {
+	        // Otros errores
+	        response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+	        response.getWriter().write("Error de Servidor");
+	    }
 
 
 		/* 
