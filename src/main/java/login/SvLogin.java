@@ -5,6 +5,8 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -45,7 +47,12 @@ public class SvLogin extends HttpServlet {
 		try {
 			if (login.verificarUsuario()){
 				//Si el login es correcto , redirigimos a pagina principal
-				response.sendRedirect("inicio.html");
+				//Si login Correcto además creamos sesión de usuario
+				HttpSession session = request.getSession();
+				session.setAttribute("nombreUsuario", login.getName());
+				session.setMaxInactiveInterval(1*60); // Se implementa una sesión de 1 minuto
+				//redirigimos a la pagina principal
+				response.sendRedirect("dashboard.html");
 
 			}else{
 				//si login no es correcto, redireccionamos de nuevo
