@@ -45,7 +45,7 @@ public class SvLogin extends HttpServlet {
 		try {
 			if (login.verificarUsuario()){
 				//Si el login es correcto , redirigimos a pagina principal
-				response.sendRedirect("inicio.html");
+				response.sendRedirect("dashboard.html");
 
 			}else{
 				//si login no es correcto, redireccionamos de nuevo
