@@ -3,28 +3,38 @@ package modeloUserWeb;
 public abstract class UserWeb {
 	
 	
-	protected String nombre;
-    protected String apellidos;
-    protected String nombreUsuario;
-    protected String passw;
-    protected String email;
-    protected String foto;
-    protected String departamento; 
-    protected String Empresa;
-    protected int id;
+	private String nombre;
+    private String apellidos;
+    private String nombreUsuario;
+    private String passw;
+    private String email;
+    private String foto;
+	private Boolean administrador;
+    private String departamento; 
+    private String Empresa;
+    private int id;
 	
     //Constructor vacio
     public UserWeb() {
-		super();
+		
 	}
     
     //Constructor solo con nombre usuario y password
     
   public UserWeb(String nombreUsuario, String passw) {
-		super();
+		
 		this.nombreUsuario = nombreUsuario;
 		this.passw = passw;
 	}
+  
+  //Contructor con mail usuario y password
+		 public UserWeb(String nombreUsuario, String passw, String email) {
+		
+		this.nombreUsuario = nombreUsuario;
+		this.passw = passw;
+		this.email = email;
+	 }
+  
 
 
 
@@ -32,7 +42,7 @@ public abstract class UserWeb {
 
 	public UserWeb(String nombre, String apellidos, String nombreUsuario, String passw, String email,
 			String departamento, String empresa) {
-		super();
+		
 		this.nombre = nombre;
 		this.apellidos = apellidos;
 		this.nombreUsuario = nombreUsuario;
@@ -42,27 +52,35 @@ public abstract class UserWeb {
 		this.Empresa = empresa;
 	}
 	
-	 //constructor completo
 
+
+	
+
+	//constructor completo con id, foto , administrador boolean
+	
+	
 	public UserWeb(String nombre, String apellidos, String nombreUsuario, String passw, String email, String foto,
-		String departamento, String empresa, int id) {
-	super();
-	this.nombre = nombre;
-	this.apellidos = apellidos;
-	this.nombreUsuario = nombreUsuario;
-	this.passw = passw;
-	this.email = email;
-	this.foto = foto;
-	this.departamento = departamento;
-	Empresa = empresa;
-	this.id = id;
+			Boolean administrador, String departamento, String empresa, int id) {
+		super();
+		this.nombre = nombre;
+		this.apellidos = apellidos;
+		this.nombreUsuario = nombreUsuario;
+		this.passw = passw;
+		this.email = email;
+		this.foto = foto;
+		this.administrador = administrador;
+		this.departamento = departamento;
+		this.Empresa = empresa;
+		this.id = id;
 	}
+	
 	
     // getter y setters
 
 	public String getNombre() {
 		return nombre;
 	}
+	
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
@@ -132,6 +150,15 @@ public abstract class UserWeb {
 		this.id = id;
 	}
 
+	public Boolean getAdministrador() {
+		return administrador;
+	}
+
+	public void setAdministrador(Boolean administrador) {
+		this.administrador = administrador;
+	}
+
+	
 	
     
     

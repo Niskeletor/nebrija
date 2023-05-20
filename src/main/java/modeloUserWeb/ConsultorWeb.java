@@ -10,11 +10,13 @@ public class ConsultorWeb extends UserWeb{
 	}
 
 		//constructor completo
+	
 	public ConsultorWeb(String nombre, String apellidos, String nombreUsuario, String passw, String email, String foto,
-			String departamento, String empresa, int id) {
-		super(nombre, apellidos, nombreUsuario, passw, email, foto, departamento, empresa, id);
+			Boolean administrador, String departamento, String empresa, int id) {
+		super(nombre, apellidos, nombreUsuario, passw, email, foto, administrador, departamento, empresa, id);
 		// TODO Auto-generated constructor stub
 	}
+	
 
 		//constructor sin id ni foto
 	public ConsultorWeb(String nombre, String apellidos, String nombreUsuario, String passw, String email,
@@ -23,7 +25,7 @@ public class ConsultorWeb extends UserWeb{
 		// TODO Auto-generated constructor stub
 	}
 
-	
+
 	//COnstructor Solo con usuario y contraseña 
 	public ConsultorWeb(String nombreUsuario, String passw) {
 		super(nombreUsuario, passw);
