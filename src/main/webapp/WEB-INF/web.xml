@@ -95,4 +95,14 @@
     <servlet-name>SvLogin</servlet-name>
     <url-pattern>/SvLogin</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AltaLoginFoto</display-name>
+    <servlet-name>AltaLoginFoto</servlet-name>
+    <servlet-class>controlador.AltaLoginFoto</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AltaLoginFoto</servlet-name>
+    <url-pattern>/AltaLoginFoto</url-pattern>
+  </servlet-mapping>
 </web-app>
