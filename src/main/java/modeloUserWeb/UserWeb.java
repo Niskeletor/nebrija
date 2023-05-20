@@ -158,6 +158,13 @@ public abstract class UserWeb {
 		this.administrador = administrador;
 	}
 
+	@Override
+	public String toString() {
+		return "UserWeb [nombre=" + nombre + ", apellidos=" + apellidos + ", nombreUsuario=" + nombreUsuario
+				+ ", passw=" + passw + ", email=" + email + ", foto=" + foto + ", administrador=" + administrador
+				+ ", departamento=" + departamento + ", Empresa=" + Empresa + ", id=" + id + "]";
+	}
+
 	
 	
     

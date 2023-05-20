@@ -22,13 +22,13 @@ public class AdminWeb extends UserWeb{
 			String departamento,Boolean administrador, String empresa, int id, String filename) {
 		super(nombre, apellidos, nombreUsuario, passw, email, foto, administrador, departamento, empresa, id);		
 		// TODO Auto-generated constructor stub
-		this.filename = filename;
+		this.setFilename(filename);
 	}
 
 
 	public AdminWeb(String filename) {
 		
-		this.filename = filename;
+		this.setFilename(filename);
 	}
 
 
@@ -71,15 +71,17 @@ public class AdminWeb extends UserWeb{
 	
 	// Getter and setters
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+	public String getFilename() {
+		return filename;
+	}
+
+
+
+
+	public void setFilename(String filename) {
+		this.filename = filename;
+	}
 	
 	
 	
@@ -93,6 +95,12 @@ public class AdminWeb extends UserWeb{
 			daol1.insertarAdminCompleto(this);
 			
 		}
+
+
+
+
+	 
+	 
 	
 
 	
