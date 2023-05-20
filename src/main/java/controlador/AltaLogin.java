@@ -62,7 +62,7 @@ public class AltaLogin extends HttpServlet {
 		String email = request.getParameter("email");
 		String departamento = request.getParameter("departamento");
 		String empresa = request.getParameter("empresa");
-		
+		/*
 		Part filePart = request.getPart("foto"); // Obtiene el archivo subido
         String filename = Paths.get(filePart.getSubmittedFileName()).getFileName().toString(); // Obtén el nombre del archivo
         
@@ -85,7 +85,7 @@ public class AltaLogin extends HttpServlet {
      } catch (Exception e) {
     	 System.out.println("Archivo no copiado");
          // TODO: handle exception
-     }
+     }*/
         /*
         //Ficheros 
         String appPath = getServletContext().getRealPath("/"); // Obtiene la ruta real de tu aplicación
