@@ -1,15 +1,23 @@
 package controlador;
 
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.Part;
 import modelo.Login;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
+
+import java.io.File;
+
 
 import modeloUserWeb.AdminWeb;
 import dao.*;
@@ -18,6 +26,7 @@ import dao.*;
  * Servlet implementation class AltaLogin
  */
 //@WebServlet("/AltaLogin")
+@MultipartConfig
 public class AltaLogin extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -53,6 +62,55 @@ public class AltaLogin extends HttpServlet {
 		String email = request.getParameter("email");
 		String departamento = request.getParameter("departamento");
 		String empresa = request.getParameter("empresa");
+		
+		Part filePart = request.getPart("foto"); // Obtiene el archivo subido
+        String filename = Paths.get(filePart.getSubmittedFileName()).getFileName().toString(); // Obtén el nombre del archivo
+        
+        // El directorio donde se guardarán los archivos cargados.
+     // Esto se puede hacer configurable a través de la configuración de la aplicación.
+     String uploadsDirectory = "./data/uploads";
+
+     // Asegúrate de que el directorio exista. Si no, créalo.
+     File fileSaveDir = new File(uploadsDirectory);
+     if (!fileSaveDir.exists()) {
+         fileSaveDir.mkdirs();
+     }
+
+     // Ahora, el archivo se guardará en este directorio
+     File file = new File(fileSaveDir, filename);
+
+     try (InputStream input = filePart.getInputStream()) {
+         Files.copy(input, file.toPath());
+         System.out.println("Archivo creado en: " + file.getAbsolutePath());
+     } catch (Exception e) {
+    	 System.out.println("Archivo no copiado");
+         // TODO: handle exception
+     }
+        /*
+        //Ficheros 
+        String appPath = getServletContext().getRealPath("/"); // Obtiene la ruta real de tu aplicación
+        String relativePath = "uploads"; // El directorio donde se guardarán los archivos
+
+        // La ruta absoluta del directorio de carga
+        String uploadDirectory = appPath + File.separator + relativePath;
+
+        // Verifica si el directorio existe, si no, créalo
+        File fileSaveDir = new File(uploadDirectory);
+        if (!fileSaveDir.exists()) {
+            fileSaveDir.mkdirs();
+        }
+
+        // Ahora, el archivo se guardará en este directorio
+        File file = new File(fileSaveDir, filename);
+
+        try (InputStream input = filePart.getInputStream()) {
+            Files.copy(input, file.toPath());
+            System.out.println("Archivo creado en: " + file.getAbsolutePath());
+        } catch (Exception e) {
+        	System.out.println("Archivo no copiado");
+            // TODO: handle exception
+        }*/
+
 		
 		
 		AdminWeb ad = new AdminWeb(nombre, apellidos, nombreUsuario, passw, email, departamento, empresa);

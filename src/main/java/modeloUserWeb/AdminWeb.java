@@ -5,6 +5,8 @@ import java.sql.SQLException;
 import dao.DaoUserWeb;
 
 public class AdminWeb extends UserWeb{
+	
+	private String filename;
 
 	
 	//constructor vacio
@@ -13,6 +15,25 @@ public class AdminWeb extends UserWeb{
 		// TODO Auto-generated constructor stub
 	}
 	
+
+	
+	
+	public AdminWeb(String nombre, String apellidos, String nombreUsuario, String passw, String email, String foto,
+			String departamento, String empresa, int id, String filename) {
+		super(nombre, apellidos, nombreUsuario, passw, email, foto, departamento, empresa, id);		
+		// TODO Auto-generated constructor stub
+		this.filename = filename;
+	}
+
+
+	public AdminWeb(String filename) {
+		
+		this.filename = filename;
+	}
+
+
+
+
 	//Constructor completo
 	public AdminWeb(String nombre, String apellidos, String nombreUsuario, String passw, String email, String foto,
 			String departamento, String empresa, int id) {
