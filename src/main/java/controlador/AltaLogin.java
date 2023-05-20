@@ -62,6 +62,7 @@ public class AltaLogin extends HttpServlet {
 		String email = request.getParameter("email");
 		String departamento = request.getParameter("departamento");
 		String empresa = request.getParameter("empresa");
+		Integer admin = Integer.parseUnsignedInt(request.getParameter("admin")) ;
 		/*
 		Part filePart = request.getPart("foto"); // Obtiene el archivo subido
         String filename = Paths.get(filePart.getSubmittedFileName()).getFileName().toString(); // Obtén el nombre del archivo

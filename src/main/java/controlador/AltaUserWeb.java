@@ -1,11 +1,16 @@
 package controlador;
 
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.Part;
+
 import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Paths;
 
 import modeloUserWeb.*;
 import java.sql.SQLException;
@@ -13,6 +18,7 @@ import java.sql.SQLException;
 /**
  * Servlet implementation class AltaUserWeb
  */
+@MultipartConfig
 public class AltaUserWeb extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -47,19 +53,88 @@ public class AltaUserWeb extends HttpServlet {
 		 * Capturamos todas las variables posibles que nos puedan lanzar desde
 		 * el post
 		 */
-		String nombreUsuario = request.getParameter("nombreUsuario");
-		String passw = request.getParameter("passw");
-		String nombre= request.getParameter("nombre");
-		String apellidos= request.getParameter("apellidos");
-		//String email= request.getParameter("email");
-		String foto= request.getParameter("foto");
-		String departamento= request.getParameter("departamento");
-		String empresa= request.getParameter("passw");
+		String nombreUsuario = request.getParameter("input-system-username");
+		String passw = request.getParameter("input-Password");
+		String nombre= request.getParameter("input-user-name");
+		String apellidos= request.getParameter("input-user-surname");
+		String email= request.getParameter("input-Email");
+		
+		//CONTROLAR SI SE ENVIA UN ARCHIVO
+		
+		Part filePart = request.getPart("foto"); // Obtiene el archivo subido		
+		
+
+		if (filePart != null && filePart.getSize() > 0) {
+		    String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString(); // Obtiene el nombre del archivo
+		    InputStream fileContent = filePart.getInputStream(); // Obtiene el contenido del archivo
+		    // Haz algo con el archivo subido
+		} else {
+		    // No se subió ningún archivo
+		}
+
+		
+		
+		
+		
+		String departamento= request.getParameter("select-departament");
+				//PARSEAR!!
+				if (departamento == null || departamento.equals("Elegir departamento")) {
+				    // El usuario no seleccionó un departamento
+					departamento="null";
+				} else {
+				    // El usuario seleccionó un departamento, y departamento contiene el valor del departamento seleccionado
+				    int departamentoId = Integer.parseInt(departamento);
+				    // Ahora departamentoId es el id del departamento seleccionado, como un int
+				}
+		
+		
+		String empresa="";
+		Integer empresaSelect= Integer.parseInt(request.getParameter("select-company"));
+		switch (empresaSelect) {
+	    case 1:
+	    {	
+	    	empresa="Logístico";
+	        break;
+	    }   
+	    case 2:
+	    {	
+	    	empresa="Diplomático";
+	        
+	        break;
+	    }
+	    case 3:
+	    {	
+	    	empresa="Militar";
+	        break;
+	    }   
+	    case 4:
+	    {	
+	    	empresa="IT";
+	        break;
+	    }
+	    case 5:
+	    {	
+	    	empresa="Mantenimiento";
+	        break;
+	    }
+	    default:
+	        empresa = "null";
+	        
+	}
+		
+		String admin = request.getParameter("admin-user");
+		if (admin == null)
+		{
+			// crear condicion de no enviarse			
+		}else {
+			//crear condicion de enviarse
+		}
+		
 		
 		
 		System.out.println(tipoUsuario);
 		
-		if (tipoUsuario==0) {
+		
 			
 			AdminWeb a1 = new AdminWeb(nombreUsuario,passw);
 			
@@ -71,7 +146,7 @@ public class AltaUserWeb extends HttpServlet {
 				e.printStackTrace();
 			}
 			
-		}
+		
 	}
 
 }
