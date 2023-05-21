@@ -9,6 +9,7 @@ import com.google.gson.Gson;
 
 import modelo.Login;
 import modeloUserWeb.*;
+import modeloListador.*;
 
 
 public class DaoUserWeb {
@@ -97,6 +98,44 @@ private Connection con = null;
 	}
 	
 	
+	public ArrayList<ListadorUserWebMapper> obtener() throws SQLException {
+	    PreparedStatement ps = con.prepareStatement("SELECT  Usuario.IdUsuario, Usuario.name, Usuario.surname,  Usuario.nameUsuario,  Usuario.contra,  Usuario.correo, Usuario.picture, Usuario.admin, Company.nameCompany, Departament.nameDepartament FROM  Usuario  LEFT JOIN  Company ON Usuario.idCompany = Company.idCompany  LEFT JOIN  Departament ON Usuario.idDepartament = Departament.idDepartament;");
+
+	    ResultSet rs = ps.executeQuery();
+
+	    ArrayList<ListadorUserWebMapper> result = new ArrayList<>();
+	    
+	    while (rs.next()) {
+	        ListadorUserWebMapper mapper = new ListadorUserWebMapper();
+	        mapper.setCampo("IdUsuario", rs.getString("IdUsuario"));
+	        mapper.setCampo("name", rs.getString("name"));
+	        mapper.setCampo("surname", rs.getString("surname"));
+	        mapper.setCampo("nameUsuario", rs.getString("nameUsuario"));
+	        mapper.setCampo("contra", rs.getString("contra"));
+	        mapper.setCampo("correo", rs.getString("correo"));
+	        mapper.setCampo("picture", rs.getString("picture"));
+	        mapper.setCampo("admin", rs.getString("admin"));
+	        mapper.setCampo("nameCompany", rs.getString("nameCompany"));
+	        mapper.setCampo("nameDepartament", rs.getString("nameDepartament"));
+	        result.add(mapper);
+	        
+	        System.out.println(mapper.toString());
+	    }
+
+	    System.out.println(result.toString());
+	    return result;
+	}
+
+	public String obtenerenJSON() throws SQLException {
+	    Gson gsonFinal = new Gson();
+	    String jsonFinal = gsonFinal.toJson(this.obtener());
+	    System.out.println(jsonFinal);
+	    
+	    return jsonFinal;
+	}
+
+	
+	/*
 	///AQUI APARECE EL LISTADO PARA DAEDALUS
 	public ArrayList<ListaladorWebMapper> obtener() throws SQLException{
 		
@@ -148,6 +187,8 @@ private Connection con = null;
 		
 		return jsonFinal;
 	}
+	
+	----------------------- */
 	
 	
 	// improvisación de filtro
