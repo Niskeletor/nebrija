@@ -27,23 +27,7 @@ private Connection con = null;
 	 * @param a
 	 * @throws SQLException
 	 */
-	public void insertarAdmin (AdminWeb a) throws SQLException {
 	
-	// Codigo para poder insertar un permiso
-	//Antes de hacer un Insert tengo que conectarme
-	
-	//Paso 1 preparar la query - para insertar
-	
-	//PreparedStatement ps = con.prepareStatement("INSERT INTO acceso VALUES (ruta,usuario,tipopermiso)");
-	PreparedStatement ps = con.prepareStatement("INSERT INTO user_web (nombreUsuario,passw) VALUES (?,?)");
-	
-	ps.setString(1, a.getNombreUsuario());
-	ps.setString(2, a.getPassw());
-	
-	ps.executeUpdate();
-	ps.close();
-	
-	}
 
 	 public void insertarAdminCompleto (AdminWeb a) throws SQLException {
 	
@@ -113,11 +97,11 @@ private Connection con = null;
 	}
 	
 	
-	
+	///AQUI APARECE EL LISTADO PARA DAEDALUS
 	public ArrayList<ConsultorWeb> obtener() throws SQLException{
 		
 		
-		PreparedStatement ps = con.prepareStatement("SELECT * FROM user_web");
+		PreparedStatement ps = con.prepareStatement("SELECT * FROM Usuario");
 		
 		ResultSet rs = ps.executeQuery();
 		
@@ -130,7 +114,7 @@ private Connection con = null;
 				
 			}
 			
-			result.add(new ConsultorWeb(  rs.getString("nombreUsuario"),rs.getString("passw"))  );
+			result.add(new ConsultorWeb(  rs.getString("nameUsuario"),rs.getString("contra"))  );
 			System.out.println(result.toString());
 			//public Login(String name, String contra, int id)
 			
