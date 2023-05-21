@@ -15,13 +15,6 @@ public class ConsultorWeb extends UserWeb{
 
 		//constructor completo
 	
-	public ConsultorWeb(String nombre, String apellidos, String nombreUsuario, String passw, String email, String foto,
-			Boolean administrador, String departamento, String empresa, int id) {
-		super(nombre, apellidos, nombreUsuario, passw, email, foto, administrador, departamento, empresa, id);
-		// TODO Auto-generated constructor stub
-	}
-	
-
 	
 
 

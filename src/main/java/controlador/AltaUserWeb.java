@@ -133,6 +133,7 @@ public class AltaUserWeb extends HttpServlet {
 	        
 	}
 		System.out.println("Empresa: " + empresa);
+		System.out.println("Empresa: " + empresaSelect);
 		
 		String administrador = request.getParameter("admin-user");
 		
@@ -161,9 +162,10 @@ public class AltaUserWeb extends HttpServlet {
 		if (tipoUsuario==1) {
 			
 			AdminWeb a1 = new AdminWeb(nombreUsuario,passw);
+			AdminWeb t1 = new AdminWeb(nombreUsuario, apellidos, nombreUsuario, passw, email, empresaSelect, departamentoId, admin);
 			
 			try {
-				a1.insertar();
+				t1.insertar();
 				System.out.println("Intentando Introducir datos");
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block

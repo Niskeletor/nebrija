@@ -10,8 +10,8 @@ public abstract class UserWeb {
     private String email;
     private String foto;
 	private Boolean administrador;
-    private String departamento; 
-    private String Empresa;
+    private Integer departamento; 
+    private Integer empresa;
     private int id;
 	
     //Constructor vacio
@@ -41,7 +41,7 @@ public abstract class UserWeb {
 //Constructor sin id ni foto
 
 	public UserWeb(String nombre, String apellidos, String nombreUsuario, String passw, String email,
-			String departamento, String empresa, Boolean admin) {
+			Integer departamento, Integer empresa, Boolean admin) {
 		
 		this.nombre = nombre;
 		this.apellidos = apellidos;
@@ -49,7 +49,7 @@ public abstract class UserWeb {
 		this.passw = passw;
 		this.email = email;
 		this.departamento = departamento;
-		this.Empresa = empresa;
+		this.empresa = empresa;
 		this.administrador=admin;
 	}
 	
@@ -57,7 +57,7 @@ public abstract class UserWeb {
 	//Constructor completo sin id
 
 	public UserWeb(String nombre, String apellidos, String nombreUsuario, String passw, String email, String foto,
-		Boolean administrador, String departamento, String empresa) {
+		Boolean administrador, Integer departamento, Integer empresa) {
 	super();
 	this.nombre = nombre;
 	this.apellidos = apellidos;
@@ -67,14 +67,14 @@ public abstract class UserWeb {
 	this.foto = foto;
 	this.administrador = administrador;
 	this.departamento = departamento;
-	Empresa = empresa;
+	this.empresa = empresa;
 }
 
 	//constructor completo con id, foto , administrador boolean
 	
 	
 	public UserWeb(String nombre, String apellidos, String nombreUsuario, String passw, String email, String foto,
-			Boolean administrador, String departamento, String empresa, int id) {
+			Boolean administrador, Integer departamento, Integer empresa, int id) {
 		super();
 		this.nombre = nombre;
 		this.apellidos = apellidos;
@@ -84,7 +84,7 @@ public abstract class UserWeb {
 		this.foto = foto;
 		this.administrador = administrador;
 		this.departamento = departamento;
-		this.Empresa = empresa;
+		this.empresa = empresa;
 		this.id = id;
 	}
 	
@@ -140,20 +140,20 @@ public abstract class UserWeb {
 		this.foto = foto;
 	}
 
-	public String getDepartamento() {
+	public Integer getDepartamento() {
 		return departamento;
 	}
 
-	public void setDepartamento(String departamento) {
+	public void setDepartamento(Integer departamento) {
 		this.departamento = departamento;
 	}
 
-	public String getEmpresa() {
-		return Empresa;
+	public Integer getempresa() {
+		return empresa;
 	}
 
-	public void setEmpresa(String empresa) {
-		Empresa = empresa;
+	public void setempresa(Integer empresa) {
+		this.empresa = empresa;
 	}
 
 	public int getId() {
@@ -176,7 +176,7 @@ public abstract class UserWeb {
 	public String toString() {
 		return "UserWeb [nombre=" + nombre + ", apellidos=" + apellidos + ", nombreUsuario=" + nombreUsuario
 				+ ", passw=" + passw + ", email=" + email + ", foto=" + foto + ", administrador=" + administrador
-				+ ", departamento=" + departamento + ", Empresa=" + Empresa + ", id=" + id + "]";
+				+ ", departamento=" + departamento + ", empresa=" + empresa + ", id=" + id + "]";
 	}
 
 	

@@ -15,11 +15,11 @@ public class AdminWeb extends UserWeb{
 		// TODO Auto-generated constructor stub
 	}
 	
-
+	
 	
 	
 	public AdminWeb(String nombre, String apellidos, String nombreUsuario, String passw, String email, String foto,
-			String departamento,Boolean administrador, String empresa, int id, String filename) {
+			Integer departamento,Boolean administrador, Integer empresa, int id, String filename) {
 		super(nombre, apellidos, nombreUsuario, passw, email, foto, administrador, departamento, empresa, id);		
 		// TODO Auto-generated constructor stub
 		this.setFilename(filename);
@@ -35,7 +35,7 @@ public class AdminWeb extends UserWeb{
 	//Constructor completo sin id
 	
 	public AdminWeb(String nombre, String apellidos, String nombreUsuario, String passw, String email, String foto,
-			Boolean administrador, String departamento, String empresa) {
+			Boolean administrador, Integer departamento, Integer empresa) {
 		super(nombre, apellidos, nombreUsuario, passw, email, foto, administrador, departamento, empresa);
 		// TODO Auto-generated constructor stub
 	}
@@ -46,7 +46,7 @@ public class AdminWeb extends UserWeb{
 	
 	
 	public AdminWeb(String nombre, String apellidos, String nombreUsuario, String passw, String email, String foto,
-			Boolean administrador, String departamento, String empresa, int id) {
+			Boolean administrador, Integer departamento, Integer empresa, int id) {
 		super(nombre, apellidos, nombreUsuario, passw, email, foto, administrador, departamento, empresa, id);
 		// TODO Auto-generated constructor stub
 	}
@@ -75,7 +75,7 @@ public class AdminWeb extends UserWeb{
 	//Contructor completo sin id ni foto
 	
 	public AdminWeb(String nombre, String apellidos, String nombreUsuario, String passw, String email,
-			String departamento, String empresa, Boolean admin) {
+			Integer departamento, Integer empresa, Boolean admin) {
 		super(nombre, apellidos, nombreUsuario, passw, email, departamento, empresa, admin);
 		// TODO Auto-generated constructor stub
 

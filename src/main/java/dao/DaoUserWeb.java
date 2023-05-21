@@ -53,17 +53,19 @@ private Connection con = null;
 		//Paso 1 preparar la query - para insertar
 		
 		//PreparedStatement ps = con.prepareStatement("INSERT INTO acceso VALUES (ruta,usuario,tipopermiso)");
-		PreparedStatement ps = con.prepareStatement("INSERT INTO Usuario (nameUsuario,contra, name, surname, correo, picture, idDepartament, idCompany, admin) VALUES (?,?,?,?,?,?,?,?, ?)");
+		//PreparedStatement ps = con.prepareStatement("INSERT INTO Usuario (nameUsuario,contra, name, surname, correo, picture, idDepartament, idCompany, admin) VALUES (?,?,?,?,?,?,?,?, ?)");
+		 PreparedStatement ps = con.prepareStatement("INSERT INTO Usuario (name,surname, nameUsuario, contra, correo, picture, admin, idDepartament, idCompany) VALUES (?,?,?,?,?,?,?,?, ?)");
 		
-		ps.setString(1, a.getNombreUsuario());
-		ps.setString(2, a.getPassw());
-		ps.setString(3, a.getNombre());
-		ps.setString(4, a.getApellidos());
+		 
+		ps.setString(1, a.getNombre());
+		ps.setString(2, a.getApellidos());
+		ps.setString(3, a.getNombreUsuario());
+		ps.setString(4, a.getPassw());
 		ps.setString(5, a.getEmail());
 		ps.setString(6, a.getFoto());
-		ps.setString(7, a.getDepartamento());
-		ps.setString(8, a.getEmpresa());
-		ps.setBoolean(9, a.getAdministrador());
+		ps.setBoolean(7, a.getAdministrador());
+		ps.setInt(8, a.getempresa());
+		ps.setInt(9, a.getDepartamento());
 		
 		
 		ps.executeUpdate();
