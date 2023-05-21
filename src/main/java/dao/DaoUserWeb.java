@@ -101,7 +101,7 @@ private Connection con = null;
 	public ArrayList<ConsultorWeb> obtener() throws SQLException{
 		
 		
-		PreparedStatement ps = con.prepareStatement("SELECT * FROM Usuario");
+		PreparedStatement ps = con.prepareStatement("SELECT  Usuario.IdUsuario, Usuario.name, Usuario.surname,  Usuario.nameUsuario,  Usuario.contra,  Usuario.correo, Usuario.picture, Usuario.admin, Company.nameCompany, Departament.nameDepartament FROM  Usuario  LEFT JOIN  Company ON Usuario.idCompany = Company.idCompany  LEFT JOIN  Departament ON Usuario.idDepartament = Departament.idDepartament;");
 		
 		ResultSet rs = ps.executeQuery();
 		
