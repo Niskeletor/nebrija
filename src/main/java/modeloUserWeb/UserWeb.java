@@ -58,7 +58,7 @@ public abstract class UserWeb {
 
 	public UserWeb(String nombre, String apellidos, String nombreUsuario, String passw, String email, String foto,
 		Boolean administrador, Integer departamento, Integer empresa) {
-	super();
+	
 	this.nombre = nombre;
 	this.apellidos = apellidos;
 	this.nombreUsuario = nombreUsuario;
@@ -75,7 +75,7 @@ public abstract class UserWeb {
 	
 	public UserWeb(String nombre, String apellidos, String nombreUsuario, String passw, String email, String foto,
 			Boolean administrador, Integer departamento, Integer empresa, int id) {
-		super();
+		
 		this.nombre = nombre;
 		this.apellidos = apellidos;
 		this.nombreUsuario = nombreUsuario;
