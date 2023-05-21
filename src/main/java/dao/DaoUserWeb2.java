@@ -10,12 +10,12 @@ import com.google.gson.Gson;
 import modelo.Login;
 import modeloUserWeb.*;
 
-
-public class DaoUserWeb {
+public class DaoUserWeb2 {
+	
 	
 private Connection con = null;
 	
-	public DaoUserWeb() throws SQLException {
+	public DaoUserWeb2() throws SQLException {
 		
 		con = DBConexion.getConnection(0);
 		//conectar base de datos Importante elegir el numero de las opciones
@@ -98,38 +98,28 @@ private Connection con = null;
 	
 	
 	///AQUI APARECE EL LISTADO PARA DAEDALUS
-	public ArrayList<ListaladorWebMapper> obtener() throws SQLException{
+	public ArrayList<ConsultorWeb> obtener() throws SQLException{
 		
 		
-		//PreparedStatement ps = con.prepareStatement("SELECT  Usuario.IdUsuario, Usuario.name, Usuario.surname,  Usuario.nameUsuario,  Usuario.contra,  Usuario.correo, Usuario.picture, Usuario.admin, Company.nameCompany, Departament.nameDepartament FROM  Usuario  LEFT JOIN  Company ON Usuario.idCompany = Company.idCompany  LEFT JOIN  Departament ON Usuario.idDepartament = Departament.idDepartament;");
-		//PreparedStatement ps = con.prepareStatement("SELECT  Usuario.IdUsuario, Usuario.name, Usuario.surname,  Usuario.nameUsuario,  Usuario.contra,  Usuario.correo, Usuario.picture, Usuario.admin, Company.nameCompany, Departament.nameDepartament FROM  Usuario  LEFT JOIN  Company ON Usuario.idCompany = Company.idCompany  LEFT JOIN  Departament ON Usuario.idDepartament = Departament.idDepartament");
-		
-		PreparedStatement ps = con.prepareStatement("SELECT name, surname FROM Usuario ");
-		
+		PreparedStatement ps = con.prepareStatement("SELECT nameUsuario, contra FROM Usuario ");
 		
 		ResultSet rs = ps.executeQuery();
 		
-		//ArrayList<ConsultorWeb> result = null;
-		ArrayList<ListaladorWebMapper> result = null;
+		ArrayList<ConsultorWeb> result = null;
+		
 		while (rs.next()) {
 			
 			if (result == null) {
 				result = new ArrayList<>();
 				
 			}
-			//result.add(new ListaladorWebMapper (rs.getString("name"), (rs.getString("surname"), (rs.getString("nameUsuario"), (rs.getString("contra"), (rs.getString("correo"), (rs.getString("picture"), (rs.getString("admin"), (rs.getString("nameCompany"),(rs.getString("nameDepartament"));
-			//result.add(new ListaladorWebMapper (  rs.getString("name"), rs.getString("surname"), rs.getString("nameUsuario"), rs.getString("contra"), rs.getString("correo"), rs.getString("picture"), rs.getString("admin"), rs.getString("nameCompany"),rs.getString("nameDepartament")          ));
 			
-			result.add(new ListaladorWebMapper (  rs.getString("name"), rs.getString("surname")  ));
-			
-			
-			//result.add(new ConsultorWeb(  rs.getString("nameUsuario"),rs.getString("contra"))  );
+			result.add(new ConsultorWeb(  rs.getString("nameUsuario"),rs.getString("contra"))  );
 			System.out.println(result.toString());
 			//public Login(String name, String contra, int id)
 			
 			
 		}
-		 
 		System.out.println(result.toString());
 		return result;
 	}
