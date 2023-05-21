@@ -59,6 +59,13 @@ public class AltaUserWeb extends HttpServlet {
 		String apellidos= request.getParameter("input-user-surname");
 		String email= request.getParameter("input-Email");
 		
+		//CONTROL VARIABLES
+		System.out.println("Nombre Usuario: " + nombreUsuario);
+		System.out.println("password: " + passw);
+		System.out.println("Nombre : " + nombre);
+		System.out.println("apellidos: " + apellidos);
+		System.out.println("email: " + email);
+		
 		//CONTROLAR SI SE ENVIA UN ARCHIVO
 		
 		Part filePart = request.getPart("foto"); // Obtiene el archivo subido		
@@ -78,6 +85,9 @@ public class AltaUserWeb extends HttpServlet {
 		
 		String departamento= request.getParameter("select-departament");
 				//PARSEAR!!
+		
+		System.out.println("Departamentoo: " + departamento);
+		
 				if (departamento == null || departamento.equals("Elegir departamento")) {
 				    // El usuario no seleccionó un departamento
 					departamento="null";
@@ -121,8 +131,12 @@ public class AltaUserWeb extends HttpServlet {
 	        empresa = "null";
 	        
 	}
+		System.out.println("Empresa: " + empresa);
 		
 		String admin = request.getParameter("admin-user");
+		
+		System.out.println("Administrador: " + admin);
+		
 		if (admin.equalsIgnoreCase(null))
 		{
 			tipoUsuario=0;
