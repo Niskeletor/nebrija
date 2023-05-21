@@ -87,13 +87,14 @@ public class AltaUserWeb extends HttpServlet {
 				//PARSEAR!!
 		
 		System.out.println("Departamentoo: " + departamento);
-		
+		int departamentoId =0;
+			
 				if (departamento == null || departamento.equals("Elegir departamento")) {
 				    // El usuario no seleccionó un departamento
-					departamento="null";
+					
 				} else {
 				    // El usuario seleccionó un departamento, y departamento contiene el valor del departamento seleccionado
-				    int departamentoId = Integer.parseInt(departamento);
+				     departamentoId = Integer.parseInt(departamento);
 				    // Ahora departamentoId es el id del departamento seleccionado, como un int
 				}
 		
@@ -103,21 +104,21 @@ public class AltaUserWeb extends HttpServlet {
 		switch (empresaSelect) {
 	    case 1:
 	    {	
-	    	empresa="Logístico";
+	    	empresa="Harkonnen";
 	        break;
 	    }   
 	    case 2:
 	    {	
-	    	empresa="Diplomático";
+	    	empresa="Atreides";
 	        
 	        break;
 	    }
 	    case 3:
 	    {	
-	    	empresa="Militar";
+	    	empresa="Corrino";
 	        break;
 	    }   
-	    case 4:
+	    /*case 4:
 	    {	
 	    	empresa="IT";
 	        break;
@@ -126,29 +127,32 @@ public class AltaUserWeb extends HttpServlet {
 	    {	
 	    	empresa="Mantenimiento";
 	        break;
-	    }
+	    }*/
 	    default:
 	        empresa = "null";
 	        
 	}
 		System.out.println("Empresa: " + empresa);
 		
-		String admin = request.getParameter("admin-user");
+		String administrador = request.getParameter("admin-user");
 		
-		System.out.println("Administrador: " + admin);
+		System.out.println("Administrador: " + administrador);
+		Boolean admin = false;
 		
-		if (admin.equalsIgnoreCase(null))
+		if (administrador==null)
 		{
-			tipoUsuario=0;
-			// crear condicion de no enviarse			
-		}else {
-			//crear condicion de enviarse
-			tipoUsuario=1;
+		    tipoUsuario = 0;
+		} else if (administrador.equalsIgnoreCase("on")) {
+		    tipoUsuario = 1;
+		    admin= true;
+		} else {
+		    tipoUsuario = 0; // agregar caso de excepcion
+		    admin=false;
 		}
 		
 		
 		
-		System.out.println(tipoUsuario);
+		System.out.println("El tipo usuario es: " + tipoUsuario);
 		
 		/*Si en el formulario dependiendo de el estado
 		 * creamos  un objeto tipo administrador o consultor

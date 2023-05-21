@@ -22,12 +22,7 @@ public class ConsultorWeb extends UserWeb{
 	}
 	
 
-		//constructor sin id ni foto
-	public ConsultorWeb(String nombre, String apellidos, String nombreUsuario, String passw, String email,
-			String departamento, String empresa) {
-		super(nombre, apellidos, nombreUsuario, passw, email, departamento, empresa);
-		// TODO Auto-generated constructor stub
-	}
+	
 
 
 	//COnstructor Solo con usuario y contraseña 

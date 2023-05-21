@@ -113,6 +113,9 @@ public class AltaLogin extends HttpServlet {
         }*/
 
 		
+		//ULTIMOS CAMBIOS 12:AM DOMINGO ELIMINAR ESTE COMENT
+		/*
+		
 		
 		AdminWeb ad = new AdminWeb(nombre, apellidos, nombreUsuario, passw, email, departamento, empresa);
 		System.out.println(ad.toString());
@@ -121,6 +124,7 @@ public class AltaLogin extends HttpServlet {
 		System.out.println(ad.getEmail());
 		System.out.println(ad.getNombre());
 		System.out.println(ad.getPassw());
+		
 		try {
 			ad.insertar();
 		} catch (SQLException e) {

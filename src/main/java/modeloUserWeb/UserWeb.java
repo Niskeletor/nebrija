@@ -41,7 +41,7 @@ public abstract class UserWeb {
 //Constructor sin id ni foto
 
 	public UserWeb(String nombre, String apellidos, String nombreUsuario, String passw, String email,
-			String departamento, String empresa) {
+			String departamento, String empresa, Boolean admin) {
 		
 		this.nombre = nombre;
 		this.apellidos = apellidos;
@@ -50,11 +50,25 @@ public abstract class UserWeb {
 		this.email = email;
 		this.departamento = departamento;
 		this.Empresa = empresa;
+		this.administrador=admin;
 	}
 	
-
-
 	
+	//Constructor completo sin id
+
+	public UserWeb(String nombre, String apellidos, String nombreUsuario, String passw, String email, String foto,
+		Boolean administrador, String departamento, String empresa) {
+	super();
+	this.nombre = nombre;
+	this.apellidos = apellidos;
+	this.nombreUsuario = nombreUsuario;
+	this.passw = passw;
+	this.email = email;
+	this.foto = foto;
+	this.administrador = administrador;
+	this.departamento = departamento;
+	Empresa = empresa;
+}
 
 	//constructor completo con id, foto , administrador boolean
 	

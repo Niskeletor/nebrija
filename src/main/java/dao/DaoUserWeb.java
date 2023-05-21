@@ -53,7 +53,7 @@ private Connection con = null;
 		//Paso 1 preparar la query - para insertar
 		
 		//PreparedStatement ps = con.prepareStatement("INSERT INTO acceso VALUES (ruta,usuario,tipopermiso)");
-		PreparedStatement ps = con.prepareStatement("INSERT INTO Usuario (nameUsuario,contra, name, surname, correo, picture, idDepartament, idCompany) VALUES (?,?,?,?,?,?,?,?)");
+		PreparedStatement ps = con.prepareStatement("INSERT INTO Usuario (nameUsuario,contra, name, surname, correo, picture, idDepartament, idCompany, admin) VALUES (?,?,?,?,?,?,?,?, ?)");
 		
 		ps.setString(1, a.getNombreUsuario());
 		ps.setString(2, a.getPassw());
@@ -63,7 +63,7 @@ private Connection con = null;
 		ps.setString(6, a.getFoto());
 		ps.setString(7, a.getDepartamento());
 		ps.setString(8, a.getEmpresa());
-		
+		ps.setBoolean(9, a.getAdministrador());
 		
 		
 		ps.executeUpdate();

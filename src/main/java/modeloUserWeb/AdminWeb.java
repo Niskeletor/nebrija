@@ -31,6 +31,14 @@ public class AdminWeb extends UserWeb{
 		this.setFilename(filename);
 	}
 
+	
+	//Constructor completo sin id
+	
+	public AdminWeb(String nombre, String apellidos, String nombreUsuario, String passw, String email, String foto,
+			Boolean administrador, String departamento, String empresa) {
+		super(nombre, apellidos, nombreUsuario, passw, email, foto, administrador, departamento, empresa);
+		// TODO Auto-generated constructor stub
+	}
 
 
 
@@ -44,7 +52,7 @@ public class AdminWeb extends UserWeb{
 	}
 
 
-	//Constructor con nombreUsuario , contraseña y mail
+	//Constructor con nombreUsuario , contraseña y mail	
 
 	public AdminWeb(String nombreUsuario, String passw, String email) {
 		super(nombreUsuario, passw, email);
@@ -52,14 +60,7 @@ public class AdminWeb extends UserWeb{
 	}
 
 
-
-
-	//Constructor sin id ni foto
-	public AdminWeb(String nombre, String apellidos, String nombreUsuario, String passw, String email,
-			String departamento, String empresa) {
-		super(nombre, apellidos, nombreUsuario, passw, email, departamento, empresa);
-		// TODO Auto-generated constructor stub
-	}
+	
 
 	//Constructor solo con nombreUsuario y contraseña
 		
@@ -69,8 +70,19 @@ public class AdminWeb extends UserWeb{
 	}
 	
 	
+	
+	
+	//Contructor completo sin id ni foto
+	
+	public AdminWeb(String nombre, String apellidos, String nombreUsuario, String passw, String email,
+			String departamento, String empresa, Boolean admin) {
+		super(nombre, apellidos, nombreUsuario, passw, email, departamento, empresa, admin);
+		// TODO Auto-generated constructor stub
+
+	}
 	// Getter and setters
 	
+
 
 	public String getFilename() {
 		return filename;
