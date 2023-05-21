@@ -10,7 +10,11 @@ import jakarta.servlet.http.Part;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
+import java.io.File;
+
 
 import modeloUserWeb.*;
 import java.sql.SQLException;
@@ -21,7 +25,7 @@ import java.sql.SQLException;
 @MultipartConfig
 public class AltaUserWeb extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+	private static final String UPLOAD_DIRECTORY = "./uploads";   
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -49,6 +53,8 @@ public class AltaUserWeb extends HttpServlet {
 		int tipoUsuario=0;
 		
 		
+
+		
 		/**
 		 * Capturamos todas las variables posibles que nos puedan lanzar desde
 		 * el post
@@ -69,12 +75,28 @@ public class AltaUserWeb extends HttpServlet {
 		//CONTROLAR SI SE ENVIA UN ARCHIVO
 		
 		Part filePart = request.getPart("foto"); // Obtiene el archivo subido		
-		
+		String fileName="";
 
 		if (filePart != null && filePart.getSize() > 0) {
-		    String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString(); // Obtiene el nombre del archivo
+		     fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString(); // Obtiene el nombre del archivo
 		    InputStream fileContent = filePart.getInputStream(); // Obtiene el contenido del archivo
 		    // Haz algo con el archivo subido
+		 // Guarda el archivo en el servidor
+		    File uploads = new File(getServletContext().getRealPath("") + UPLOAD_DIRECTORY);
+		    if (!uploads.exists()) {
+		        uploads.mkdir();
+		    }
+		    try {
+		    	File file = new File(uploads, fileName);
+			    Files.copy(fileContent, file.toPath(), StandardCopyOption.REPLACE_EXISTING);
+			    System.out.println("Subiendo archivo");
+		        // SUBIDA DEL ARCHIVO
+		    } catch (Exception e) {
+		    	System.out.println("Error subiendo archivo");
+		        e.printStackTrace();  // Este imprimirá el rastro de la pila de la excepción, incluyendo el mensaje de la excepción.
+		    }
+		    
+		    
 		} else {
 		    // No se subió ningún archivo
 		}
@@ -161,11 +183,14 @@ public class AltaUserWeb extends HttpServlet {
 		*/
 		if (tipoUsuario==1) {
 			
-			AdminWeb a1 = new AdminWeb(nombreUsuario,passw);
-			AdminWeb t1 = new AdminWeb(nombreUsuario, apellidos, nombreUsuario, passw, email, empresaSelect, departamentoId, admin);
+			//AdminWeb a1 = new AdminWeb(nombreUsuario,passw);
+			AdminWeb t1 = new AdminWeb(nombreUsuario, apellidos, nombre, passw, email, empresaSelect, departamentoId, admin);
 			
+			//crear objeto con foto
+			AdminWeb z1 = new AdminWeb(nombre, apellidos, nombreUsuario, passw, email, fileName, admin, departamentoId, empresaSelect);
+			//super(nombre, apellidos, nombreUsuario, passw, email, foto, administrador, departamento, empresa);
 			try {
-				t1.insertar();
+				z1.insertar();
 				System.out.println("Intentando Introducir datos");
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
