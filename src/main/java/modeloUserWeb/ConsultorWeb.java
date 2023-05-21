@@ -1,5 +1,9 @@
 package modeloUserWeb;
 
+import java.sql.SQLException;
+
+import dao.DaoUserWeb;
+
 public class ConsultorWeb extends UserWeb{
 
 	
@@ -32,7 +36,13 @@ public class ConsultorWeb extends UserWeb{
 		// TODO Auto-generated constructor stub
 	}
 
-
+	public void insertar() throws SQLException {
+		
+		DaoUserWeb daol1 = new DaoUserWeb();
+		//daol1.insertar(this);
+		daol1.insertarConsultor(this);
+		
+	}
 	
 			
 	

@@ -46,7 +46,7 @@ public class AltaUserWeb extends HttpServlet {
 		
 		//variable creada para recibir desde la web 0 Admin 1 Consultor
 		//parseamos y convertimos a tipo numerico
-		int tipoUsuario=Integer.parseInt(request.getParameter("rol"));
+		int tipoUsuario=0;
 		
 		
 		/**
@@ -123,18 +123,24 @@ public class AltaUserWeb extends HttpServlet {
 	}
 		
 		String admin = request.getParameter("admin-user");
-		if (admin == null)
+		if (admin.equalsIgnoreCase(null))
 		{
+			tipoUsuario=0;
 			// crear condicion de no enviarse			
 		}else {
 			//crear condicion de enviarse
+			tipoUsuario=1;
 		}
 		
 		
 		
 		System.out.println(tipoUsuario);
 		
-		
+		/*Si en el formulario dependiendo de el estado
+		 * creamos  un objeto tipo administrador o consultor
+		 *  para poder aplicar futuras funcionalidades
+		*/
+		if (tipoUsuario==1) {
 			
 			AdminWeb a1 = new AdminWeb(nombreUsuario,passw);
 			
@@ -145,7 +151,25 @@ public class AltaUserWeb extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+		}else if (tipoUsuario==0) {
 			
+			ConsultorWeb c1 = new ConsultorWeb(nombreUsuario,passw);
+			
+			try {
+				c1.insertar();
+				System.out.println("Intentando Introducir datos");
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			
+			
+		}else {
+			
+			// TODO Auto-generated catch block
+			System.out.println("Error interno del sistema");
+		}
 		
 	}
 
