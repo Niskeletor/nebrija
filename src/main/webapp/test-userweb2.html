@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">	
+    <title>Formulario de registro</title>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+    
+
+</head>
+<body>
+    <div id="altaUsuario">
+        <h2>Alta de usuario</h2>
+        <form  id="formularioUsuario" action="AltaLogin" method="post" >
+            <label for="nombre">Nombre:</label><br>
+            <input type="text" id="nombre" name="nombre"><br>
+            <label for="apellidos">Apellidos:</label><br>
+            <input type="text" id="apellidos" name="apellidos"><br>
+            <label for="nombreUsuario">Nombre de usuario:</label><br>
+            <input type="text" id="nombreUsuario" name="nombreUsuario" placeholder="Solo letras"><br>
+            <label for="passw">Contraseña:</label><br>
+            <input type="password" id="passw" name="passw" placeholder="Mayus+Minus+num+Caracter-Especial"><br>
+            <label for="passwConfirm">Confirmar Contraseña:</label><br>
+            <input type="password" id="passwConfirm" name="passwConfirm"><br>
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email" placeholder="direccion@correo.com"><br>
+            
+            <label for="departamento">Departamento:</label><br>
+            <input type="text" id="departamento" name="departamento"><br>
+            <label for="empresa">Empresa:</label><br>
+            <input type="text" id="empresa" name="empresa"><br>
+            <label for="rol">Administrador:</label><br>
+            <input type="checkbox" id="rol" name="rol" value="true"><br>
+            <input type="submit" value="Enviar">
+            <!-- enctype="multipart/form-data" 
+            
+            
+            
+            <label for="foto">Foto:</label><br>
+            <input type="file" id="foto" name="foto"><br>
+            
+            -->
+        </form>
+        <p>Hola  Me ves soy un update con forma de caracola loca loca</p>
+    </div>
+    
+     <script>
+        $(document).ready(function() {
+            $("#formularioUsuario").on('submit', function(e) {
+                e.preventDefault(); // Evitar que el formulario se envíe de la forma predeterminada
+                $.ajax({
+                    url: 'http://localhost:8080/DaedalusManager/AltaLogin', // La URL del servlet
+                    type: 'post', // El método de envío
+                    data: $('#formularioUsuario').serialize(), // Los datos del formulario
+                    success: function(response) {
+                        // Limpiar los campos del formulario
+                        $('#formularioUsuario')[0].reset();
+                        // Mostrar la alerta de éxito
+                        Swal.fire({
+                            title: '¡Éxito!',
+                            text: 'Datos insertados correctamente',
+                            icon: 'success',
+                            confirmButtonText: 'Ok'
+                        });
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        var message;
+                        switch (jqXHR.status) {
+                            case 409: message = 'Datos ya existen'; break;
+                            case 500: message = 'Error de Servidor'; break;
+                            default: message = 'Error desconocido'; break;
+                        }
+                        Swal.fire({
+                            title: '¡Error!',
+                            text: message,
+                            icon: 'error',
+                            confirmButtonText: 'Ok'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

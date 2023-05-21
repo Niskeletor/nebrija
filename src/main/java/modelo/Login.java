@@ -89,6 +89,16 @@ public class Login {
 			
 		}
 
+		//Metodo para verificar usuario en la base de datos
+		public  boolean verificarUsuario () throws SQLException {
+			
+			DaoLogin daol1 = new DaoLogin() ;
+
+			return daol1.verificarUsuario(this);
+			
+
+		}
+
 		/**
 		 * Para verificar la entrada y salida de variables en la clase
 		 */
