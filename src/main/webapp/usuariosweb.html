@@ -25,6 +25,7 @@
   <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
   <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
   <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
+  <link href="assets/css/estiloListas.css" rel="stylesheet">
 
   <!-- Css del Main -->
   <link href="assets/css/style.css" rel="stylesheet">
@@ -302,6 +303,7 @@
                       <div class="col-sm-10">
                         <input type="email" class="form-control" id="input-Email" name="input-Email" >
                       </div>
+                      
                     </div>
                     
                       <!-- Añadido div con clase 'row mb-3' -->
@@ -350,6 +352,7 @@
                         </div>
                       </div>
                     
+                      
                     <div class="row mb-3">
                       <label for="foto" class="col-sm-2 col-form-label">File Upload</label>
                       <div class="col-sm-10">
@@ -385,19 +388,14 @@
                   
 
                   <!-- fORMULARIO SOLO ENVIO ARCHIVOS-->
-                  <form action="AltaLogin" method="post" enctype="multipart/form-data">
-   		
-                    <input type="file" name="foto" />
-                    <input type="submit" value="Upload" />
-                    
-                  </form>
+                  
                   
     
                 </div>
               </div>
               
               
-                Sunt est soluta temporibus accusantium neque nam maiores cumque temporibus. Tempora libero non est unde veniam est qui dolor. Ut sunt iure rerum quae quisquam autem eveniet perspiciatis odit. Fuga sequi sed ea saepe at unde.
+               Gestión de alta de usuarios para el portal Web, por favor contacte con el administrados del sistema ante incidencias
             </div>
 
 
@@ -413,54 +411,69 @@
                   <h5 class="card-title">Listado de Usuarios</h5>
     
                   <!-- Listado de Usuarios -->
-                  <table class="table table-striped">
-                    <thead>
-                      <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Position</th>
-                        <th scope="col">Age</th>
-                        <th scope="col">Start Date</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <th scope="row">1</th>
-                        <td>Brandon Jacob</td>
-                        <td>Designer</td>
-                        <td>28</td>
-                        <td>2016-05-25</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">2</th>
-                        <td>Bridie Kessler</td>
-                        <td>Developer</td>
-                        <td>35</td>
-                        <td>2014-12-05</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">3</th>
-                        <td>Ashleigh Langosh</td>
-                        <td>Finance</td>
-                        <td>45</td>
-                        <td>2011-08-12</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">4</th>
-                        <td>Angus Grady</td>
-                        <td>HR</td>
-                        <td>34</td>
-                        <td>2012-06-11</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">5</th>
-                        <td>Raheem Lehner</td>
-                        <td>Dynamic Division Officer</td>
-                        <td>47</td>
-                        <td>2011-04-19</td>
-                      </tr>
-                    </tbody>
-                  </table>
+                  
+                  <section class="section">
+                    <div class="row">
+                      <div class="col-lg-12">
+              
+                        <div class="card">
+                          <div class="card-body">
+                            <h5 class="card-title">Buscador</h5>
+                            <p>Browser default validation with using the <code>required</code> keyword. Try submitting the form below. Depending on your browser and OS, you’ll see a slightly different style of feedback.</p>
+              
+                            <!-- Browser Default Validation -->
+                            <form class="row g-3">
+                              <div class="col-md-4">
+                                <label for="validationDefault01" class="form-label">Nombre</label>
+                                <input type="text" class="form-control" id="validationDefault01" value="nombre" >
+                              </div>
+                              <div class="col-md-4">
+                                <label for="validationDefault02" class="form-label">Apellidos</label>
+                                <input type="text" class="form-control" id="validationDefault02" value="apellidos" >
+                              </div>
+                              <div class="col-md-4">
+                                <label for="validationDefaultUsername" class="form-label">Usuario</label>
+                                <div class="input-group">
+                                  <span class="input-group-text" id="inputGroupPrepend2">@</span>
+                                  <input type="text" class="form-control" id="validationDefaultUsername" aria-describedby="inputGroupPrepend2" >
+                                </div>
+                              </div>
+                              <div class="col-md-3">
+                                <label for="validationDefault03" class="form-label">Departamento</label>
+                                <select class="form-select" id="validationDefault04" required>
+                                  <option selected disabled value="0">Choose...</option>
+                                  <option value="1">Logístico</option>
+                                  <option value="2">Diplomático</option>
+                                  <option value="3">Militar</option>
+                                  <option value="2">IT</option>
+                                  <option value="3">Mantenimiento</option>
+                                </select>
+                              </div>
+                              <div class="col-md-3">
+                                <label for="validationDefault04" class="form-label">Empresa</label>
+                                <select class="form-select" id="validationDefault04" required>
+                                  <option selected disabled value="0">Choose...</option>
+                                  <option value="1">Harkonnen</option>
+                                  <option value="2">Atreides</option>
+                                  <option value="3">Corrino</option>
+                                </select>
+                              </div>
+                              <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                                <label class="form-check-label" for="flexSwitchCheckDefault">Administrador</label>
+                              </div>
+                              
+                              <div class="col-12">
+                                <button class="btn btn-primary" type="submit">Buscar</button>
+                              </div>
+                            </form>
+                            <!-- End Browser Default Validation -->
+              
+                          </div>
+                        </div>
+              
+                      </div>
+
                   <!-- End Listado de Usuarios -->
     
                 </div>
