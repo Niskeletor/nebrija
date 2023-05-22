@@ -1,0 +1,90 @@
+
+/*
+#userList table {
+    font-family: Arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    overflow-y: auto;
+    display: block;
+    height: 300px; // Ajustar 
+}
+
+#userList table td, #userList table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#userList table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#userList table tr:hover {
+    background-color: #ddd;
+}
+
+#userList table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+}
+*/
+/*
+#userList table {
+    font-family: Arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    //* height: 300px; /* Comentado temporalmente 
+    //* overflow-y: auto;  /* Comentado temporalmente 
+}
+
+#userList table td, #userList table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#userList table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#userList table tr:hover {
+    background-color: #ddd;
+}
+
+#userList table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+}
+*/
+
+#userList table {
+    font-family: Arial, sans-serif;
+    border-collapse: separate;
+    border-spacing: 0;
+    width: 100%;
+    border-radius: 10px;  /* Añade esto */
+    overflow: hidden;  /* Añade esto para asegurarte de que los bordes de las celdas no sobresalgan */
+}
+
+#userList table td, #userList table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+/* Añade este bloque para redondear los bordes de las celdas de las esquinas */
+#userList table tr:first-child th:first-child {
+    border-top-left-radius: 10px;
+}
+#userList table tr:first-child th:last-child {
+    border-top-right-radius: 10px;
+}
+#userList table tr:last-child td:first-child {
+    border-bottom-left-radius: 10px;
+}
+#userList table tr:last-child td:last-child {
+    border-bottom-right-radius: 10px;
+}

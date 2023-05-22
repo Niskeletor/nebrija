@@ -9,6 +9,7 @@ import com.google.gson.Gson;
 
 import modelo.Login;
 import modeloUserWeb.*;
+import modeloListador.*;
 
 
 public class DaoUserWeb {
@@ -27,23 +28,7 @@ private Connection con = null;
 	 * @param a
 	 * @throws SQLException
 	 */
-	public void insertarAdmin (AdminWeb a) throws SQLException {
 	
-	// Codigo para poder insertar un permiso
-	//Antes de hacer un Insert tengo que conectarme
-	
-	//Paso 1 preparar la query - para insertar
-	
-	//PreparedStatement ps = con.prepareStatement("INSERT INTO acceso VALUES (ruta,usuario,tipopermiso)");
-	PreparedStatement ps = con.prepareStatement("INSERT INTO user_web (nombreUsuario,passw) VALUES (?,?)");
-	
-	ps.setString(1, a.getNombreUsuario());
-	ps.setString(2, a.getPassw());
-	
-	ps.executeUpdate();
-	ps.close();
-	
-	}
 
 	 public void insertarAdminCompleto (AdminWeb a) throws SQLException {
 	
@@ -113,29 +98,77 @@ private Connection con = null;
 	}
 	
 	
+	public ArrayList<ListadorUserWebMapper> obtener() throws SQLException {
+	    PreparedStatement ps = con.prepareStatement("SELECT  Usuario.IdUsuario, Usuario.name, Usuario.surname,  Usuario.nameUsuario,  Usuario.contra,  Usuario.correo, Usuario.picture, Usuario.admin, Company.nameCompany, Departament.nameDepartament FROM  Usuario  LEFT JOIN  Company ON Usuario.idCompany = Company.idCompany  LEFT JOIN  Departament ON Usuario.idDepartament = Departament.idDepartament;");
+
+	    ResultSet rs = ps.executeQuery();
+
+	    ArrayList<ListadorUserWebMapper> result = new ArrayList<>();
+	    
+	    while (rs.next()) {
+	        ListadorUserWebMapper mapper = new ListadorUserWebMapper();
+	        mapper.setCampo("IdUsuario", rs.getString("IdUsuario"));
+	        mapper.setCampo("name", rs.getString("name"));
+	        mapper.setCampo("surname", rs.getString("surname"));
+	        mapper.setCampo("nameUsuario", rs.getString("nameUsuario"));
+	        mapper.setCampo("contra", rs.getString("contra"));
+	        mapper.setCampo("correo", rs.getString("correo"));
+	        mapper.setCampo("picture", rs.getString("picture"));
+	        mapper.setCampo("admin", rs.getString("admin"));
+	        mapper.setCampo("nameCompany", rs.getString("nameCompany"));
+	        mapper.setCampo("nameDepartament", rs.getString("nameDepartament"));
+	        result.add(mapper);
+	        
+	        System.out.println(mapper.toString());
+	    }
+
+	    System.out.println(result.toString());
+	    return result;
+	}
+
+	public String obtenerenJSON() throws SQLException {
+	    Gson gsonFinal = new Gson();
+	    String jsonFinal = gsonFinal.toJson(this.obtener());
+	    System.out.println(jsonFinal);
+	    
+	    return jsonFinal;
+	}
+
 	
-	public ArrayList<ConsultorWeb> obtener() throws SQLException{
+	/*
+	///AQUI APARECE EL LISTADO PARA DAEDALUS
+	public ArrayList<ListaladorWebMapper> obtener() throws SQLException{
 		
 		
-		PreparedStatement ps = con.prepareStatement("SELECT * FROM user_web");
+		//PreparedStatement ps = con.prepareStatement("SELECT  Usuario.IdUsuario, Usuario.name, Usuario.surname,  Usuario.nameUsuario,  Usuario.contra,  Usuario.correo, Usuario.picture, Usuario.admin, Company.nameCompany, Departament.nameDepartament FROM  Usuario  LEFT JOIN  Company ON Usuario.idCompany = Company.idCompany  LEFT JOIN  Departament ON Usuario.idDepartament = Departament.idDepartament;");
+		//PreparedStatement ps = con.prepareStatement("SELECT  Usuario.IdUsuario, Usuario.name, Usuario.surname,  Usuario.nameUsuario,  Usuario.contra,  Usuario.correo, Usuario.picture, Usuario.admin, Company.nameCompany, Departament.nameDepartament FROM  Usuario  LEFT JOIN  Company ON Usuario.idCompany = Company.idCompany  LEFT JOIN  Departament ON Usuario.idDepartament = Departament.idDepartament");
+		
+		PreparedStatement ps = con.prepareStatement("SELECT name, surname FROM Usuario ");
+		
 		
 		ResultSet rs = ps.executeQuery();
 		
-		ArrayList<ConsultorWeb> result = null;
-		
+		//ArrayList<ConsultorWeb> result = null;
+		ArrayList<ListaladorWebMapper> result = null;
 		while (rs.next()) {
 			
 			if (result == null) {
 				result = new ArrayList<>();
 				
 			}
+			//result.add(new ListaladorWebMapper (rs.getString("name"), (rs.getString("surname"), (rs.getString("nameUsuario"), (rs.getString("contra"), (rs.getString("correo"), (rs.getString("picture"), (rs.getString("admin"), (rs.getString("nameCompany"),(rs.getString("nameDepartament"));
+			//result.add(new ListaladorWebMapper (  rs.getString("name"), rs.getString("surname"), rs.getString("nameUsuario"), rs.getString("contra"), rs.getString("correo"), rs.getString("picture"), rs.getString("admin"), rs.getString("nameCompany"),rs.getString("nameDepartament")          ));
 			
-			result.add(new ConsultorWeb(  rs.getString("nombreUsuario"),rs.getString("passw"))  );
+			result.add(new ListaladorWebMapper (  rs.getString("name"), rs.getString("surname")  ));
+			
+			
+			//result.add(new ConsultorWeb(  rs.getString("nameUsuario"),rs.getString("contra"))  );
 			System.out.println(result.toString());
 			//public Login(String name, String contra, int id)
 			
 			
 		}
+		 
 		System.out.println(result.toString());
 		return result;
 	}
@@ -154,6 +187,8 @@ private Connection con = null;
 		
 		return jsonFinal;
 	}
+	
+	----------------------- */
 	
 	
 	// improvisación de filtro

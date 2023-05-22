@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listados</title>
+    <script>function getSQLResult() {
+        let sqlQuery = document.getElementById('sqlQuery').value;
+        
+        // Limpiar el div de resultados
+        let resultDiv = document.getElementById('resultDiv');
+        resultDiv.innerHTML = '';
+        
+        // Realizar la consulta
+        fetch('/api/sqlQuery', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ query: sqlQuery }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            data.forEach(row => {
+                // Asumiendo que cada fila es un objeto donde la clave es el nombre de la columna
+                for (const column in row) {
+                    let p = document.createElement('p');
+                    p.textContent = column + ': ' + row[column];
+                    resultDiv.appendChild(p);
+                }
+                // Agregar un separador para cada fila
+                let hr = document.createElement('hr');
+                resultDiv.appendChild(hr);
+            });
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+    }
+    </script>
+    
+</head>
+<body>
+    
+
+    <main>
+
+        <div id="sqlQueryDiv">
+            <textarea id="sqlQuery" rows="4" cols="50"></textarea>
+            <button onclick="getSQLResult()">Consultar</button>
+        </div>
+        <div id="resultDiv">
+            <!-- Los resultados de la consulta SQL aparecerán aquí -->
+        </div>
+        
+
+    </main>
+</body>
+</html>

@@ -10,12 +10,12 @@ import com.google.gson.Gson;
 import modelo.Login;
 import modeloUserWeb.*;
 
-
-public class DaoUserWeb {
+public class DaoUserWeb2 {
+	
 	
 private Connection con = null;
 	
-	public DaoUserWeb() throws SQLException {
+	public DaoUserWeb2() throws SQLException {
 		
 		con = DBConexion.getConnection(0);
 		//conectar base de datos Importante elegir el numero de las opciones
@@ -27,23 +27,7 @@ private Connection con = null;
 	 * @param a
 	 * @throws SQLException
 	 */
-	public void insertarAdmin (AdminWeb a) throws SQLException {
 	
-	// Codigo para poder insertar un permiso
-	//Antes de hacer un Insert tengo que conectarme
-	
-	//Paso 1 preparar la query - para insertar
-	
-	//PreparedStatement ps = con.prepareStatement("INSERT INTO acceso VALUES (ruta,usuario,tipopermiso)");
-	PreparedStatement ps = con.prepareStatement("INSERT INTO user_web (nombreUsuario,passw) VALUES (?,?)");
-	
-	ps.setString(1, a.getNombreUsuario());
-	ps.setString(2, a.getPassw());
-	
-	ps.executeUpdate();
-	ps.close();
-	
-	}
 
 	 public void insertarAdminCompleto (AdminWeb a) throws SQLException {
 	
@@ -53,17 +37,19 @@ private Connection con = null;
 		//Paso 1 preparar la query - para insertar
 		
 		//PreparedStatement ps = con.prepareStatement("INSERT INTO acceso VALUES (ruta,usuario,tipopermiso)");
-		PreparedStatement ps = con.prepareStatement("INSERT INTO user_web (nombreUsuario,passw, nombre, apellidos, email, foto, departamento, empresa) VALUES (?,?,?,?,?,?,?,?)");
+		//PreparedStatement ps = con.prepareStatement("INSERT INTO Usuario (nameUsuario,contra, name, surname, correo, picture, idDepartament, idCompany, admin) VALUES (?,?,?,?,?,?,?,?, ?)");
+		 PreparedStatement ps = con.prepareStatement("INSERT INTO Usuario (name,surname, nameUsuario, contra, correo, picture, admin, idDepartament, idCompany) VALUES (?,?,?,?,?,?,?,?, ?)");
 		
-		ps.setString(1, a.getNombreUsuario());
-		ps.setString(2, a.getPassw());
-		ps.setString(3, a.getNombre());
-		ps.setString(4, a.getApellidos());
+		 
+		ps.setString(1, a.getNombre());
+		ps.setString(2, a.getApellidos());
+		ps.setString(3, a.getNombreUsuario());
+		ps.setString(4, a.getPassw());
 		ps.setString(5, a.getEmail());
 		ps.setString(6, a.getFoto());
-		ps.setString(7, a.getDepartamento());
-		ps.setString(8, a.getEmpresa());
-		
+		ps.setBoolean(7, a.getAdministrador());
+		ps.setInt(8, a.getempresa());
+		ps.setInt(9, a.getDepartamento());
 		
 		
 		ps.executeUpdate();
@@ -111,11 +97,11 @@ private Connection con = null;
 	}
 	
 	
-	
+	///AQUI APARECE EL LISTADO PARA DAEDALUS
 	public ArrayList<ConsultorWeb> obtener() throws SQLException{
 		
 		
-		PreparedStatement ps = con.prepareStatement("SELECT * FROM user_web");
+		PreparedStatement ps = con.prepareStatement("SELECT nameUsuario, contra FROM Usuario ");
 		
 		ResultSet rs = ps.executeQuery();
 		
@@ -128,7 +114,7 @@ private Connection con = null;
 				
 			}
 			
-			result.add(new ConsultorWeb(  rs.getString("nombreUsuario"),rs.getString("passw"))  );
+			result.add(new ConsultorWeb(  rs.getString("nameUsuario"),rs.getString("contra"))  );
 			System.out.println(result.toString());
 			//public Login(String name, String contra, int id)
 			
