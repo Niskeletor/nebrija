@@ -1,57 +1,71 @@
-  /* $(document).ready(function() {
-       $('#getUsersButton').click(function() {
-           $.ajax({
-               url: 'http://localhost:8080/DaedalusManager/ConsultarUserWeb', // actualiza esto con la ruta a tu servlet
-               type: 'GET',
-               dataType: 'json',
-               success: function(data) {
-				   console.log(data);
-                   var $resultado = $('#userList');
-                   $resultado.empty(); // limpia el div
+/*
 
-                  // recorre cada usuario en el JSON y añade un elemento de lista para cada uno
-                  $.each(data, function(index, usuario) {
-                      //$resultado.append('<li>' + usuario.nombreUsuario + ': ' + usuario.passw + '</li>');
-                      $resultado.append('<li>' + usuario.nameUsuario + ': ' + usuario.nameCompany + ', ' + usuario.nameDepartament + '</li>');
-                  });
-              },
-              error: function() {
-                  alert('Error obteniendo usuarios');
-              }
-          });
-      });
-  });
+$(document).ready(function() {
+    $('#getUsersButton').click(function() {
+        $.ajax({
+            url: 'http://localhost:8080/DaedalusManager/ConsultarUserWeb',
+            type: 'GET',
+            dataType: 'json',
+            success: function(data) {
+                console.log(data);
+                var $resultado = $('#userList');
+                $resultado.empty(); 
+
+                // Añade la fila de encabezado a la tabla
+                $resultado.append('<tr><th>ID</th><th>Nombre</th><th>Apellidos</th><th>Nombre de Usuario</th><th>Contraseña</th><th>Correo</th><th>Foto</th><th>Admin</th><th>Empresa</th><th>Departamento</th></tr>');
+
+                // recorre cada usuario en el JSON y añade una fila a la tabla para cada uno
+                $.each(data, function(index, usuario) {
+                    $resultado.append(
+                        '<tr>' + 
+                        '<td>' + usuario.campos.IdUsuario + '</td>' +
+                        '<td>' + usuario.campos.name + '</td>' +
+                        '<td>' + usuario.campos.surname + '</td>' +
+                        '<td>' + usuario.campos.nameUsuario + '</td>' +
+                        '<td>' + usuario.campos.contra + '</td>' +
+                        '<td>' + usuario.campos.correo + '</td>' +
+                        '<td>' + usuario.campos.picture + '</td>' +
+                        '<td>' + usuario.campos.admin + '</td>' +
+                        '<td>' + usuario.campos.nameCompany + '</td>' +
+                        '<td>' + usuario.campos.nameDepartament + '</td>' +
+                        '</tr>');
+                });
+            },
+            error: function() {
+                alert('Error obteniendo usuarios');
+            }
+        });
+    });
+});
 */
-
-
-//ver 2
 /*
 $(document).ready(function() {
     $('#getUsersButton').click(function() {
         $.ajax({
-            url: 'http://localhost:8080/DaedalusManager/ConsultarUserWeb', // actualiza esto con la ruta a tu servlet
+            url: 'http://localhost:8080/DaedalusManager/ConsultarUserWeb',
             type: 'GET',
             dataType: 'json',
             success: function(data) {
                 console.log(data);
                 var $resultado = $('#userList');
-                $resultado.empty(); // limpia el div
+                $resultado.empty();
 
-                // recorre cada usuario en el JSON y añade un elemento de lista para cada uno
+                // Añade la fila de encabezado a la tabla
+                $resultado.append('<tr><th>ID</th><th>Nombre</th><th>Apellidos</th><th>Nombre de Usuario</th><th>Correo</th><th>Admin</th><th>Empresa</th><th>Departamento</th></tr>');
+
+                // Recorre cada usuario en el JSON y añade una fila a la tabla para cada uno
                 $.each(data, function(index, usuario) {
                     $resultado.append(
-                        '<li>' + 
-                        'ID: ' + usuario.IdUsuario + ', ' +
-                        'Nombre: ' + usuario.name + ', ' +
-                        'Apellidos: ' + usuario.surname + ', ' +
-                        'Nombre de Usuario: ' + usuario.nameUsuario + ', ' +
-                        'Contraseña: ' + usuario.contra + ', ' +
-                        'Correo: ' + usuario.correo + ', ' +
-                        'Foto: ' + usuario.picture + ', ' +
-                        'Admin: ' + usuario.admin + ', ' +
-                        'Empresa: ' + usuario.nameCompany + ', ' +
-                        'Departamento: ' + usuario.nameDepartament + 
-                        '</li>');
+                        '<tr>' + 
+                        '<td>' + usuario.campos.IdUsuario + '</td>' +
+                        '<td>' + usuario.campos.name + '</td>' +
+                        '<td>' + usuario.campos.surname + '</td>' +
+                        '<td>' + usuario.campos.nameUsuario + '</td>' +
+                        '<td>' + usuario.campos.correo + '</td>' +
+                        '<td>' + usuario.campos.admin + '</td>' +
+                        '<td>' + usuario.campos.nameCompany + '</td>' +
+                        '<td>' + usuario.campos.nameDepartament + '</td>' +
+                        '</tr>');
                 });
             },
             error: function() {
@@ -62,32 +76,37 @@ $(document).ready(function() {
 });
 */
 
-/*
 $(document).ready(function() {
     $('#getUsersButton').click(function() {
         $.ajax({
-            url: 'http://localhost:8080/DaedalusManager/ConsultarUserWeb', // actualiza esto con la ruta a tu servlet
+            url: 'http://localhost:8080/DaedalusManager/ConsultarUserWeb',
             type: 'GET',
             dataType: 'json',
             success: function(data) {
                 console.log(data);
                 var $resultado = $('#userList');
-                $resultado.empty(); // limpia el div
+                $resultado.empty();
 
-                // recorre cada usuario en el JSON y añade un elemento de lista para cada uno
+                // Añade la tabla al div
+                $resultado.append('<table></table>');
+                var $tabla = $('#userList table');
+
+                // Añade la fila de encabezado a la tabla
+                $tabla.append('<tr><th>ID</th><th>Nombre</th><th>Apellidos</th><th>Nombre de Usuario</th><th>Correo</th><th>Admin</th><th>Empresa</th><th>Departamento</th></tr>');
+
+                // Recorre cada usuario en el JSON y añade una fila a la tabla para cada uno
                 $.each(data, function(index, usuario) {
-                    var id = usuario.campos && usuario.campos.IdUsuario ? usuario.campos.IdUsuario : "N/A";
-                    var name = usuario.campos && usuario.campos.name ? usuario.campos.name : "N/A";
-                    var surname = usuario.campos && usuario.campos.surname ? usuario.campos.surname : "N/A";
-                    // Añade las comprobaciones restantes para los demás campos aquí...
-
-                    $resultado.append(
-                        '<li>' + 
-                        'ID: ' + id + ', ' +
-                        'Nombre: ' + name + ', ' +
-                        'Apellidos: ' + surname +
-                        // Añade los campos restantes aquí...
-                        '</li>');
+                    $tabla.append(
+                        '<tr>' + 
+                        '<td>' + usuario.campos.IdUsuario + '</td>' +
+                        '<td>' + usuario.campos.name + '</td>' +
+                        '<td>' + usuario.campos.surname + '</td>' +
+                        '<td>' + usuario.campos.nameUsuario + '</td>' +
+                        '<td>' + usuario.campos.correo + '</td>' +
+                        '<td>' + usuario.campos.admin + '</td>' +
+                        '<td>' + usuario.campos.nameCompany + '</td>' +
+                        '<td>' + usuario.campos.nameDepartament + '</td>' +
+                        '</tr>');
                 });
             },
             error: function() {
@@ -97,41 +116,3 @@ $(document).ready(function() {
     });
 });
 
-*/
-
-//ver final
-
-$(document).ready(function() {
-    $('#getUsersButton').click(function() {
-        $.ajax({
-            url: 'http://localhost:8080/DaedalusManager/ConsultarUserWeb', // actualiza esto con la ruta a tu servlet
-            type: 'GET',
-            dataType: 'json',
-            success: function(data) {
-                console.log(data);
-                var $resultado = $('#userList');
-                $resultado.empty(); // limpia el div
-
-                // recorre cada usuario en el JSON y añade un elemento de lista para cada uno
-                $.each(data, function(index, usuario) {
-                    $resultado.append(
-                        '<li>' + 
-                        'ID: ' + usuario.campos.IdUsuario + ', ' +
-                        'Nombre: ' + usuario.campos.name + ', ' +
-                        'Apellidos: ' + usuario.campos.surname + ', ' +
-                        'Nombre de Usuario: ' + usuario.campos.nameUsuario + ', ' +
-                        'Contraseña: ' + usuario.campos.contra + ', ' +
-                        'Correo: ' + usuario.campos.correo + ', ' +
-                        'Foto: ' + usuario.campos.picture + ', ' +
-                        'Admin: ' + usuario.campos.admin + ', ' +
-                        'Empresa: ' + usuario.campos.nameCompany + ', ' +
-                        'Departamento: ' + usuario.campos.nameDepartament + 
-                        '</li>');
-                });
-            },
-            error: function() {
-                alert('Error obteniendo usuarios');
-            }
-        });
-    });
-});
