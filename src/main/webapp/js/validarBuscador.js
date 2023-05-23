@@ -23,11 +23,17 @@ function validateForm() {
     if (!nombreRegex.test(nombre)) {
         errores++;
         mensaje += "El nombre solo puede contener caracteres alfabéticos y tener hasta 25 caracteres.\n";
+        document.getElementById("nombreIcon").className = "fas fa-times-circle ";
+    } else {
+        document.getElementById("nombreIcon").className = "fas fa-check-circle";
     }
 
     if (!apellidoRegex.test(apellido)) {
         errores++;
         mensaje += "Los apellidos solo pueden contener caracteres alfabéticos y tener hasta 45 caracteres.\n";
+        document.getElementById("apellidoIcon").className = "fas fa-times-circle ";
+    } else {
+        document.getElementById("apellidoIcon").className = "fas fa-check-circle";
     }
 
     if (!usuarioRegex.test(usuario)) {
