@@ -1,7 +1,9 @@
 package modeloUserWeb;
 
 public class BuscadorUserWeb extends UserWeb {
-    private String nivelPrivilegios;
+    
+    private String nombreEmpresa;
+    private String nombreDepartamento;
 
     //Constructor vacio
     public BuscadorUserWeb() {
@@ -9,26 +11,38 @@ public class BuscadorUserWeb extends UserWeb {
     }
 
     //Constructor con todos los atributos
-    public BuscadorUserWeb(String nombre, String apellidos, String nombreUsuario, String passw, String email, String foto, Boolean administrador, Integer departamento, Integer empresa, int id, String nivelPrivilegios) {
+    public BuscadorUserWeb(String nombre, String apellidos, String nombreUsuario, String passw, String email, String foto,
+                           Boolean administrador, Integer departamento, Integer empresa, int id, 
+                           String nombreEmpresa, String nombreDepartamento) {
         super(nombre, apellidos, nombreUsuario, passw, email, foto, administrador, departamento, empresa, id);
-        this.nivelPrivilegios = nivelPrivilegios;
+        this.nombreEmpresa = nombreEmpresa;
+        this.nombreDepartamento = nombreDepartamento;
     }
 
     //Getters
-    public String getNivelPrivilegios() {
-        return nivelPrivilegios;
+    public String getNombreEmpresa() {
+        return nombreEmpresa;
+    }
+
+    public String getNombreDepartamento() {
+        return nombreDepartamento;
     }
 
     //Setters
-    public void setNivelPrivilegios(String nivelPrivilegios) {
-        this.nivelPrivilegios = nivelPrivilegios;
+    public void setNombreEmpresa(String nombreEmpresa) {
+        this.nombreEmpresa = nombreEmpresa;
+    }
+
+    public void setNombreDepartamento(String nombreDepartamento) {
+        this.nombreDepartamento = nombreDepartamento;
     }
 
     //toString
     @Override
     public String toString() {
         return "BuscadorUserWeb{" +
-                "nivelPrivilegios='" + nivelPrivilegios + '\'' +
+                "nombreEmpresa='" + nombreEmpresa + '\'' +
+                ", nombreDepartamento='" + nombreDepartamento + '\'' +
                 ", nombre='" + getNombre() + '\'' +
                 ", apellidos='" + getApellidos() + '\'' +
                 ", nombreUsuario='" + getNombreUsuario() + '\'' +
@@ -37,7 +51,7 @@ public class BuscadorUserWeb extends UserWeb {
                 ", foto='" + getFoto() + '\'' +
                 ", administrador=" + getAdministrador() +
                 ", departamento=" + getDepartamento() +
-                ", empresa=" + getEmpresa() +
+                ", empresa=" + getempresa() +
                 ", id=" + getId() +
                 '}';
     }
