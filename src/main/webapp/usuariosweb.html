@@ -34,6 +34,7 @@
   <link rel="stylesheet" href="./estiloListas.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="./js/listar.js"></script>
+    <script src="./js/validarBuscador.js"></script>
 
 </head>
 
@@ -427,45 +428,48 @@
                             <p>Browser default validation with using the <code>required</code> keyword. Try submitting the form below. Depending on your browser and OS, you’ll see a slightly different style of feedback.</p>
               
                             <!-- Browser Default Validation -->
-                            <form class="row g-3">
+                            <form class="row g-3" id="userForm" onsubmit="return validateForm()">
                               <div class="col-md-4">
                                 <label for="validationDefault01" class="form-label">Nombre</label>
-                                <input type="text" class="form-control" id="validationDefault01" value="nombre" >
+                                <input type="text" class="form-control" id="validationDefault01" name="nombre" >
                               </div>
                               <div class="col-md-4">
                                 <label for="validationDefault02" class="form-label">Apellidos</label>
-                                <input type="text" class="form-control" id="validationDefault02" value="apellidos" >
+                                <input type="text" class="form-control" id="validationDefault02" name="surname" >
                               </div>
                               <div class="col-md-4">
                                 <label for="validationDefaultUsername" class="form-label">Usuario</label>
                                 <div class="input-group">
                                   <span class="input-group-text" id="inputGroupPrepend2">@</span>
-                                  <input type="text" class="form-control" id="validationDefaultUsername" aria-describedby="inputGroupPrepend2" >
+                                  <input type="text" class="form-control" id="validationDefaultUsername" aria-describedby="inputGroupPrepend2" name="username">
                                 </div>
                               </div>
                               <div class="col-md-3">
                                 <label for="validationDefault03" class="form-label">Departamento</label>
-                                <select class="form-select" id="validationDefault04" required>
+                                <select class="form-select" id="validationDefault04" required name="departament">
                                   <option selected disabled value="0">Choose...</option>
                                   <option value="1">Logístico</option>
                                   <option value="2">Diplomático</option>
                                   <option value="3">Militar</option>
                                   <option value="2">IT</option>
                                   <option value="3">Mantenimiento</option>
+                                  <option value="4">Cualquiera</option>
+
                                 </select>
                               </div>
                               <div class="col-md-3">
                                 <label for="validationDefault04" class="form-label">Empresa</label>
-                                <select class="form-select" id="validationDefault04" required>
+                                <select class="form-select" id="validationDefault05" required name="company">
                                   <option selected disabled value="0">Choose...</option>
                                   <option value="1">Harkonnen</option>
                                   <option value="2">Atreides</option>
                                   <option value="3">Corrino</option>
+                                  <option value="4">Cualquiera</option>
                                 </select>
                               </div>
                               <div class="form-check form-switch">
-                                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
-                                <label class="form-check-label" for="flexSwitchCheckDefault">Administrador</label>
+                                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault2" name="admin">
+                                <label class="form-check-label" for="flexSwitchCheckDefault2">Administrador</label>
                               </div>
                               
                               <div class="col-12">
@@ -474,6 +478,7 @@
                             </form>
                             <button id="getUsersButton">Obtener Usuarios</button>
                             <!-- End Browser Default Validation -->
+                            <p>HOLA PUTO</p>
 
 
                             <!--  Begin Results-->
