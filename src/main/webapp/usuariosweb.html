@@ -430,25 +430,24 @@
                             <p>Browser default validation with using the <code>required</code> keyword. Try submitting the form below. Depending on your browser and OS, you’ll see a slightly different style of feedback.</p>
               
                             <!-- Browser Default Validation -->
-                            <form class="row g-3" id="userForm" onsubmit="return validateForm()">
+                            <form class="row g-3" id="userForm" onsubmit="validateForm(event)">
                               <div class="col-md-4">
-                                <label for="validationDefault01" class="form-label">Nombre</label>
-                                <input type="text" class="form-control" id="validationDefault01" name="nombre" >
-                                <i class="fas" id="nombreIcon"></i>
+                                <label for="validationDefault01" class="form-label"> <i class="fas" id="nombreIcon"></i>Nombre</label>
+                                <input type="text" class="form-control" id="validationDefault01" name="nombre" >                                
                               </div>
 
 
                               <div class="col-md-4">
-                                <label for="validationDefault02" class="form-label">Apellidos</label>
-                                <input type="text" class="form-control" id="validationDefault02" name="surname" >
-                                <i class="fas" id="apellidoIcon"></i>
+                                <label for="validationDefault02" class="form-label"> <i class="fas" id="apellidoIcon"></i>Apellidos</label>
+                                <input type="text" class="form-control" id="validationDefault02" name="surname" >                                
                               </div>
                               <div class="col-md-4">
-                                <label for="validationDefaultUsername" class="form-label">Usuario</label>
+                                <label for="validationDefaultUsername" class="form-label"> <i class="fas" id="userIcon"></i>Usuario</label>
                                 <div class="input-group">
                                   <span class="input-group-text" id="inputGroupPrepend2">@</span>
-                                  <input type="text" class="form-control" id="validationDefaultUsername" aria-describedby="inputGroupPrepend2" name="username">
+                                  <input type="text" class="form-control" id="validationDefaultUsername" aria-describedby="inputGroupPrepend2" name="username">                                  
                                 </div>
+                                <i class="fas" id="userIcon"></i>
                               </div>
                               <div class="col-md-3">
                                 <label for="validationDefault03" class="form-label">Departamento</label>
