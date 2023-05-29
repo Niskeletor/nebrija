@@ -39,7 +39,11 @@ public class SvLogin extends HttpServlet {
 		// TODO Auto-generated method stub
 		//Aqui preparamos la esucha desde la web de index.html antes de pasar a la pagina de dashboard
 		// Verificaremos si el usuario existe en la base de datos, si es correcto, le redirigirá al inicio
-
+		
+		/**
+		 * Servlet encargado de controlar la funcion Login de a página principal
+		 */
+		
 		Login login = new Login (request.getParameter("nombreUsuario"), request.getParameter("passw"));
 
 		try {

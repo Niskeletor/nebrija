@@ -1,8 +1,13 @@
+#userList{
+	overflow-y: auto;
+	
+}
+
 #userList table {
     font-family: Arial, sans-serif;
     border-collapse: collapse;
     width: 100%;
-    overflow-y: auto;
+    
     display: block;
     
 }

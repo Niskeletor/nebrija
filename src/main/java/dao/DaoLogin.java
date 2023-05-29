@@ -61,7 +61,7 @@ public class DaoLogin {
 
 		try {
 			
-		PreparedStatement ps = con.prepareStatement("SELECT * FROM user_web WHERE nombreUsuario=? AND passw=?");
+		PreparedStatement ps = con.prepareStatement("SELECT * FROM Usuario WHERE nameUsuario=? AND contra=?");
 		ps.setString(1, l.getName());
 		ps.setString(2, l.getContra());
 

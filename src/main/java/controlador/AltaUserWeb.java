@@ -144,7 +144,7 @@ public class AltaUserWeb extends HttpServlet {
 	    	empresa="Corrino";
 	        break;
 	    }   
-	    /*case 4:
+	    case 4:
 	    {	
 	    	empresa="IT";
 	        break;
@@ -153,7 +153,7 @@ public class AltaUserWeb extends HttpServlet {
 	    {	
 	    	empresa="Mantenimiento";
 	        break;
-	    }*/
+	    }
 	    default:
 	        empresa = "null";
 	        

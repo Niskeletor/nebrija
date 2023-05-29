@@ -39,7 +39,7 @@ private Connection con = null;
 		
 		//PreparedStatement ps = con.prepareStatement("INSERT INTO acceso VALUES (ruta,usuario,tipopermiso)");
 		//PreparedStatement ps = con.prepareStatement("INSERT INTO Usuario (nameUsuario,contra, name, surname, correo, picture, idDepartament, idCompany, admin) VALUES (?,?,?,?,?,?,?,?, ?)");
-		 PreparedStatement ps = con.prepareStatement("INSERT INTO Usuario (name,surname, nameUsuario, contra, correo, picture, admin, idDepartament, idCompany) VALUES (?,?,?,?,?,?,?,?, ?)");
+		 PreparedStatement ps = con.prepareStatement("INSERT INTO Usuario (name,surname, nameUsuario, contra, correo, picture, admin, idDepartament, idCompany) VALUES (?,?,?,?,?,?,?,?,?)");
 		
 		 
 		ps.setString(1, a.getNombre());
