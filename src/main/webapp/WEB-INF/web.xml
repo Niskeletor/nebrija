@@ -105,4 +105,14 @@
     <servlet-name>AltaLoginFoto</servlet-name>
     <url-pattern>/AltaLoginFoto</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ConsultaUserWebFiltro</display-name>
+    <servlet-name>ConsultaUserWebFiltro</servlet-name>
+    <servlet-class>controlador.ConsultaUserWebFiltro</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ConsultaUserWebFiltro</servlet-name>
+    <url-pattern>/ConsultaUserWebFiltro</url-pattern>
+  </servlet-mapping>
 </web-app>

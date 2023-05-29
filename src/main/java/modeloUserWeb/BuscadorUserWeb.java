@@ -1,5 +1,9 @@
 package modeloUserWeb;
 
+import java.sql.SQLException;
+
+import dao.DaoUserWeb;
+
 public class BuscadorUserWeb extends UserWeb {
     
     private String nombreEmpresa;
@@ -36,7 +40,18 @@ public class BuscadorUserWeb extends UserWeb {
     public void setNombreDepartamento(String nombreDepartamento) {
         this.nombreDepartamento = nombreDepartamento;
     }
-
+    
+    public void buscarPorFiltro() throws SQLException {
+    	
+    	DaoUserWeb daol1 = new DaoUserWeb();
+		//daol1.insertar(this);
+		
+		try {
+			daol1.buscarPorFiltro(this);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+    } 
     //toString
     @Override
     public String toString() {

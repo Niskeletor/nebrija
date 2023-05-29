@@ -12,6 +12,7 @@ import modeloUserWeb.*;
 import modeloListador.*;
 
 
+
 public class DaoUserWeb {
 	
 private Connection con = null;
@@ -24,11 +25,67 @@ private Connection con = null;
 		// se pueden ver en DBCOnexion
 	}
 	/**
+	 * Método para realizar búsquedas utilizando formularios como filtro
+	 * si hay algun campo o varios rellenado buscará coincidencias
+	 * @param b
+	 * @throws SQLException
+	 */
+	
+	
+	public ArrayList<ListadorUserWebMapper> buscarPorFiltro (BuscadorUserWeb b) throws SQLException{
+		
+		//comienzo con la creacion de una consulta básica, si no se a eligido ningun campo devolverá una consulta completa
+		StringBuilder sql = new StringBuilder("SELECT * FROM Usuario WHERE 1=1");
+		int index =1;
+		
+		//si tiene el campo de nombre relleno lo añadirá a la consulta
+		if (b.getNombre()!=null) {
+			sql.append(" AND name LIKE ?" );
+		}
+		
+		System.out.println(sql.toString());
+		
+		//preparo la consulta y a continación le paso las querys que no son null
+		
+		PreparedStatement ps = con.prepareStatement (sql.toString());
+		
+		if (b.getNombre()!=null) {
+			ps.setString(index++, b.getNombre());
+		}
+		
+		ResultSet rs = ps.executeQuery();
+		
+		
+		ArrayList<ListadorUserWebMapper> result = new ArrayList<>();
+	    
+	    while (rs.next()) {
+	        ListadorUserWebMapper mapper = new ListadorUserWebMapper();
+	        mapper.setCampo("IdUsuario", rs.getString("IdUsuario"));
+	        mapper.setCampo("name", rs.getString("name"));
+	        mapper.setCampo("surname", rs.getString("surname"));
+	        mapper.setCampo("nameUsuario", rs.getString("nameUsuario"));
+	        mapper.setCampo("contra", rs.getString("contra"));
+	        mapper.setCampo("correo", rs.getString("correo"));
+	        mapper.setCampo("picture", rs.getString("picture"));
+	        mapper.setCampo("admin", rs.getString("admin"));
+	        mapper.setCampo("idCompany", rs.getString("idCompany"));
+	        mapper.setCampo("idDepartament", rs.getString("idDepartament"));
+	        result.add(mapper);
+	        
+	        System.out.println(mapper.toString());
+	    }
+
+	    System.out.println(result.toString());
+	    return result;
+		
+	}
+	
+	
+	/**
 	 * Método para crear un usuario en la base de datos
 	 * @param a
 	 * @throws SQLException
 	 */
-	
 
 	 public void insertarAdminCompleto (AdminWeb a) throws SQLException {
 	
@@ -129,6 +186,14 @@ private Connection con = null;
 	public String obtenerenJSON() throws SQLException {
 	    Gson gsonFinal = new Gson();
 	    String jsonFinal = gsonFinal.toJson(this.obtener());
+	    System.out.println(jsonFinal);
+	    
+	    return jsonFinal;
+	}
+	
+	public String obtenerenJSONFiltro(BuscadorUserWeb b) throws SQLException {
+	    Gson gsonFinal = new Gson();
+	    String jsonFinal = gsonFinal.toJson(this.buscarPorFiltro(b));
 	    System.out.println(jsonFinal);
 	    
 	    return jsonFinal;
