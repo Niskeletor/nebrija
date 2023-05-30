@@ -34,7 +34,7 @@ private Connection con = null;
 	
 	public ArrayList<ListadorUserWebMapper> buscarPorFiltro (BuscadorUserWeb b) throws SQLException{
 		
-		//comienzo con la creacion de una consulta básica, si no se a eligido ningun campo devolverá una consulta completa
+		//comienzo con la creacion de una consulta básica, si no se ha eligido ningun campo devolverá una consulta completa
 		StringBuilder sql = new StringBuilder("SELECT * FROM Usuario WHERE 1=1");
 		int index =1;
 		
@@ -42,6 +42,22 @@ private Connection con = null;
 		if (b.getNombre()!=null) {
 			sql.append(" AND name LIKE ?" );
 		}
+		if (b.getApellidos()!=null){
+			sql.append(" AND surname LIKE ?");
+		}
+
+		if (b.getNombreUsuario()!=null){
+			sql.append(" AND username LIKE ?");
+		}
+		if (b.getDepartamento()!=null){
+			sql.append(" AND idDepartament LIKE ?");
+		}
+		if (b.getempresa()!=null){
+			sql.append(" AND idCompany LIKE ?");
+		}
+
+
+
 		
 		System.out.println(sql.toString());
 		
@@ -51,6 +67,18 @@ private Connection con = null;
 		
 		if (b.getNombre()!=null) {
 			ps.setString(index++, b.getNombre());
+		}
+		if (b.getApellidos()!=null) {
+			ps.setString(index++, b.getApellidos());
+		}
+		if (b.getNombreUsuario()!=null) {
+			ps.setString(index++, b.getNombreUsuario());
+		}
+		if (b.getDepartamento()!=null) {
+			ps.setInt(index++, b.getDepartamento());
+		}
+		if (b.getempresa()!=null) {
+			ps.setInt(index++, b.getempresa());
 		}
 		
 		ResultSet rs = ps.executeQuery();
