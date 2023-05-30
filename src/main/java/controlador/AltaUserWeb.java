@@ -18,6 +18,8 @@ import java.io.File;
 
 import modeloUserWeb.*;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
+import java.sql.SQLSyntaxErrorException;
 
 
 
@@ -194,12 +196,23 @@ public class AltaUserWeb extends HttpServlet {
 			AdminWeb z1 = new AdminWeb(nombre, apellidos, nombreUsuario, passw, email, fileName, admin, departamentoId, empresaSelect);
 			//super(nombre, apellidos, nombreUsuario, passw, email, foto, administrador, departamento, empresa);
 			try {
-				z1.insertar();
-				System.out.println("Intentando Introducir datos");
+			    z1.insertar();
+			    System.out.println("Intentando Introducir datos");
+			} catch (SQLIntegrityConstraintViolationException e) {
+			    System.out.println("Entrada duplicada para 'nameUsuario'");
+			    response.setStatus(HttpServletResponse.SC_CONFLICT);  // 409 Conflict
+			    response.getWriter().write("Entrada duplicada para 'nameUsuario'");
+			    e.printStackTrace();
+			} catch (SQLSyntaxErrorException e) {
+			    System.out.println("La tabla no existe en la base de datos");
+			    response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);  // 500 Internal Server Error
+			    response.getWriter().write("La tabla no existe en la base de datos");
+			    e.printStackTrace();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+			    // Manejo general de excepciones de SQL
+			    e.printStackTrace();
 			}
+
 		}else if (tipoUsuario==0) {
 			
 			ConsultorWeb c1 = new ConsultorWeb(nombreUsuario,passw);
