@@ -23,20 +23,3 @@ function validateForm() {
     return true;
 }
 
-
-// Obtener usuarios de la base de datos
-
-document.getElementById("getUsersButton").addEventListener("click", function() {
-    fetch('ServletQueDevuelveUsuarios') // reemplaza esto con la URL de tu servlet
-        .then(response => response.json())
-        .then(data => {
-            var userListDiv = document.getElementById("userList");
-            userListDiv.innerHTML = ""; // limpia el div
-            data.forEach(function(user) {
-                var userDiv = document.createElement("div");
-                userDiv.textContent = user.nombreUsuario; // asumiendo que el objeto user tiene una propiedad nombreUsuario
-                userListDiv.appendChild(userDiv);
-            });
-        });
-});
-
