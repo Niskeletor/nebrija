@@ -82,7 +82,7 @@ private Connection con = null;
 		if (b.getempresa()!=null) {
 			ps.setInt(index++, b.getempresa());
 		}
-		
+		 
 		ResultSet rs = ps.executeQuery();
 		
 		
