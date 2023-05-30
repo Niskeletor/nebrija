@@ -27,6 +27,7 @@ private Connection con = null;
 	/**
 	 * Método para realizar búsquedas utilizando formularios como filtro
 	 * si hay algun campo o varios rellenado buscará coincidencias
+	 * Se le pasa un objeto llamado BuscadorUserWeb creado para dicho fin
 	 * @param b
 	 * @throws SQLException
 	 */
@@ -56,9 +57,7 @@ private Connection con = null;
 			sql.append(" AND idCompany LIKE ?");
 		}
 
-
-
-		
+		//compruebo por consola que se recojan los parametros
 		System.out.println(sql.toString());
 		
 		//preparo la consulta y a continación le paso las querys que no son null
@@ -111,7 +110,9 @@ private Connection con = null;
 	
 	/**
 	 * Método para crear un usuario en la base de datos
-	 * @param a
+	 * se utiliza la clase AdminWeb para este efecto
+	 * 
+	 * @param a parámetro tipo Objeto AdminWeb con los atributos necesarios para la inserción de los datos
 	 * @throws SQLException
 	 */
 
