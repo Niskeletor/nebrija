@@ -48,14 +48,17 @@ private Connection con = null;
 		}
 
 		if (b.getNombreUsuario()!=null){
-			sql.append(" AND username LIKE ?");
+			sql.append(" AND nameUsuario LIKE ?");
 		}
 		if (b.getDepartamento()!=null){
-			sql.append(" AND idDepartament LIKE ?");
+			sql.append(" AND idDepartament =?");
 		}
 		if (b.getempresa()!=null){
-			sql.append(" AND idCompany LIKE ?");
+			sql.append(" AND idCompany =?");
 		}
+		
+		System.out.println(b.getNombre().toString() + b.getApellidos().toString() + b.getNombreUsuario().toString() );
+		//+ b.getempresa().toString() + b.getDepartamento()
 
 		//compruebo por consola que se recojan los parametros
 		System.out.println(sql.toString());
@@ -65,16 +68,16 @@ private Connection con = null;
 		PreparedStatement ps = con.prepareStatement (sql.toString());
 		
 		if (b.getNombre()!=null) {
-			ps.setString(index++, b.getNombre());
+			ps.setString(index++, "%" +  b.getNombre() + "%");
 		}
 		if (b.getApellidos()!=null) {
-			ps.setString(index++, b.getApellidos());
+			ps.setString(index++, "%" + b.getApellidos() + "%");
 		}
 		if (b.getNombreUsuario()!=null) {
-			ps.setString(index++, b.getNombreUsuario());
+			ps.setString(index++, "%" + b.getNombreUsuario() + "%");
 		}
 		if (b.getDepartamento()!=null) {
-			ps.setInt(index++, b.getDepartamento());
+			ps.setInt(index++,  b.getDepartamento() );
 		}
 		if (b.getempresa()!=null) {
 			ps.setInt(index++, b.getempresa());
@@ -103,6 +106,7 @@ private Connection con = null;
 	    }
 
 	    System.out.println(result.toString());
+	    ps.close();
 	    return result;
 		
 	}

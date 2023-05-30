@@ -46,37 +46,37 @@ public class ConsultaUserWebFiltro extends HttpServlet {
 				String departamento="";
 				String empresa="";
 				String admin="";
-				StringBuilder sql = new StringBuilder("SELECT * FROM Usuarios WHERE 1=1");
+				//StringBuilder sql = new StringBuilder("SELECT * FROM Usuarios WHERE 1=1");
 				BuscadorUserWeb b1 = new BuscadorUserWeb();
 				
 				if (request.getParameter("username")!= null) {
 				nombreUsuario = request.getParameter("username");
-				sql.append(" AND nombreUsuario = " + nombreUsuario);
+				//sql.append(" AND nombreUsuario = " + nombreUsuario);
 				b1.setNombreUsuario(nombreUsuario);		
 				}
 				if (request.getParameter("nombre")!= null) {
 				nombre= request.getParameter("nombre");
-				sql.append(" AND nombre = " + nombre);
+				//sql.append(" AND nombre = " + nombre);
 				b1.setNombre(nombre);
 				}
 				if (request.getParameter("surname")!= null) {
 				apellidos= request.getParameter("surname");
-				sql.append(" AND apellidos = " + apellidos);
+				//sql.append(" AND apellidos = " + apellidos);
 				b1.setApellidos(apellidos);
 				}
 				if (request.getParameter("departament")!= null) {
 					departamento= request.getParameter("departament");
-					sql.append(" AND departamento = " + departamento);
+					//sql.append(" AND departamento = " + departamento);
 					b1.setDepartamento((Integer.parseInt(departamento)));
 					}
 				if (request.getParameter("company")!= null) {
 					empresa= request.getParameter("company");
-					sql.append(" AND company = " + empresa);
+					//sql.append(" AND company = " + empresa);
 					b1.setempresa(Integer.parseInt(empresa));
 					}
 				if (request.getParameter("admin")!= null) {
 					admin= request.getParameter("admin");
-					sql.append(" AND admin = " + admin);
+				//	sql.append(" AND admin = " + admin);
 					b1.setAdministrador(true);
 					}
 			/*	System.out.println(sql);
