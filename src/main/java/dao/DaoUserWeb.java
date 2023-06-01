@@ -11,11 +11,22 @@ import modelo.Login;
 import modeloUserWeb.*;
 import modeloListador.*;
 
-
+/**
+ * Clase DaoUserWeb que interactúa con la base de datos para realizar
+ * operaciones CRUD sobre los usuarios y administra las conexiones.
+ * 
+ * @author Pablo Alejandro Nistal del Rio
+ */
 
 public class DaoUserWeb {
 	
 private Connection con = null;
+
+/**
+ * Constructor de la clase DaoUserWeb.
+ * Establece la conexión con la base de datos. Le pasamos el parámetro 0 para elegir la primera BBDD
+ * @throws SQLException si ocurre un error al establecer la conexión con la base de datos.
+ */
 	
 	public DaoUserWeb() throws SQLException {
 		
@@ -25,11 +36,11 @@ private Connection con = null;
 		// se pueden ver en DBCOnexion
 	}
 	/**
-	 * Método para realizar búsquedas utilizando formularios como filtro
-	 * si hay algun campo o varios rellenado buscará coincidencias
-	 * Se le pasa un objeto llamado BuscadorUserWeb creado para dicho fin
-	 * @param b
-	 * @throws SQLException
+	 * Método que busca usuarios según el filtro proporcionado.
+	 * Devuelve un ArrayList de objetos ListadorUserWebMapper con la información de los usuarios encontrados.
+	 * @param b el objeto BuscadorUserWeb con los criterios de búsqueda.
+	 * @return ArrayList de objetos ListadorUserWebMapper con la información de los usuarios encontrados.
+	 * @throws SQLException si ocurre un error al realizar la consulta en la base de datos.
 	 */
 	
 	
@@ -113,11 +124,9 @@ private Connection con = null;
 	
 	
 	/**
-	 * Método para crear un usuario en la base de datos
-	 * se utiliza la clase AdminWeb para este efecto
-	 * 
-	 * @param a parámetro tipo Objeto AdminWeb con los atributos necesarios para la inserción de los datos
-	 * @throws SQLException
+	 * Método que inserta un nuevo administrador para el portal Web en la base de datos.
+	 * @param a el objeto AdminWeb con la información del administrador a insertar.
+	 * @throws SQLException si ocurre un error al insertar la información en la base de datos.
 	 */
 
 	 public void insertarAdminCompleto (AdminWeb a) throws SQLException {
@@ -147,10 +156,12 @@ private Connection con = null;
 		ps.close();
 		
 		}
+
+
 		/**
-		 * Metodo para crear consultor Web
-		 * @param c
-		 * @throws SQLException
+		 * Método que inserta un nuevo consultor, el objetio sería un Trabajador o responsable de algún departamento en la base de datos.
+		 * @param c el objeto ConsultorWeb con la información del consultor a insertar.
+		 * @throws SQLException si ocurre un error al insertar la información en la base de datos.
 		 */
 	
 	public void insertarConsultor (ConsultorWeb c) throws SQLException {
@@ -172,11 +183,11 @@ private Connection con = null;
 		}
 
 
-		/**
-		 * Metodo para cambiar contraseña
-		 * @param a
-		 * @throws SQLException
-		 */
+	/**
+	 * Método que cambia la contraseña de un administrador Web.
+	 * @param a el objeto AdminWeb con la información del administrador.
+	 * @throws SQLException si ocurre un error al actualizar la información en la base de datos.
+	 */
 	public void cambioPass (AdminWeb a) throws SQLException {
 	
 	PreparedStatement ps = con.prepareStatement("ALTER TABLE useradmin (passw) VALUES (?)");
@@ -215,6 +226,12 @@ private Connection con = null;
 	    System.out.println(result.toString());
 	    return result;
 	}
+	 /**
+     * Obtiene una lista de todos los usuarios y la retorna en formato JSON.
+     * 
+     * @return String en formato JSON que representa a todos los usuarios
+     * @throws SQLException si ocurre un error al obtener la lista de usuarios
+     */
 
 	public String obtenerenJSON() throws SQLException {
 	    Gson gsonFinal = new Gson();
@@ -223,6 +240,14 @@ private Connection con = null;
 	    
 	    return jsonFinal;
 	}
+	
+	/**
+     * Obtiene una lista filtrada de usuarios y la retorna en formato JSON.
+     * 
+     * @param b objeto BuscadorUserWeb que contiene los filtros de búsqueda
+     * @return String en formato JSON que representa a los usuarios filtrados
+     * @throws SQLException si ocurre un error al obtener la lista filtrada de usuarios
+     */
 	
 	public String obtenerenJSONFiltro(BuscadorUserWeb b) throws SQLException {
 	    Gson gsonFinal = new Gson();
