@@ -24,7 +24,7 @@ function validateForm() {
     var mensaje = "";
 
     //comprobar que al menos un campo se haya rellenado 
-    if (nombre === "" && apellido === "" && usuario === "" && departamento === "0" && empresa === "0" && !administrador) {
+    if (nombre === "" && apellido === "" && usuario === "" && departamento == "0" && empresa == "0" && !administrador) {
         errores++;
         mensaje += "Debe ingresar al menos un campo para realizar la búsqueda.\n";
     } else {

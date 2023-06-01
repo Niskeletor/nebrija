@@ -44,7 +44,9 @@ public class ConsultaUserWebFiltro extends HttpServlet {
 				String nombre="";
 				String apellidos="";
 				String departamento="";
+				int verificarDepartamento=0;
 				String empresa="";
+				int verificarEmpresa=0;
 				String admin="";
 				//StringBuilder sql = new StringBuilder("SELECT * FROM Usuarios WHERE 1=1");
 				BuscadorUserWeb b1 = new BuscadorUserWeb();
@@ -66,19 +68,29 @@ public class ConsultaUserWebFiltro extends HttpServlet {
 				}
 				if (request.getParameter("departament")!= null) {
 					departamento= request.getParameter("departament");
+					System.out.println("El departamento es " + departamento);
 					//sql.append(" AND departamento = " + departamento);
 					b1.setDepartamento((Integer.parseInt(departamento)));
 					}
+				
 				if (request.getParameter("company")!= null) {
-					empresa= request.getParameter("company");
-					//sql.append(" AND company = " + empresa);
-					b1.setempresa(Integer.parseInt(empresa));
+					verificarEmpresa=Integer.parseInt(request.getParameter("company"));
+					System.out.println("VERIFICAR EMPRESA : " + verificarEmpresa);
+					//verifico el valor de verificarEmpresa, si esta entre 1 y 3 lo incluyo
+					if ((verificarEmpresa>0)&&(verificarEmpresa<4))
+						{
+						empresa= request.getParameter("company");
+						//sql.append(" AND company = " + empresa);
+						b1.setempresa(Integer.parseInt(empresa));
+						
+						}// fin if verificarEmpresa
+					
 					}
-				if (request.getParameter("admin")!= null) {
+			/*	if (request.getParameter("admin")!= null) {
 					admin= request.getParameter("admin");
 				//	sql.append(" AND admin = " + admin);
 					b1.setAdministrador(true);
-					}
+					}*/
 			/*	System.out.println(sql);
 				
 				System.out.println(b1.toString());

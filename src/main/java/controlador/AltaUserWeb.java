@@ -193,7 +193,7 @@ public class AltaUserWeb extends HttpServlet {
 			AdminWeb t1 = new AdminWeb(nombreUsuario, apellidos, nombre, passw, email, empresaSelect, departamentoId, admin);
 			
 			//crear objeto con foto
-			AdminWeb z1 = new AdminWeb(nombre, apellidos, nombreUsuario, passw, email, fileName, admin, departamentoId, empresaSelect);
+			AdminWeb z1 = new AdminWeb(nombre, apellidos, nombreUsuario, passw, email, fileName, admin, empresaSelect, departamentoId);
 			//super(nombre, apellidos, nombreUsuario, passw, email, foto, administrador, departamento, empresa);
 			try {
 			    z1.insertar();

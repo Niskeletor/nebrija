@@ -47,25 +47,31 @@ private Connection con = null;
 	public ArrayList<ListadorUserWebMapper> buscarPorFiltro (BuscadorUserWeb b) throws SQLException{
 		
 		//comienzo con la creacion de una consulta básica, si no se ha eligido ningun campo devolverá una consulta completa
-		StringBuilder sql = new StringBuilder("SELECT * FROM Usuario WHERE 1=1");
+		//StringBuilder sql = new StringBuilder("SELECT * FROM Usuario WHERE 1=1");
+		StringBuilder sql = new StringBuilder("SELECT Usuario.*, Company.nameCompany, Departament.nameDepartament "
+			    + "FROM Usuario "
+			    + "LEFT JOIN Company ON Usuario.idCompany = Company.idCompany "
+			    + "LEFT JOIN Departament ON Usuario.idDepartament = Departament.idDepartament "
+			    + "WHERE 1=1");
+
 		int index =1;
 		
 		//si tiene el campo de nombre relleno lo añadirá a la consulta
 		if (b.getNombre()!=null) {
-			sql.append(" AND name LIKE ?" );
+			sql.append(" AND Usuario.name LIKE ?" );
 		}
 		if (b.getApellidos()!=null){
-			sql.append(" AND surname LIKE ?");
+			sql.append(" AND Usuario.surname LIKE ?");
 		}
 
 		if (b.getNombreUsuario()!=null){
-			sql.append(" AND nameUsuario LIKE ?");
+			sql.append(" AND Usuario.nameUsuario LIKE ?");
 		}
 		if (b.getDepartamento()!=null){
-			sql.append(" AND idDepartament =?");
+			sql.append(" AND Usuario.idDepartament =?");
 		}
 		if (b.getempresa()!=null){
-			sql.append(" AND idCompany =?");
+			sql.append(" AND Usuario.idCompany =?");
 		}
 		
 		System.out.println(b.getNombre().toString() + b.getApellidos().toString() + b.getNombreUsuario().toString() );
@@ -109,8 +115,8 @@ private Connection con = null;
 	        mapper.setCampo("correo", rs.getString("correo"));
 	        mapper.setCampo("picture", rs.getString("picture"));
 	        mapper.setCampo("admin", rs.getString("admin"));
-	        mapper.setCampo("idCompany", rs.getString("idCompany"));
-	        mapper.setCampo("idDepartament", rs.getString("idDepartament"));
+	        mapper.setCampo("nameCompany", rs.getString("nameCompany"));
+	        mapper.setCampo("nameDepartament", rs.getString("nameDepartament"));
 	        result.add(mapper);
 	        
 	        System.out.println(mapper.toString());
