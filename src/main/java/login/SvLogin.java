@@ -45,7 +45,7 @@ public class SvLogin extends HttpServlet {
 		 */
 		
 		Login login = new Login (request.getParameter("nombreUsuario"), request.getParameter("passw"));
-
+		System.out.println(login.toString());
 		try {
 			if (login.verificarUsuario()){
 				//Si el login es correcto , redirigimos a pagina principal

@@ -67,10 +67,13 @@ public class ConsultaUserWebFiltro extends HttpServlet {
 				b1.setApellidos(apellidos);
 				}
 				if (request.getParameter("departament")!= null) {
+					verificarDepartamento=Integer.parseInt(request.getParameter("departament"));
+					if ((verificarDepartamento>0)&&(verificarDepartamento<6)) {
 					departamento= request.getParameter("departament");
 					System.out.println("El departamento es " + departamento);
 					//sql.append(" AND departamento = " + departamento);
 					b1.setDepartamento((Integer.parseInt(departamento)));
+					}//fin verificarDepartamento
 					}
 				
 				if (request.getParameter("company")!= null) {

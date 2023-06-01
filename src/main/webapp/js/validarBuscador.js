@@ -17,7 +17,7 @@ function validateForm() {
     var usuarioRegex = /^[a-zA-Z]{1,10}$/;
 
     // RegEx para validar el departamento y la empresa
-    var depEmpRegex = /^[1-4]$/;
+    var depEmpRegex = /^[1-6]$/;
 
     // Contador de errores
     var errores = 0;

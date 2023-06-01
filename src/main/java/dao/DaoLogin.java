@@ -73,8 +73,8 @@ public class DaoLogin {
 			existe = true;
 		}
 		//cerramos conexiones rs y ps
-		rs.close();
 		ps.close();
+		
 
 	} catch (SQLException e) {
 		System.out.println("Error conectando base de datos");
