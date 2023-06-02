@@ -35,7 +35,7 @@ $(document).ready(function(){
     });
 });
 */
-
+/*
 $(document).ready(function(){
     $.ajax({
         url: 'ModificarUserWeb',
@@ -80,3 +80,44 @@ $('#formularioUsuario2').on('submit', function(e) {
     });
 });
 
+*/
+
+$(document).ready(function(){
+    $.ajax({
+        url: 'ModificarUserWeb',
+        type: 'get',
+        dataType: 'json',
+        success: function(response){
+            var select = $('#select-user-modify');
+            $.each(response, function(i, user){
+                var opt = $('<option>');
+                opt.val(user.campos.nameUsuario);
+                opt.text(user.campos.nameUsuario);
+                select.append(opt);
+            });
+            console.log(response);
+        },
+        error: function(jqXHR, textStatus, errorThrown){
+            console.log(textStatus, errorThrown);
+        }
+    });
+});
+
+$('#formularioUsuario2').on('submit', function(e) {
+    e.preventDefault();  
+    var selectUserModify = $('#select-user-modify').val();  
+
+    var formData = $(this).serialize() + '&select-user-modify=' + encodeURIComponent(selectUserModify);
+
+    $.ajax({
+        url: $(this).attr('action'),  
+        type: 'POST',  
+        data: formData,  
+        success: function(response) {
+            console.log(response);
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            console.log(textStatus, errorThrown);
+        }
+    });
+});

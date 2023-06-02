@@ -112,7 +112,7 @@ public class AdminWeb extends UserWeb{
 			
 			DaoUserWeb daol1 = new DaoUserWeb();
 			
-			daol1.insertarAdminCompleto(this);
+			daol1.ModificarUser(this);
 			
 		}
 

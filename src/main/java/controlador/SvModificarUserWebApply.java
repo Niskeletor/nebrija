@@ -48,12 +48,12 @@ public class SvModificarUserWebApply extends HttpServlet {
 		String nombre= request.getParameter("input-user-name2");
 		String apellidos= request.getParameter("input-user-surname2");
 		String email= request.getParameter("input-Email2");
-		String nombreUsuario2 = request.getParameter("select-user-modify");
-		String passw = request.getParameter("input-Password");
-		String empresa2 = request.getParameter("input-Password");
-		String departamento2 = request.getParameter("input-Password");
+		String nombreUsuario2 = request.getParameter("input-user-name2");
+		String passw = request.getParameter("input-Password2");
+		String empresa2 = request.getParameter("select-company2");
+		String departamento2 = request.getParameter("select-departament2");
 		
-		
+		// nombre , apellidos , email, passw, empresa2, departamento2
 		
 		//CONTROL VARIABLES
 		System.out.println("Nombre Usuario: " + nombreUsuario);
@@ -63,7 +63,7 @@ public class SvModificarUserWebApply extends HttpServlet {
 		System.out.println("email: " + email);
 
         
-
+			/* 
 		String departamento= request.getParameter("select-departament");
 				//PARSEAR!!
 		
@@ -115,7 +115,7 @@ public class SvModificarUserWebApply extends HttpServlet {
 	}
 		System.out.println("Empresa: " + empresa);
 		System.out.println("Empresa: " + empresaSelect);
-		
+		*/
 	
 		
 		
@@ -129,13 +129,19 @@ public class SvModificarUserWebApply extends HttpServlet {
 		
 			
 			
-			
+			// nombre , apellidos , email, passw, empresa2, departamento2
 			
 			//crear objeto 
-			AdminWeb z1 = new AdminWeb(nombre, apellidos, nombreUsuario, passw, email, empresaSelect, departamentoId);
+			AdminWeb t1 = new AdminWeb();
+			//AdminWeb z1 = new AdminWeb(nombre, apellidos, nombreUsuario, passw, email, empresaSelect, departamentoId);
+
+			if (nombre!=null){
+				System.out.println("El nombre para el objeto es "  + nombre );
+			}
 			//super(nombre, apellidos, nombreUsuario, passw, email, foto, administrador, departamento, empresa);
 			try {
-			    z1.insertar();
+			 //   z1.insertar();
+				t1.modificar();
 			    System.out.println("Intentando Introducir datos");
 			} catch (SQLIntegrityConstraintViolationException e) {
 			    System.out.println("Entrada duplicada para 'nameUsuario'");
