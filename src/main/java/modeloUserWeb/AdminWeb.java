@@ -103,12 +103,18 @@ public class AdminWeb extends UserWeb{
 	 public void insertar() throws SQLException {
 			
 			DaoUserWeb daol1 = new DaoUserWeb();
-			//daol1.insertar(this);
+			
 			daol1.insertarAdminCompleto(this);
 			
 		}
 
-
+	 public void modificar() throws SQLException {
+			
+			DaoUserWeb daol1 = new DaoUserWeb();
+			
+			daol1.insertarAdminCompleto(this);
+			
+		}
 
 
 	 

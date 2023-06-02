@@ -1,4 +1,5 @@
 package controlador;
+import modeloUserWeb.AdminWeb;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -6,6 +7,9 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
+import java.sql.SQLSyntaxErrorException;
 
 /**
  * Servlet implementation class SvModificarUserWebApply
@@ -34,7 +38,125 @@ public class SvModificarUserWebApply extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		
+		/**
+		 * Capturamos todas las variables posibles que nos puedan lanzar desde
+		 * el post
+		 */
+		
+		String nombreUsuario = request.getParameter("select-user-modify");
+		String nombre= request.getParameter("input-user-name2");
+		String apellidos= request.getParameter("input-user-surname2");
+		String email= request.getParameter("input-Email2");
+		String nombreUsuario2 = request.getParameter("select-user-modify");
+		String passw = request.getParameter("input-Password");
+		String empresa2 = request.getParameter("input-Password");
+		String departamento2 = request.getParameter("input-Password");
+		
+		
+		
+		//CONTROL VARIABLES
+		System.out.println("Nombre Usuario: " + nombreUsuario);
+		System.out.println("password: " + passw);
+		System.out.println("Nombre : " + nombre);
+		System.out.println("apellidos: " + apellidos);
+		System.out.println("email: " + email);
+
+        
+
+		String departamento= request.getParameter("select-departament");
+				//PARSEAR!!
+		
+		System.out.println("Departamentoo: " + departamento);
+		int departamentoId =0;
+			
+				if (departamento == null || departamento.equals("Elegir departamento")) {
+				    // El usuario no seleccionó un departamento
+					
+				} else {
+				    // El usuario seleccionó un departamento, y departamento contiene el valor del departamento seleccionado
+				     departamentoId = Integer.parseInt(departamento);
+				    // Ahora departamentoId es el id del departamento seleccionado, como un int
+				}
+		
+		
+		String empresa="";
+		Integer empresaSelect= Integer.parseInt(request.getParameter("select-company"));
+		switch (empresaSelect) {
+	    case 1:
+	    {	
+	    	empresa="Harkonnen";
+	        break;
+	    }   
+	    case 2:
+	    {	
+	    	empresa="Atreides";
+	        
+	        break;
+	    }
+	    case 3:
+	    {	
+	    	empresa="Corrino";
+	        break;
+	    }   
+	    case 4:
+	    {	
+	    	empresa="IT";
+	        break;
+	    }
+	    case 5:
+	    {	
+	    	empresa="Mantenimiento";
+	        break;
+	    }
+	    default:
+	        empresa = "null";
+	        
+	}
+		System.out.println("Empresa: " + empresa);
+		System.out.println("Empresa: " + empresaSelect);
+		
+	
+		
+		
+		
+		
+		
+		/*Si en el formulario dependiendo de el estado
+		 * creamos  un objeto tipo administrador o consultor
+		 *  para poder aplicar futuras funcionalidades
+		*/
+		
+			
+			
+			
+			
+			//crear objeto 
+			AdminWeb z1 = new AdminWeb(nombre, apellidos, nombreUsuario, passw, email, empresaSelect, departamentoId);
+			//super(nombre, apellidos, nombreUsuario, passw, email, foto, administrador, departamento, empresa);
+			try {
+			    z1.insertar();
+			    System.out.println("Intentando Introducir datos");
+			} catch (SQLIntegrityConstraintViolationException e) {
+			    System.out.println("Entrada duplicada para 'nameUsuario'");
+			    response.setStatus(HttpServletResponse.SC_CONFLICT);  // 409 Conflict
+			    response.getWriter().write("Entrada duplicada para 'nameUsuario'");
+			    e.printStackTrace();
+			} catch (SQLSyntaxErrorException e) {
+			    System.out.println("La tabla no existe en la base de datos");
+			    response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);  // 500 Internal Server Error
+			    response.getWriter().write("La tabla no existe en la base de datos");
+			    e.printStackTrace();
+			} catch (SQLException e) {
+			    // Manejo general de excepciones de SQL
+			    e.printStackTrace();
+			}
+
+		
+		
+		
+		
+		
 	}
 
 }

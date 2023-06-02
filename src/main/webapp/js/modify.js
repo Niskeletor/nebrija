@@ -56,3 +56,27 @@ $(document).ready(function(){
         }
     });
 });
+
+$('#formularioUsuario2').on('submit', function(e) {
+    e.preventDefault();  // Prevenir que la pagina se recargue
+    var selectUserModify = $('#select-user-modify').val();  // Cargar usuario seleccionado
+    var formData = $(this).serialize();  // Recopilas datos del segundo formulario
+
+
+    formData += '&select-user-modify=' + encodeURIComponent(selectUserModify);
+
+    // Enviar a traves de Ajax
+    $.ajax({
+        url: $(this).attr('http://localhost:8080/DaedalusManager/SvModificarUserWebApply'),  // Url
+        type: 'POST',  // The HTTP method to use
+        data: formData,  // The data to send
+        success: function(response) {
+            // Mostrar mensaje exito
+            console.log(response);
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            console.log(textStatus, errorThrown);
+        }
+    });
+});
+
