@@ -1,5 +1,6 @@
 package controlador;
 import modeloUserWeb.AdminWeb;
+import jakarta.servlet.http.Part;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -44,17 +45,17 @@ public class SvModificarUserWebApply extends HttpServlet {
 		 * el post
 		 */
 		
-		String nombreUsuario = request.getParameter("select-user-modify");
-		String nombre= request.getParameter("input-user-name2");
-		String apellidos= request.getParameter("input-user-surname2");
-		String email= request.getParameter("input-Email2");
-		String nombreUsuario2 = request.getParameter("input-user-name2");
-		String passw = request.getParameter("input-Password2");
-		String empresa2 = request.getParameter("select-company2");
-		String departamento2 = request.getParameter("select-departament2");
+		String nombreUsuario = request.getParameter("select-user-modificado").toString();
+		String nombre= request.getParameter("input-user-name2").toString();
+		String apellidos= request.getParameter("input-user-surname2").toString();
+		String email= request.getParameter("input-Email2").toString();
+		String nombreUsuario2 = request.getParameter("input-user-name2").toString();
+		String passw = request.getParameter("input-Password2").toString();
+		String empresa2 = request.getParameter("select-company2").toString();
+		String departamento2 = request.getParameter("select-departament2").toString();
 		
 		// nombre , apellidos , email, passw, empresa2, departamento2
-		
+	//	
 		//CONTROL VARIABLES
 		System.out.println("Nombre Usuario: " + nombreUsuario);
 		System.out.println("password: " + passw);
@@ -128,15 +129,35 @@ public class SvModificarUserWebApply extends HttpServlet {
 		*/
 		
 			
+		
+		
+		
 			
 			// nombre , apellidos , email, passw, empresa2, departamento2
 			
 			//crear objeto 
 			AdminWeb t1 = new AdminWeb();
 			//AdminWeb z1 = new AdminWeb(nombre, apellidos, nombreUsuario, passw, email, empresaSelect, departamentoId);
+			if (nombreUsuario!=null) {
+				System.out.println("El username para el objeto es "  + nombreUsuario);
+				t1.setNombreUsuario(nombreUsuario);
+			}
 
 			if (nombre!=null){
 				System.out.println("El nombre para el objeto es "  + nombre );
+				t1.setNombre(nombre);
+			}
+			if (apellidos!=null){
+				System.out.println("El apellido para el objeto es "  + apellidos);
+				t1.setApellidos(apellidos);
+			}
+			if (email!=null){
+				System.out.println("El email para el objeto es "  + email);
+				t1.setEmail(email);
+			}
+			if (passw!=null){
+				System.out.println("El passw para el objeto es "  + passw);
+				t1.setPassw(passw);
 			}
 			//super(nombre, apellidos, nombreUsuario, passw, email, foto, administrador, departamento, empresa);
 			try {

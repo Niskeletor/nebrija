@@ -107,6 +107,16 @@ public class AdminWeb extends UserWeb{
 			daol1.insertarAdminCompleto(this);
 			
 		}
+	 
+	 /**
+	  * Método que permite modificar ciertos elementos de un usuario web
+	  * para ello se crea un objeto de la clase DaoUserWeb
+	  * para permitir hacer la conexion con la BBDD
+	  * Se modificarán tantos atributos como se haya instanciado 
+	  * la Clase AdminWeb
+	  * 
+	  * @throws SQLException
+	  */
 
 	 public void modificar() throws SQLException {
 			

@@ -1,33 +1,28 @@
-import static org.junit.Assert.*;
-import static org.mockito.Mockito.*;
-import org.junit.Test;
-import java.sql.*;
+public void modificar(AdminWeb a) throws SQLException {
+    String updateSql = "UPDATE useradmin SET";
+    ArrayList<String> updateParts = new ArrayList<>();
+    ArrayList<Object> parameters = new ArrayList<>();
 
-public class UsuarioDaoTest {
-
-    @Test
-    public void verificarUsuarioTest() throws SQLException {
-
-        // Crear mock de los objetos
-        Connection con = mock(Connection.class);
-        PreparedStatement ps = mock(PreparedStatement.class);
-        ResultSet rs = mock(ResultSet.class);
-
-        // Configurar el comportamiento de los mocks
-        when(con.prepareStatement(anyString())).thenReturn(ps);
-        when(ps.executeQuery()).thenReturn(rs);
-        when(rs.next()).thenReturn(true);
-
-        // Crear una instancia del objeto a probar
-        UsuarioDao dao = new UsuarioDao(con);
-
-        // Crear un Login ficticio
-        Login login = new Login("nombreUsuario", "contrasenia");
-
-        // Llamar al método a probar
-        boolean existe = dao.verificarUsuario(login);
-
-        // Verificar el resultado
-        assertTrue(existe);
+    if (a.getNombre() != null) {
+        updateParts.add(" name = ?");
+        parameters.add(a.getNombre());
     }
+
+    if (a.getPassw() != null) {
+        updateParts.add(" contra = ?");
+        parameters.add(a.getPassw());
+    }
+
+    // Aquí puede agregar las otras verificaciones para los otros campos que desee actualizar, como apellido, correo electrónico, etc.
+
+    updateSql += String.join(",", updateParts) + " WHERE nameUsuario = ?";
+    parameters.add(a.getNombreUsuario());
+
+    PreparedStatement ps = con.prepareStatement(updateSql);
+    for (int i = 0; i < parameters.size(); i++) {
+        ps.setObject(i + 1, parameters.get(i));
+    }
+
+    ps.executeUpdate();
+    ps.close();
 }

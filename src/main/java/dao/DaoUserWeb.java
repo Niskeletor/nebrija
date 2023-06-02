@@ -189,10 +189,16 @@ private Connection con = null;
 		if (a.getPassw() != null) {
 	        updateParts.add(" contra = ?");
 	        parameters.add(a.getPassw());
-	        System.out.println("he detectado passwd : " +a.getPassw().toString() );
+	        System.out.println("he detectado passwd : " +a.getEmail().toString() );
 	    }
 		System.out.println("he detectado nombre :");
-		// Aquí puede agregar las otras verificaciones para los otros campos que desee actualizar, como apellido, correo electrónico, etc.
+		
+		if (a.getEmail() != null) {
+	        updateParts.add(" correo = ?");
+	        parameters.add(a.getEmail());
+	        System.out.println("he detectado email : " +a.getEmail().toString() );
+	    }
+		
 
 	    updateSql += String.join(",", updateParts) + " WHERE nameUsuario = ?";
 	    parameters.add(a.getNombreUsuario());
