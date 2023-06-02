@@ -41,6 +41,7 @@
     <script src="./js/listar.js"></script>
     <script src="./js/validarAlta.js"></script>
     <script src="./js/validarBuscador.js"></script>
+    <script src="./js/modify.js"></script>
     <link href="assets/css/estiloListas2.css" rel="stylesheet">
     <!-- Iconos de validacion Awesome Icon-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
@@ -412,11 +413,9 @@
                 </div>  <!--FIN Alta Usuarios  -->
                 <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
 
-                    Nesciunt totam et. Consequuntur magnam aliquid eos nulla dolor iure eos quia. Accusantium distinctio omnis et atque fugiat. Itaque doloremque aliquid sint quasi quia distinctio similique. Voluptate nihil recusandae mollitia dolores. Ut laboriosam voluptatum dicta.
+                    
                     <!-- iNICIO LISTAR CONSULTA USUARIOS -->
-                    Sunt est soluta temporibus accusantium neque nam maiores cumque temporibus. Tempora libero non est unde veniam est qui dolor. Ut sunt iure rerum quae quisquam autem eveniet perspiciatis odit. Fuga sequi sed ea saepe at unde.
-
-                    blabla
+                    
               
                     
       
@@ -512,7 +511,7 @@
                     <!-- FIN LISTAR CONSULTA USUARIOS-->
                 </div>
                 <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-                  Saepe animi et soluta ad odit soluta sunt. Nihil quos omnis animi debitis cumque. Accusantium quibusdam perspiciatis qui qui omnis magnam. Officiis accusamus impedit molestias nostrum veniam. Qui amet ipsum iure. Dignissimos fuga tempore dolor.
+                 
                     <!-- MODIFICAR USUARIOS-->      
                     <div class="card">
                       <div class="card-body">
@@ -534,7 +533,7 @@
 
                               <!-- FORMULARIOS PARA CAMBIAR nameUsuario, name, surname, correo, admin, nameCompany, nameDepartament-->
                               <p>Modificar parámetros</p>
-                              <form id="formularioUsuario2" action="UpdateUserWeb" method="post" enctype="multipart/form-data">
+                              <form id="formularioUsuario2" action="SvModificarUserWebApply" method="post" enctype="multipart/form-data">
                                 <div class="row mb-3">
                                   <label for="input-user-name2" class="col-sm-2 col-form-label">Nombre</label>
                                   <div class="col-sm-10">
@@ -655,20 +654,7 @@
 
     <!-- IMAGEN DE FONDO     OLAS        -->
     
-<div>
-  <svg class="wavesDash" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-  viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
-  <defs>
-    <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
-  </defs>
-  <g class="parallax">
-    <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7" />
-    <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(214,214,214,1)" />
-    <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(0,87,208,1)" />
-    <use xlink:href="#gentle-wave" x="48" y="7" fill="rgba(75,150,255,1)" />
-  </g>
-  </svg>
-</div>
+
 
 
 <!-- IMAGEN DE FONDO OLAS -->
@@ -676,6 +662,21 @@
     
 
   </main><!-- End #main -->
+
+  <div>
+    <svg class="wavesDash" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+    viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+    <defs>
+      <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+    </defs>
+    <g class="parallax">
+      <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7" />
+      <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(214,214,214,1)" />
+      <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(0,87,208,1)" />
+      <use xlink:href="#gentle-wave" x="48" y="7" fill="rgba(75,150,255,1)" />
+    </g>
+    </svg>
+  </div>
 
   <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">

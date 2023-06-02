@@ -4,7 +4,7 @@
 .wavesDash {
   position: fixed;
   bottom: 0;
-  z-index: 9999; /* Parametro para superponer*/
+  z-index: 800; /* Parametro para superponer*/
   width: 100%;
   
   

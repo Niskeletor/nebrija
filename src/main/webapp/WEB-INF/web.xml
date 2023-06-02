@@ -115,4 +115,24 @@
     <servlet-name>ConsultaUserWebFiltro</servlet-name>
     <url-pattern>/ConsultaUserWebFiltro</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ModificarServletUserWebApply</display-name>
+    <servlet-name>ModificarServletUserWebApply</servlet-name>
+    <servlet-class>controlador.ModificarServletUserWebApply</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ModificarServletUserWebApply</servlet-name>
+    <url-pattern>/ModificarServletUserWebApply</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SvModificarUserWebApply</display-name>
+    <servlet-name>SvModificarUserWebApply</servlet-name>
+    <servlet-class>controlador.SvModificarUserWebApply</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SvModificarUserWebApply</servlet-name>
+    <url-pattern>/SvModificarUserWebApply</url-pattern>
+  </servlet-mapping>
 </web-app>

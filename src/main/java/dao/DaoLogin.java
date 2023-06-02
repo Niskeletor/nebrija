@@ -9,6 +9,7 @@ import com.google.gson.Gson;
 
 
 import modelo.Login;
+import modeloUserWeb.AdminWeb;
 
 
 
@@ -47,6 +48,36 @@ public class DaoLogin {
 	ps.close();
 	
 	}
+	
+	public void modificar (AdminWeb a) throws SQLException {
+	    String updateSql = "UPDATE Usuario SET";
+	    ArrayList<String> updateParts = new ArrayList<>();
+	    ArrayList<String> parameters = new ArrayList<>();
+
+	    if (a.getNombre() != null) {
+	        updateParts.add(" name = ?");
+	        parameters.add(a.getNombre());
+	    }
+
+	   /* if (l.getContra() != null) {
+	        updateParts.add(" contra = ?");
+	        parameters.add(l.getContra());
+	    }*/
+
+	    // ... lo mismo para los otros campos ...
+
+	    updateSql += String.join(",", updateParts) + " WHERE nameUsuario = ?";
+	    parameters.add(a.getNombre());
+
+	    PreparedStatement ps = con.prepareStatement(updateSql);
+	    for (int i = 0; i < parameters.size(); i++) {
+	        ps.setString(i + 1, parameters.get(i));
+	    }
+
+	    ps.executeUpdate();
+	    ps.close();
+	}
+
 
 	/**
 	 * Metodo para verificar si el usuario existe para entrar en Dashboard de la web

@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
+
 import com.google.gson.Gson;
 
 import modelo.Login;
@@ -35,6 +37,45 @@ private Connection con = null;
 		//el 0 elegiremos la base de datos de useradmin 
 		// se pueden ver en DBCOnexion
 	}
+	
+	public List<BuscadorUserWeb> buscarParaSelect() throws SQLException {
+	    List<BuscadorUserWeb> usuarios = new ArrayList<>();
+	    
+	    String query = "SELECT * FROM Usuario";  // Consulta con SQL
+	    PreparedStatement ps = con.prepareStatement(query);
+	    ResultSet rs = ps.executeQuery();
+
+	    while (rs.next()) {
+	        String nombre = rs.getString("name");
+	        String apellidos = rs.getString("surname");
+	        String nombreUsuario = rs.getString("nameUsuario");
+	        String passw = rs.getString("contra");
+	        String email = rs.getString("correo");
+	        String foto = rs.getString("picture");
+	        Boolean administrador = rs.getBoolean("admin");
+	        Integer departamento = rs.getInt("idDepartament");
+	        Integer empresa = rs.getInt("idCompany");
+	        int id = rs.getInt("id");   // Verificar el nombre de las columnas
+
+	        BuscadorUserWeb usuario = new BuscadorUserWeb(nombre, apellidos, nombreUsuario, passw, email, foto, administrador, departamento, empresa, id, null, null);
+	        usuarios.add(usuario);
+	    }
+	    
+	    rs.close();
+	    ps.close();
+
+	    return usuarios;
+	}
+
+
+	
+	
+	
+	
+	
+	
+	
+	
 	/**
 	 * Método que busca usuarios según el filtro proporcionado.
 	 * Devuelve un ArrayList de objetos ListadorUserWebMapper con la información de los usuarios encontrados.
@@ -42,6 +83,7 @@ private Connection con = null;
 	 * @return ArrayList de objetos ListadorUserWebMapper con la información de los usuarios encontrados.
 	 * @throws SQLException si ocurre un error al realizar la consulta en la base de datos.
 	 */
+	
 	
 	
 	public ArrayList<ListadorUserWebMapper> buscarPorFiltro (BuscadorUserWeb b) throws SQLException{
@@ -264,60 +306,7 @@ private Connection con = null;
 	}
 
 	
-	/*
-	///AQUI APARECE EL LISTADO PARA DAEDALUS
-	public ArrayList<ListaladorWebMapper> obtener() throws SQLException{
-		
-		
-		//PreparedStatement ps = con.prepareStatement("SELECT  Usuario.IdUsuario, Usuario.name, Usuario.surname,  Usuario.nameUsuario,  Usuario.contra,  Usuario.correo, Usuario.picture, Usuario.admin, Company.nameCompany, Departament.nameDepartament FROM  Usuario  LEFT JOIN  Company ON Usuario.idCompany = Company.idCompany  LEFT JOIN  Departament ON Usuario.idDepartament = Departament.idDepartament;");
-		//PreparedStatement ps = con.prepareStatement("SELECT  Usuario.IdUsuario, Usuario.name, Usuario.surname,  Usuario.nameUsuario,  Usuario.contra,  Usuario.correo, Usuario.picture, Usuario.admin, Company.nameCompany, Departament.nameDepartament FROM  Usuario  LEFT JOIN  Company ON Usuario.idCompany = Company.idCompany  LEFT JOIN  Departament ON Usuario.idDepartament = Departament.idDepartament");
-		
-		PreparedStatement ps = con.prepareStatement("SELECT name, surname FROM Usuario ");
-		
-		
-		ResultSet rs = ps.executeQuery();
-		
-		//ArrayList<ConsultorWeb> result = null;
-		ArrayList<ListaladorWebMapper> result = null;
-		while (rs.next()) {
-			
-			if (result == null) {
-				result = new ArrayList<>();
-				
-			}
-			//result.add(new ListaladorWebMapper (rs.getString("name"), (rs.getString("surname"), (rs.getString("nameUsuario"), (rs.getString("contra"), (rs.getString("correo"), (rs.getString("picture"), (rs.getString("admin"), (rs.getString("nameCompany"),(rs.getString("nameDepartament"));
-			//result.add(new ListaladorWebMapper (  rs.getString("name"), rs.getString("surname"), rs.getString("nameUsuario"), rs.getString("contra"), rs.getString("correo"), rs.getString("picture"), rs.getString("admin"), rs.getString("nameCompany"),rs.getString("nameDepartament")          ));
-			
-			result.add(new ListaladorWebMapper (  rs.getString("name"), rs.getString("surname")  ));
-			
-			
-			//result.add(new ConsultorWeb(  rs.getString("nameUsuario"),rs.getString("contra"))  );
-			System.out.println(result.toString());
-			//public Login(String name, String contra, int id)
-			
-			
-		}
-		 
-		System.out.println(result.toString());
-		return result;
-	}
 	
-	//Metodo que llama a otro metodo para solicitar informacion a la BBDD
-	// y convertirlo en JSON
-	// el otro metodo que lo complementa es obtener()
-	
-	public String obtenerenJSON() throws SQLException {
-		
-		String jsonFinal ="";
-		
-		Gson gsonFinal = new Gson();
-		jsonFinal = gsonFinal.toJson(this.obtener());
-		System.out.println(jsonFinal); 
-		
-		return jsonFinal;
-	}
-	
-	----------------------- */
 	
 	
 	// improvisación de filtro

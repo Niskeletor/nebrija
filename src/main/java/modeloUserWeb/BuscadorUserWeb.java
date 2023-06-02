@@ -1,8 +1,13 @@
 package modeloUserWeb;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
-
+import java.util.List;
+import java.util.ArrayList;
 import dao.DaoUserWeb;
+import dao.DBConexion;
 
 public class BuscadorUserWeb extends UserWeb {
     
@@ -40,6 +45,35 @@ public class BuscadorUserWeb extends UserWeb {
     public void setNombreDepartamento(String nombreDepartamento) {
         this.nombreDepartamento = nombreDepartamento;
     }
+    
+   
+    public List<BuscadorUserWeb> buscarParaSelect() throws SQLException {
+        List<BuscadorUserWeb> usuarios = new ArrayList<>();
+
+        // Aquí obtienes la conexión.
+        Connection con = DBConexion.getConnection(0);  
+
+        String query = "SELECT * FROM Usuario";
+        PreparedStatement ps = con.prepareStatement(query);
+        ResultSet rs = ps.executeQuery();
+
+        while (rs.next()) {
+            // Tu código
+        }
+
+        rs.close();
+        ps.close();
+
+        return usuarios;
+    }
+
+
+    
+    
+    
+    
+    
+    
     
     public void buscarPorFiltro() throws SQLException {
     	
