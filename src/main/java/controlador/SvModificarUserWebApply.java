@@ -64,66 +64,11 @@ public class SvModificarUserWebApply extends HttpServlet {
 		System.out.println("email: " + email);
 
         
-			/* 
-		String departamento= request.getParameter("select-departament");
-				//PARSEAR!!
-		
-		System.out.println("Departamentoo: " + departamento);
-		int departamentoId =0;
-			
-				if (departamento == null || departamento.equals("Elegir departamento")) {
-				    // El usuario no seleccionó un departamento
-					
-				} else {
-				    // El usuario seleccionó un departamento, y departamento contiene el valor del departamento seleccionado
-				     departamentoId = Integer.parseInt(departamento);
-				    // Ahora departamentoId es el id del departamento seleccionado, como un int
-				}
-		
-		
-		String empresa="";
-		Integer empresaSelect= Integer.parseInt(request.getParameter("select-company"));
-		switch (empresaSelect) {
-	    case 1:
-	    {	
-	    	empresa="Harkonnen";
-	        break;
-	    }   
-	    case 2:
-	    {	
-	    	empresa="Atreides";
-	        
-	        break;
-	    }
-	    case 3:
-	    {	
-	    	empresa="Corrino";
-	        break;
-	    }   
-	    case 4:
-	    {	
-	    	empresa="IT";
-	        break;
-	    }
-	    case 5:
-	    {	
-	    	empresa="Mantenimiento";
-	        break;
-	    }
-	    default:
-	        empresa = "null";
-	        
-	}
-		System.out.println("Empresa: " + empresa);
-		System.out.println("Empresa: " + empresaSelect);
-		*/
-	
 		
 		
 		
 		
-		
-		/*Si en el formulario dependiendo de el estado
+		/**Si en el formulario dependiendo de el estado
 		 * creamos  un objeto tipo administrador o consultor
 		 *  para poder aplicar futuras funcionalidades
 		*/

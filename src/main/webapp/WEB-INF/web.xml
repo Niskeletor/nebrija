@@ -135,4 +135,14 @@
     <servlet-name>SvModificarUserWebApply</servlet-name>
     <url-pattern>/SvModificarUserWebApply</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AltaMonitor</display-name>
+    <servlet-name>AltaMonitor</servlet-name>
+    <servlet-class>controladorInventario.AltaMonitor</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AltaMonitor</servlet-name>
+    <url-pattern>/AltaMonitor</url-pattern>
+  </servlet-mapping>
 </web-app>

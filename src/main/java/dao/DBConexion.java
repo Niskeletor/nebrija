@@ -50,9 +50,9 @@ public class DBConexion {
 		break;
 		}
 		case 1: {
-			basedeDatos="jdbc:mysql://localhost:3306/web";
+			basedeDatos="jdbc:mysql://localhost:3306/inventario";
 			userBBDD="root";
-			passBBDD="123456";
+			passBBDD="Spigen2000!!";
 			
 			break;
 			}
