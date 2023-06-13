@@ -1,23 +1,21 @@
 package modeloDispositivos;
 
-public class DispositivoPortatil extends Dispositivo{
-	
+public class DispositivoPortatil extends Dispositivo {
+
 	String office;
 	String antivirus;
 	String cpu;
 	String ram;
 	String hd;
-	
 
-	
-	//Constructor completo
+	// Constructor completo
 	public DispositivoPortatil(int id, String marca, String modelo, String numSerie, String notas, String estado,
 			Integer empresa, Boolean averiado, String usuario) {
 		super(id, marca, modelo, numSerie, notas, estado, empresa, averiado, usuario);
-		
+
 	}
-	
-	//Constructor sin id ni averiado
+
+	// Constructor sin id ni averiado
 
 	public DispositivoPortatil(String marca, String modelo, String numSerie, String notas, String estado,
 			Integer empresa, String usuario) {
@@ -25,16 +23,15 @@ public class DispositivoPortatil extends Dispositivo{
 		// TODO Auto-generated constructor stub
 	}
 
-	
-	//Constructor sin  id ni usuario ni averiado	
+	// Constructor sin id ni usuario ni averiado
 	public DispositivoPortatil(String marca, String modelo, String numSerie, String notas, String estado,
 			Integer empresa) {
 		super(marca, modelo, numSerie, notas, estado, empresa);
 		// TODO Auto-generated constructor stub
 	}
-	
-	//Constructor vacio
-	public DispositivoPortatil(){
+
+	// Constructor vacio
+	public DispositivoPortatil() {
 		super();
 	}
 
@@ -44,11 +41,5 @@ public class DispositivoPortatil extends Dispositivo{
 				+ ", notas=" + notas + ", estado=" + estado + ", empresa=" + empresa + ", averiado=" + averiado
 				+ ", usuario=" + usuario + "]";
 	}
-	
-	
-	
-	
-	
-	
 
 }

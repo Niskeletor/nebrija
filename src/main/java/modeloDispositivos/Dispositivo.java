@@ -1,16 +1,18 @@
 package modeloDispositivos;
 
 /**
- *  Clase Abstracta creada para reflejar los elementos del inventario
- *  todos ellos tienen en comun id, marca, modelo, numero de serie, notas , estado, empresa , averiado y usuario
- *  
- *  A primer indicio son los campos que se van a utilizar con la BBDD
+ * Clase Abstracta creada para reflejar los elementos del inventario todos ellos
+ * tienen en comun id, marca, modelo, numero de serie, notas , estado, empresa ,
+ * averiado y usuario
+ * 
+ * A primer indicio son los campos que se van a utilizar con la BBDD
+ * 
  * @author pablonr
  *
  */
 
 public abstract class Dispositivo {
-	
+
 	int id;
 	String marca;
 	String modelo;
@@ -20,7 +22,7 @@ public abstract class Dispositivo {
 	Integer empresa;
 	Boolean averiado;
 	String usuario;
-	
+
 	// Constructor completo
 	public Dispositivo(int id, String marca, String modelo, String numSerie, String notas, String estado,
 			Integer empresa, Boolean averiado, String usuario) {
@@ -36,8 +38,7 @@ public abstract class Dispositivo {
 		this.usuario = usuario;
 	}
 
-	
-		//Constructor sin id ni usuario ni averiado
+	// Constructor sin id ni usuario ni averiado
 	public Dispositivo(String marca, String modelo, String numSerie, String notas, String estado, Integer empresa) {
 		super();
 		this.marca = marca;
@@ -48,133 +49,105 @@ public abstract class Dispositivo {
 		this.empresa = empresa;
 	}
 
-		//Constructor sin id ni averiado
-		public Dispositivo(String marca, String modelo, String numSerie, String notas, String estado, Integer empresa,
-				String usuario) {
-			super();
-			this.marca = marca;
-			this.modelo = modelo;
-			this.numSerie = numSerie;
-			this.notas = notas;
-			this.estado = estado;
-			this.empresa = empresa;
-			this.usuario = usuario;
-		}
-		//Constructor vario
-		public Dispositivo() {
-			// TODO Auto-generated constructor stub
-		}
+	// Constructor sin id ni averiado
+	public Dispositivo(String marca, String modelo, String numSerie, String notas, String estado, Integer empresa,
+			String usuario) {
+		super();
+		this.marca = marca;
+		this.modelo = modelo;
+		this.numSerie = numSerie;
+		this.notas = notas;
+		this.estado = estado;
+		this.empresa = empresa;
+		this.usuario = usuario;
+	}
 
-		
-		//Getters y Setters
+	// Constructor vario
+	public Dispositivo() {
+		// TODO Auto-generated constructor stub
+	}
 
-		
+	// Getters y Setters
 
-		public int getId() {
-			return id;
-		}
+	public int getId() {
+		return id;
+	}
 
+	public void setId(int id) {
+		this.id = id;
+	}
 
-		public void setId(int id) {
-			this.id = id;
-		}
+	public String getMarca() {
+		return marca;
+	}
 
+	public void setMarca(String marca) {
+		this.marca = marca;
+	}
 
-		public String getMarca() {
-			return marca;
-		}
+	public String getModelo() {
+		return modelo;
+	}
 
+	public void setModelo(String modelo) {
+		this.modelo = modelo;
+	}
 
-		public void setMarca(String marca) {
-			this.marca = marca;
-		}
+	public String getNumSerie() {
+		return numSerie;
+	}
 
+	public void setNumSerie(String numSerie) {
+		this.numSerie = numSerie;
+	}
 
-		public String getModelo() {
-			return modelo;
-		}
+	public String getNotas() {
+		return notas;
+	}
 
+	public void setNotas(String notas) {
+		this.notas = notas;
+	}
 
-		public void setModelo(String modelo) {
-			this.modelo = modelo;
-		}
+	public String getEstado() {
+		return estado;
+	}
 
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
 
-		public String getNumSerie() {
-			return numSerie;
-		}
+	public Integer getEmpresa() {
+		return empresa;
+	}
 
+	public void setEmpresa(Integer empresa) {
+		this.empresa = empresa;
+	}
 
-		public void setNumSerie(String numSerie) {
-			this.numSerie = numSerie;
-		}
+	public Boolean getAveriado() {
+		return averiado;
+	}
 
+	public void setAveriado(Boolean averiado) {
+		this.averiado = averiado;
+	}
 
-		public String getNotas() {
-			return notas;
-		}
+	public String getUsuario() {
+		return usuario;
+	}
 
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
+	}
 
-		public void setNotas(String notas) {
-			this.notas = notas;
-		}
+	// To String
 
-
-		public String getEstado() {
-			return estado;
-		}
-
-
-		public void setEstado(String estado) {
-			this.estado = estado;
-		}
-
-
-		public Integer getEmpresa() {
-			return empresa;
-		}
-
-
-		public void setEmpresa(Integer empresa) {
-			this.empresa = empresa;
-		}
-
-
-		public Boolean getAveriado() {
-			return averiado;
-		}
-
-
-		public void setAveriado(Boolean averiado) {
-			this.averiado = averiado;
-		}
-
-
-		public String getUsuario() {
-			return usuario;
-		}
-
-
-		public void setUsuario(String usuario) {
-			this.usuario = usuario;
-		}
-
-		
-		//To String
-
-		@Override
-		public String toString() {
-			return "Dispositivo [id=" + id + ", marca=" + marca + ", modelo=" + modelo + ", numSerie=" + numSerie
-					+ ", notas=" + notas + ", estado=" + estado + ", empresa=" + empresa + ", averiado=" + averiado
-					+ ", usuario=" + usuario + "]";
-		}
-		
-		
-		
-	
-	
-	
-	
-	
+	@Override
+	public String toString() {
+		return "Dispositivo [id=" + id + ", marca=" + marca + ", modelo=" + modelo + ", numSerie=" + numSerie
+				+ ", notas=" + notas + ", estado=" + estado + ", empresa=" + empresa + ", averiado=" + averiado
+				+ ", usuario=" + usuario + "]";
+	}
 
 }

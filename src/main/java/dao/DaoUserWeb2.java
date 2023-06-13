@@ -11,36 +11,39 @@ import modelo.Login;
 import modeloUserWeb.*;
 
 public class DaoUserWeb2 {
-	
-	
-private Connection con = null;
-	
+
+	private Connection con = null;
+
 	public DaoUserWeb2() throws SQLException {
-		
+
 		con = DBConexion.getConnection(0);
-		//conectar base de datos Importante elegir el numero de las opciones
-		//el 0 elegiremos la base de datos de useradmin 
+		// conectar base de datos Importante elegir el numero de las opciones
+		// el 0 elegiremos la base de datos de useradmin
 		// se pueden ver en DBCOnexion
 	}
+
 	/**
 	 * Método para crear un usuario en la base de datos
+	 * 
 	 * @param a
 	 * @throws SQLException
 	 */
-	
 
-	 public void insertarAdminCompleto (AdminWeb a) throws SQLException {
-	
+	public void insertarAdminCompleto(AdminWeb a) throws SQLException {
+
 		// Codigo para poder insertar un permiso
-		//Antes de hacer un Insert tengo que conectarme
-		
-		//Paso 1 preparar la query - para insertar
-		
-		//PreparedStatement ps = con.prepareStatement("INSERT INTO acceso VALUES (ruta,usuario,tipopermiso)");
-		//PreparedStatement ps = con.prepareStatement("INSERT INTO Usuario (nameUsuario,contra, name, surname, correo, picture, idDepartament, idCompany, admin) VALUES (?,?,?,?,?,?,?,?, ?)");
-		 PreparedStatement ps = con.prepareStatement("INSERT INTO Usuario (name,surname, nameUsuario, contra, correo, picture, admin, idDepartament, idCompany) VALUES (?,?,?,?,?,?,?,?, ?)");
-		
-		 
+		// Antes de hacer un Insert tengo que conectarme
+
+		// Paso 1 preparar la query - para insertar
+
+		// PreparedStatement ps = con.prepareStatement("INSERT INTO acceso VALUES
+		// (ruta,usuario,tipopermiso)");
+		// PreparedStatement ps = con.prepareStatement("INSERT INTO Usuario
+		// (nameUsuario,contra, name, surname, correo, picture, idDepartament,
+		// idCompany, admin) VALUES (?,?,?,?,?,?,?,?, ?)");
+		PreparedStatement ps = con.prepareStatement(
+				"INSERT INTO Usuario (name,surname, nameUsuario, contra, correo, picture, admin, idDepartament, idCompany) VALUES (?,?,?,?,?,?,?,?, ?)");
+
 		ps.setString(1, a.getNombre());
 		ps.setString(2, a.getApellidos());
 		ps.setString(3, a.getNombreUsuario());
@@ -50,128 +53,123 @@ private Connection con = null;
 		ps.setBoolean(7, a.getAdministrador());
 		ps.setInt(8, a.getempresa());
 		ps.setInt(9, a.getDepartamento());
-		
-		
+
 		ps.executeUpdate();
 		ps.close();
-		
-		}
-		/**
-		 * Metodo para crear consultor Web
-		 * @param c
-		 * @throws SQLException
-		 */
-	
-	public void insertarConsultor (ConsultorWeb c) throws SQLException {
-		
+
+	}
+
+	/**
+	 * Metodo para crear consultor Web
+	 * 
+	 * @param c
+	 * @throws SQLException
+	 */
+
+	public void insertarConsultor(ConsultorWeb c) throws SQLException {
+
 		// Codigo para poder insertar un permiso
-		//Antes de hacer un Insert tengo que conectarme
-		
-		//Paso 1 preparar la query - para insertar
-		
-		//PreparedStatement ps = con.prepareStatement("INSERT INTO acceso VALUES (ruta,usuario,tipopermiso)");
+		// Antes de hacer un Insert tengo que conectarme
+
+		// Paso 1 preparar la query - para insertar
+
+		// PreparedStatement ps = con.prepareStatement("INSERT INTO acceso VALUES
+		// (ruta,usuario,tipopermiso)");
 		PreparedStatement ps = con.prepareStatement("INSERT INTO web (nombreUsuario,passw) VALUES (?,?)");
-		
+
 		ps.setString(1, c.getNombreUsuario());
 		ps.setString(2, c.getPassw());
-		
+
 		ps.executeUpdate();
 		ps.close();
-		
-		}
 
-
-		/**
-		 * Metodo para cambiar contraseña
-		 * @param a
-		 * @throws SQLException
-		 */
-	public void cambioPass (AdminWeb a) throws SQLException {
-	
-	PreparedStatement ps = con.prepareStatement("ALTER TABLE useradmin (passw) VALUES (?)");
-	ps.setString(0, a.getPassw());
-	
-	ps.executeUpdate();
-	ps.close();		
-	
 	}
-	
-	
-	///AQUI APARECE EL LISTADO PARA DAEDALUS
-	public ArrayList<ConsultorWeb> obtener() throws SQLException{
-		
-		
+
+	/**
+	 * Metodo para cambiar contraseña
+	 * 
+	 * @param a
+	 * @throws SQLException
+	 */
+	public void cambioPass(AdminWeb a) throws SQLException {
+
+		PreparedStatement ps = con.prepareStatement("ALTER TABLE useradmin (passw) VALUES (?)");
+		ps.setString(0, a.getPassw());
+
+		ps.executeUpdate();
+		ps.close();
+
+	}
+
+	/// AQUI APARECE EL LISTADO PARA DAEDALUS
+	public ArrayList<ConsultorWeb> obtener() throws SQLException {
+
 		PreparedStatement ps = con.prepareStatement("SELECT nameUsuario, contra FROM Usuario ");
-		
+
 		ResultSet rs = ps.executeQuery();
-		
+
 		ArrayList<ConsultorWeb> result = null;
-		
+
 		while (rs.next()) {
-			
+
 			if (result == null) {
 				result = new ArrayList<>();
-				
+
 			}
-			
-			result.add(new ConsultorWeb(  rs.getString("nameUsuario"),rs.getString("contra"))  );
+
+			result.add(new ConsultorWeb(rs.getString("nameUsuario"), rs.getString("contra")));
 			System.out.println(result.toString());
-			//public Login(String name, String contra, int id)
-			
-			
+			// public Login(String name, String contra, int id)
+
 		}
 		System.out.println(result.toString());
 		return result;
 	}
-	
-	//Metodo que llama a otro metodo para solicitar informacion a la BBDD
+
+	// Metodo que llama a otro metodo para solicitar informacion a la BBDD
 	// y convertirlo en JSON
 	// el otro metodo que lo complementa es obtener()
-	
+
 	public String obtenerenJSON() throws SQLException {
-		
-		String jsonFinal ="";
-		
+
+		String jsonFinal = "";
+
 		Gson gsonFinal = new Gson();
 		jsonFinal = gsonFinal.toJson(this.obtener());
-		System.out.println(jsonFinal); 
-		
+		System.out.println(jsonFinal);
+
 		return jsonFinal;
 	}
-	
-	
+
 	// improvisación de filtro
-	
-	public ArrayList<Login> obtenerFiltro(String name) throws SQLException{
-		//importante crear una variable q	ue le tendremos que pasar para identificar lo que queremos filtrar
+
+	public ArrayList<Login> obtenerFiltro(String name) throws SQLException {
+		// importante crear una variable q ue le tendremos que pasar para identificar lo
+		// que queremos filtrar
 		PreparedStatement ps = con.prepareStatement("SELECT * FROM useradmin WHERE name=?");
-		ps.setString(1,name);
-		//aqui realizamos el prepared statement para  mandarle la Query a la BBDD
-		
+		ps.setString(1, name);
+		// aqui realizamos el prepared statement para mandarle la Query a la BBDD
+
 		ArrayList<Login> result = null;
 		return result;
 	}
 
-	//Ejemplobasico de listar
+	// Ejemplobasico de listar
 	public ArrayList<ConsultorWeb> listar() throws SQLException {
-		
-		ArrayList <ConsultorWeb> movidas = null;
+
+		ArrayList<ConsultorWeb> movidas = null;
 		PreparedStatement ps = con.prepareStatement("SELECT * from user_admin");
 		ResultSet rs = ps.executeQuery();
-		
-		while(rs.next()) {
-			if (movidas==null) {
-				
-				movidas= new ArrayList<>();
+
+		while (rs.next()) {
+			if (movidas == null) {
+
+				movidas = new ArrayList<>();
 			}
-			movidas.add(new ConsultorWeb(rs.getString("nombreUsuario"), rs.getString("passw")    ));
+			movidas.add(new ConsultorWeb(rs.getString("nombreUsuario"), rs.getString("passw")));
 		}
-		
-		
-		
-		
+
 		return movidas;
 	}
-
 
 }

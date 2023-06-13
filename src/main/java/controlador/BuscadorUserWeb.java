@@ -15,5 +15,5 @@ import java.util.ArrayList;
 import dao.*;
 
 public class BuscadorUserWeb {
-    
+
 }
