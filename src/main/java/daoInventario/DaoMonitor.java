@@ -9,6 +9,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import com.google.gson.Gson;
+
 public class DaoMonitor {
 	
 	
@@ -69,17 +71,24 @@ public class DaoMonitor {
 		
 	}
 
+	public String obtenerenJSONFiltro(DispositivoMonitor b) throws SQLException {
+	    Gson gsonFinal = new Gson();
+	    String jsonFinal = gsonFinal.toJson(this.buscarPorFiltro(b));
+	    System.out.println(jsonFinal);
+	    
+	    return jsonFinal;
+	}
+
+
+
+
 	// metodo para buscar con Filtro
 
 	public ArrayList<DispositivoMonitor> buscarPorFiltro (DispositivoMonitor b) throws SQLException{
 		
 		//comienzo con la creacion de una consulta básica, si no se ha eligido ningun campo devolverá una consulta completa
 		//StringBuilder sql = new StringBuilder("SELECT * FROM Usuario WHERE 1=1");
-		StringBuilder sql = new StringBuilder("SELECT Usuario.*, Company.nameCompany, Departament.nameDepartament "
-			    + "FROM Usuario "
-			    + "LEFT JOIN Company ON Usuario.idCompany = Company.idCompany "
-			    + "LEFT JOIN Departament ON Usuario.idDepartament = Departament.idDepartament "
-			    + "WHERE 1=1");
+		
 
 		StringBuilder sql2 = new StringBuilder("SELECT u.nombre AS 'usuario', e.nombre AS 'Empresa', m.marca AS 'Marca', m.modelo AS 'Modelo', m.numSerie AS 'Número de Serie', m.notas AS 'Notas', m.averiado AS 'Averiado', m.identificador AS 'Identificador' "
 			    + "FROM monitor AS m "
@@ -110,11 +119,11 @@ public class DaoMonitor {
 		//+ b.getempresa().toString() + b.getDepartamento()
 
 		//compruebo por consola que se recojan los parametros
-		System.out.println(sql.toString());
+		System.out.println(sql2.toString());
 		
 		//preparo la consulta y a continación le paso las querys que no son null
 		
-		PreparedStatement ps = con.prepareStatement (sql.toString());
+		PreparedStatement ps = con.prepareStatement (sql2.toString());
 		
 		if (b.getMarca()!=null) {
 			ps.setString(index++, "%" +  b.getMarca() + "%");
