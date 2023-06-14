@@ -145,4 +145,14 @@
     <servlet-name>SvAltaMonitor</servlet-name>
     <url-pattern>/SvAltaMonitor</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SvConsultaMonitorFiltro</display-name>
+    <servlet-name>SvConsultaMonitorFiltro</servlet-name>
+    <servlet-class>controladorInventario.SvConsultaMonitorFiltro</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SvConsultaMonitorFiltro</servlet-name>
+    <url-pattern>/SvConsultaMonitorFiltro</url-pattern>
+  </servlet-mapping>
 </web-app>

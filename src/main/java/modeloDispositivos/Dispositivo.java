@@ -70,6 +70,16 @@ public abstract class Dispositivo {
 
 		
 
+		public Dispositivo(String marca, String modelo, String numSerie, Integer empresa) {
+			// TODO Auto-generated constructor stub
+			this.marca = marca;
+			this.modelo= modelo;
+			this.numSerie = numSerie;
+			this.empresa= empresa;
+			
+		}
+
+
 		public int getId() {
 			return id;
 		}

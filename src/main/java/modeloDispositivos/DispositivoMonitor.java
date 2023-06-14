@@ -37,6 +37,13 @@ public class DispositivoMonitor extends Dispositivo{
 		super(marca, modelo, numSerie, notas, estado, empresa);
 		// TODO Auto-generated constructor stub
 	}
+
+	//Constructor sin  id ni usuario ni averiado, sin notas ni estado PARA FORMULARIO 
+	public DispositivoMonitor(String marca, String modelo, String numSerie, 
+			Integer empresa) {
+		super(marca, modelo, numSerie, empresa);
+		// TODO Auto-generated constructor stub
+	}
 	
 	//Constructor vacio
 	public DispositivoMonitor(){
@@ -58,10 +65,21 @@ public class DispositivoMonitor extends Dispositivo{
 	
 	
 	
+	//metodo para introducir monitor de manera simple con marca, modelo, numSeri y empresa
+
+	public void insertarSimple() throws SQLException {
+		
+		DaoMonitor d1 = new DaoMonitor();
+		d1.insertarMonitorSimple(this);
+		
+		
+	}
+
+
 	
-	//metodo para dar de alta a monitor
+	//metodo para dar de alta a monitor con todos los campos
 	
-	public void insertar() throws SQLException {
+	public void insertarCompleto() throws SQLException {
 		
 		DaoMonitor d1 = new DaoMonitor();
 		d1.insetarMonitorCompleto(this);
