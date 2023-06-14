@@ -46,13 +46,13 @@ public class DBConexion {
 		case 0: {
 			basedeDatos="jdbc:mysql://localhost:3306/daedalusWeb";
 			userBBDD="root";
-			passBBDD="123456";
+			passBBDD="Spigen2000!!";
 		break;
 		}
 		case 1: {
 			basedeDatos="jdbc:mysql://localhost:3306/web";
 			userBBDD="root";
-			passBBDD="123456";
+			passBBDD="Spigen2000!!";
 			
 			break;
 			}
