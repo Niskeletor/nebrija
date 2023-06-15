@@ -54,6 +54,7 @@ public class SvConsultaMonitorFiltro extends HttpServlet {
 				String getnumSer="";
 				Integer getCompany=0;
 				String getNotas="";
+				String getEstado="";
 
 									// Creo instancia de la clase DispositivoMonitor
 				DispositivoMonitor dm1 = new DispositivoMonitor();
@@ -74,8 +75,10 @@ public class SvConsultaMonitorFiltro extends HttpServlet {
 						dm1.setEmpresa(Integer.parseInt((request.getParameter("validationQueryMonitorCompany"))));
 					}
 					if (request.getParameter("validationQueryMonitorNotas")!=null){
-						dm1.setNotas((request.getParameter("validationQueryMonitorNotas")));
-						
+						dm1.setNotas((request.getParameter("validationQueryMonitorNotas")));						
+					}
+					if (request.getParameter("validationQueryMonitorEstado")!=null){
+						dm1.setEstado((request.getParameter("validationQueryMonitorEstado")));							
 					}
 
 					//validationQueryMonitorNotas

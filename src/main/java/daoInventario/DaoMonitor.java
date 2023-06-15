@@ -114,6 +114,10 @@ public class DaoMonitor {
 			sql2.append(" AND m.notas LIKE ?");
 		}
 
+		if (b.getEstado()!=null){
+			sql2.append(" AND m.estado LIKE ?");
+		}		
+
 		if (b.getEmpresa()!=null){
 			sql2.append(" AND m.empresa_id =?");
 		}
@@ -140,6 +144,10 @@ public class DaoMonitor {
 		}
 		if (b.getNotas()!=null) {
 			ps.setString(index++, "%" + b.getNotas() + "%");
+		}
+
+		if (b.getEstado()!=null) {
+			ps.setString(index++, "%" + b.getEstado() + "%");
 		}
 
 		if (b.getEmpresa()!=null) {
