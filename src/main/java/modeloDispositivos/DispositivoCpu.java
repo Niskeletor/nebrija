@@ -1,5 +1,6 @@
 package modeloDispositivos;
 
+
 public class DispositivoCpu extends Dispositivo{
 	
 	String dirIp;

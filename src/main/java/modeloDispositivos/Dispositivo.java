@@ -11,15 +11,16 @@ package modeloDispositivos;
 
 public abstract class Dispositivo {
 	
-	int id;
-	String marca;
-	String modelo;
-	String numSerie;
-	String notas;
-	String estado;
-	Integer empresa;
-	Boolean averiado;
-	String usuario;
+	protected int id;
+	protected String marca;
+	protected String modelo;
+	protected String numSerie;
+	protected String notas;
+	protected String estado;
+	protected Integer empresa;
+	protected Boolean averiado;
+	protected String usuario;
+	protected String nombreEmpresa;
 	
 	// Constructor completo
 	public Dispositivo(int id, String marca, String modelo, String numSerie, String notas, String estado,
@@ -170,7 +171,22 @@ public abstract class Dispositivo {
 		}
 
 		
+		public String getNombreEmpresa() {
+			return nombreEmpresa;
+		}
+
+
+		public void setNombreEmpresa(String nombreEmpresa) {
+			this.nombreEmpresa = nombreEmpresa;
+		}
+
+		
+		
+		
+		
 		//To String
+
+	
 
 		@Override
 		public String toString() {

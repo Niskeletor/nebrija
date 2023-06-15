@@ -11,26 +11,29 @@ import modeloUserWeb.BuscadorUserWeb;
 import java.io.IOException;
 import java.sql.SQLException;
 
-import dao.DaoUserWeb;
+
+import daoInventario.DaoMonitor;
 
 /**
  * Servlet implementation class SvConsultaMonitorFiltro
  */
 public class SvConsultaMonitorFiltro extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public SvConsultaMonitorFiltro() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public SvConsultaMonitorFiltro() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
@@ -44,15 +47,7 @@ public class SvConsultaMonitorFiltro extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 		//AQUI PREPARO LA ESCUCHA A TRAVES DEL FORMULARIO CUANDO SE QUIERE EFECTUAR UN FILTRO
-				String nombreUsuario="";
-				String nombre="";
-				String apellidos="";
-				String departamento="";
-				int verificarDepartamento=0;
-				String empresa="";
-				int verificarEmpresa=0;
-				String admin="";
-
+	
 										//
 				String getMarca="";
 				String getModelo="";
@@ -66,27 +61,22 @@ public class SvConsultaMonitorFiltro extends HttpServlet {
 				BuscadorUserWeb b1 = new BuscadorUserWeb();
 
 					if (request.getParameter("validationQueryMonitorBrand")!=null){
-
 						dm1.setMarca(request.getParameter("validationQueryMonitorBrand"));
 					}
-
 					if (request.getParameter("validationQueryMonitorModel")!=null){
-
-						dm1.setModelo(getModelo(request.getParameter("validationQueryMonitorModel"));
+						dm1.setModelo(request.getParameter("validationQueryMonitorModel"));
 					}
-
-					if (request.getParameter("validationQueryMonitorBrand")!=null){
-
-						dm1.setMarca(request.getParameter("validationQueryMonitorBrand"));
+					if (request.getParameter("validationQueryMonitorSerial")!=null){
+						dm1.setNumSerie((request.getParameter("validationQueryMonitorSerial")));
 					}
-
-					if (request.getParameter("validationQueryMonitorBrand")!=null){
-
-						dm1.setMarca(request.getParameter("validationQueryMonitorBrand"));
+					if (request.getParameter("validationQueryMonitorCompany")!=null){
+						dm1.setEmpresa(Integer.parseInt((request.getParameter("validationQueryMonitorCompany"))));
 					}
+					
+					System.out.println(dm1.toString());
 
 
-				
+				/* 
 				if (request.getParameter("username")!= null) {
 				nombreUsuario = request.getParameter("username");
 				//sql.append(" AND nombreUsuario = " + nombreUsuario);
@@ -125,8 +115,8 @@ public class SvConsultaMonitorFiltro extends HttpServlet {
 						}// fin if verificarEmpresa
 					
 					}
-			
-		
+			*/
+		/*
 		try {
 			DaoUserWeb daoUserWeb = new DaoUserWeb();
 			String json = daoUserWeb.obtenerenJSONFiltro(b1);
@@ -138,13 +128,24 @@ public class SvConsultaMonitorFiltro extends HttpServlet {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+				*/
+					
+					try {
+						DaoMonitor daom = new DaoMonitor();
+						//String json = daom.obtenerenJSONFiltro(b1);
+						String json = daom.obtenerenJSONFiltro(dm1);
+						
+						response.setContentType("application/json");
+						response.setCharacterEncoding("UTF-8");
+						response.getWriter().write(json);
+						System.out.println(json); 
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+					
 		
-		
-	}
-
-
-
-
 	}
 
 }
+
+
