@@ -90,7 +90,7 @@ public class DaoMonitor {
 		//StringBuilder sql = new StringBuilder("SELECT * FROM Usuario WHERE 1=1");
 		
 		// LA CONSULTA ESTA BIEN HECHA 16/06/2023
-		StringBuilder sql2 = new StringBuilder("SELECT u.nombre AS 'usuario', e.nombre AS 'Empresa', m.marca AS 'Marca', m.modelo AS 'Modelo', m.numSerie AS 'Número de Serie', m.notas AS 'Notas', m.averiado AS 'Averiado', m.identificador AS 'Identificador' "
+		StringBuilder sql2 = new StringBuilder("SELECT u.nombre AS 'usuario', e.nombre AS 'Empresa', m.marca AS 'Marca', m.modelo AS 'Modelo', m.numSerie AS 'Número de Serie', m.notas AS 'Notas', m.estado AS 'Estado', m.averiado AS 'Averiado', m.identificador AS 'Identificador' "
 			    + "FROM monitor AS m "
 			    + "LEFT JOIN  Usuario_has_monitor AS um ON m.id = um.monitor_id "
 			    + "LEFT JOIN Usuario AS u ON um.Usuario_id = u.id "
@@ -151,7 +151,7 @@ public class DaoMonitor {
 			dispositivoMonitor.setModelo(rs.getString("Modelo"));
 			dispositivoMonitor.setNumSerie(rs.getString("Número de Serie"));
 			dispositivoMonitor.setNotas(rs.getString("Notas"));
-			//dispositivoMonitor.setEstado(rs.getString("estado")); 
+			dispositivoMonitor.setEstado(rs.getString("estado")); 
 			//dispositivoMonitor.setEmpresa(rs.getInt("Empresa")); // asumiendo que es un entero
 			//dispositivoMonitor.setEmpresa(rs.getString("Empresa"));
 			dispositivoMonitor.setNombreEmpresa((rs.getString("Empresa")));

@@ -31,4 +31,37 @@
 .scroll-table {
     overflow-y: auto;
     display: inline-block; /* Para que el div se ajuste al ancho de su contenido */
+
 }
+
+    #monitorList {
+        font-family: Arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+      /*  overflow-y: auto; */
+      /*display: block; */
+        height: 200px; /* Ajustar */
+    }
+    
+    #monitorList td, #monitorList th {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+    
+    #monitorList tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+    
+    #monitorList tr:hover {
+        background-color: #ddd;
+    }
+    
+    #monitorList th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #4CAF50;
+        color: white;
+    }
+    
+    
