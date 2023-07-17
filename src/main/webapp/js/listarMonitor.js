@@ -31,13 +31,22 @@ $(document).ready(function() {
                         '<td>' + monitor.marca + '</td>' +
                         '<td>' + monitor.modelo + '</td>' +
                         '<td>' + monitor.numSerie + '</td>' +
-                        '<td>' + monitor.notas + '</td>' +
-                        '<td>' + monitor.estado + '</td>' +
+                        '<td class="notas" data-toggle="modal">' + monitor.notas + '</td>' +
+                        '<td class="estado" data-toggle="modal">' + monitor.estado + '</td>' +
                         '<td>' + monitor.nombreEmpresa + '</td>' +
-                        '<td>' + monitor.Usuario + '</td>' +
+                        '<td>' + monitor.usuario + '</td>' +
                         '<td>' + monitor.identificador + '</td>' +
                         '</tr>');
+                        console.log(monitor.usuario);
+
+                    });
+                            // Datos con exito procesos
+                        $('.notas, .estado').on('click', function() {
+                            $('#modalContent').text($(this).text());
+                            $('#myModal').modal('show');
+                            //Datos con exito procesos
                 });
+                                
             },
             error: function() {
                 alert('Error obteniendo monitores');

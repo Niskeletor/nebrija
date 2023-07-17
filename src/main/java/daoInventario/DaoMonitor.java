@@ -90,6 +90,7 @@ public class DaoMonitor {
 		//StringBuilder sql = new StringBuilder("SELECT * FROM Usuario WHERE 1=1");
 		
 		// LA CONSULTA ESTA BIEN HECHA 16/06/2023
+		// NECESARIO INCLUIR CONSULTA APELLIDOS DE USUARIO
 		StringBuilder sql2 = new StringBuilder("SELECT u.nombre AS 'usuario', e.nombre AS 'Empresa', m.marca AS 'Marca', m.modelo AS 'Modelo', m.numSerie AS 'Número de Serie', m.notas AS 'Notas', m.estado AS 'Estado', m.averiado AS 'Averiado', m.identificador AS 'Identificador' "
 			    + "FROM monitor AS m "
 			    + "LEFT JOIN  Usuario_has_monitor AS um ON m.id = um.monitor_id "
@@ -172,6 +173,7 @@ public class DaoMonitor {
 			//dispositivoMonitor.setEmpresa(rs.getString("Empresa"));
 			dispositivoMonitor.setNombreEmpresa((rs.getString("Empresa")));
 			dispositivoMonitor.setUsuario(rs.getString("usuario"));
+			
 			dispositivoMonitor.setIdentificador(rs.getString("Identificador"));
 
 			result.add(dispositivoMonitor);
