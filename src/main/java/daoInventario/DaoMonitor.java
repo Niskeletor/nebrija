@@ -91,7 +91,7 @@ public class DaoMonitor {
 		
 		// LA CONSULTA ESTA BIEN HECHA 16/06/2023
 		// NECESARIO INCLUIR CONSULTA APELLIDOS DE USUARIO
-		StringBuilder sql2 = new StringBuilder("SELECT u.nombre AS 'usuario', e.nombre AS 'Empresa', m.marca AS 'Marca', m.modelo AS 'Modelo', m.numSerie AS 'Número de Serie', m.notas AS 'Notas', m.estado AS 'Estado', m.averiado AS 'Averiado', m.identificador AS 'Identificador' "
+		StringBuilder sql2 = new StringBuilder("SELECT u.nombre AS 'usuario', u.apellidos AS 'apellidos', e.nombre AS 'Empresa', m.marca AS 'Marca', m.modelo AS 'Modelo', m.numSerie AS 'Número de Serie', m.notas AS 'Notas', m.estado AS 'Estado', m.averiado AS 'Averiado', m.identificador AS 'Identificador' "
 			    + "FROM monitor AS m "
 			    + "LEFT JOIN  Usuario_has_monitor AS um ON m.id = um.monitor_id "
 			    + "LEFT JOIN Usuario AS u ON um.Usuario_id = u.id "
@@ -172,7 +172,9 @@ public class DaoMonitor {
 			//dispositivoMonitor.setEmpresa(rs.getInt("Empresa")); // asumiendo que es un entero
 			//dispositivoMonitor.setEmpresa(rs.getString("Empresa"));
 			dispositivoMonitor.setNombreEmpresa((rs.getString("Empresa")));
-			dispositivoMonitor.setUsuario(rs.getString("usuario"));
+			String nombre = rs.getString("usuario");
+			String apellidos = rs.getString("apellidos");
+			dispositivoMonitor.setUsuario(nombre + " " + apellidos);
 			
 			dispositivoMonitor.setIdentificador(rs.getString("Identificador"));
 
