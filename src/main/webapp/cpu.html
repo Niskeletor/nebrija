@@ -272,7 +272,7 @@
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Inventario Monitores</h5>
+              <h5 class="card-title">Inventario CPU</h5>
 
               <!-- Default Tabs -->
               <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -296,48 +296,68 @@
     
                   <div class="card">
                     <div class="card-body">
-                      <h5 class="card-title">Alta Monitor</h5>
+                      <h5 class="card-title">Alta CPU SOBREMESA</h5>
         
                       <!-- General Form Elements -->
-                      <form id="formAltaMonitor" action="SvAltaMonitor" method="post" >
+                    <form id="formAltaMonitor" action="SvAltaCpu" method="post">
                         <div class="row mb-3">
-                          <label for="input-mon-brand" class="col-sm-2 col-form-label">Marca</label>
-                          <div class="col-sm-10">
-                            <input type="text" class="form-control" id="input-mon-brand" name="input-mon-brand">
-                          </div>
-                        </div>
-                        <div class="row mb-3">
-                            <label for="input-mon-model" class="col-sm-2 col-form-label">Modelo</label>
-                            <div class="col-sm-10">
-                              <input type="text" class="form-control" id="input-mon-model" name="input-mon-model">
+                            <div class="col-sm-6">
+                                <label for="input-cpu-brand" class="form-label">Marca</label>
+                                <input type="text" class="form-control" id="input-cpu-brand" name="input-cpu-brand">
                             </div>
-                          </div>
+                            <div class="col-sm-6">
+                                <label for="input-cpu-model" class="form-label">Modelo</label>
+                                <input type="text" class="form-control" id="input-cpu-model" name="input-cpu-model">
+                            </div>
+                        </div>
+
+
+                        
                          <div class="row mb-3">
-                          <label for="input-mon-serialNum" class="col-sm-2 col-form-label">S/N</label>
-                          <div class="col-sm-10">
-                            <input type="text" class="form-control" id="input-mon-serialNum" name="input-mon-serialNum" >
+                          
+                          <div class="col-sm-6">
+                            <label for="input-cpu-serialNum" class="form-label">S/N</label>
+                            <input type="text" class="form-control" id="input-cpu-serialNum" name="input-cpu-serialNum" >
                           </div>
+
+                          <div class="col-sm-6">
+                            <label for="input-cpu-id" class="form-label">Identificador</label>
+                          <input type="text" class="form-control" id="input-cpu-id" name="input-cpu-id" >
+                        </div>
                           
                         </div>
+
+                        
                         
     
                         <div class="row mb-3">
-                            <label for="select-company-mon" class="col-sm-2 col-form-label">Empresa</label>
-                            <div class="col-sm-10">
-                              <select class="form-select"  id="select-company-mon" name="select-company-mon" aria-label="Default select example">
-                                <option selected value ="10">Elegir empresa</option>
-                                <option value="1">TABIGAL</option>
-                                <option value="2">METALGIPS EU</option>
-                                <option value="3">METALYESO</option>
-                                <option value="4">PLACAS NORTE</option>
-                                <option value="5">DISACUSTIC</option>
-                                <option value="6">ZERGAL</option>
-                                <option value="7">INVERFAGO</option>
-                                <option value="8">MONTE ESQUEIRO</option>
-                                <option value="9">FRANZOMEL</option>
-                              </select>
+                            <div class="col-sm-6">
+                                <label for="select-company-cpu" class="form-label">Empresa</label>
+                                <select class="form-select" id="select-company-cpu" name="select-company-cpu" aria-label="Default select example">
+                                    <option selected value ="10">Elegir empresa ...</option>
+                                    <option value="1">TABIGAL</option>
+                                    <option value="2">METALGIPS EU</option>
+                                    <option value="3">METALYESO</option>
+                                    <option value="4">PLACAS NORTE</option>
+                                    <option value="5">DISACUSTIC</option>
+                                    <option value="6">ZERGAL</option>
+                                    <option value="7">INVERFAGO</option>
+                                    <option value="8">MONTE ESQUEIRO</option>
+                                    <option value="9">FRANZOMEL</option>
+                                </select>
                             </div>
-                          </div>
+                        
+                            <div class="col-sm-6">
+                                <label for="select-user-cpu" class="form-label">Usuario</label>
+                                <select class="form-select" id="select-user-cpu" name="select-user-cpu" aria-label="Default select example">
+                                    <option selected value ="10">Asignar a Usuario ...</option>
+                                    <option value="1">TABIGAL</option>                                
+                                    <option value="6">ZERGAL</option>                                                                
+                                    <option value="9">FRANZOMEL</option>
+                                </select>
+                            </div>
+                        </div>
+                        
                         
                           
                         <div class="row mb-3">
@@ -346,6 +366,24 @@
                             <input class="form-control" type="file" id="foto" name="foto">
                           </div>
                         </div>
+
+                        <div class="row mb-3">
+                            <label for="input-cpu-notes" class="col-sm-2 col-form-label">Notas</label>
+                            <div class="col-sm-10">
+                              <input type="text" class="form-control" id="input-cpu-notes" name="input-cpu-notes" >
+                            </div>
+                            
+                          </div>
+
+                          <div class="row mb-3">
+                            <label for="input-cpu-status" class="col-sm-2 col-form-label">Estado</label>
+                            <div class="col-sm-10">
+                              <input type="text" class="form-control" id="input-cpu-status" name="input-cpu-status" >
+                            </div>
+                            
+                          </div>
+
+                         
     
                         <!--
                         <div class="row mb-3">
@@ -379,7 +417,7 @@
                   </div>
                   
                   
-                   Gestión de alta monitor de empresa, por favor contacte con el administrador del sistema ante incidencias
+                   Gestión de Ordenador Sobremesa de empresa, por favor contacte con el administrador del sistema ante incidencias
 
 
 
